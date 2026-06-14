@@ -1,3 +1,29 @@
+// Selector de tema claro / oscuro
+(function () {
+  const root = document.documentElement;
+  const opts = document.querySelectorAll("[data-theme-set]");
+
+  function sync() {
+    const current = root.getAttribute("data-theme") || "light";
+    opts.forEach((b) =>
+      b.setAttribute("aria-pressed", String(b.dataset.themeSet === current))
+    );
+  }
+
+  opts.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const theme = btn.dataset.themeSet;
+      root.setAttribute("data-theme", theme);
+      try {
+        localStorage.setItem("theme", theme);
+      } catch (e) {}
+      sync();
+    });
+  });
+
+  sync();
+})();
+
 // Aparición al hacer scroll con escalonado por sección
 (function () {
   const reveals = document.querySelectorAll(".reveal");

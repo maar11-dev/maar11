@@ -3,6 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tema inicial: evita el parpadeo aplicando el modo antes de pintar -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        document.documentElement.setAttribute("data-theme", saved || "dark");
+      } catch (e) {}
+    })();
+  </script>
   <title>Miguel Ángel Arroyo — Ingeniero Multimedia · IA, Web y Videojuegos</title>
   <meta name="description" content="Portfolio de Miguel Ángel Arroyo Romero de Ávila. Ingeniero Multimedia especializado en IA aplicada, desarrollo web y videojuegos. Disponible para trabajo y prácticas." />
 
@@ -20,7 +30,13 @@
 
   <!-- ============ CABECERA ============ -->
   <header class="topbar">
-    <a class="topbar__brand" href="#inicio">maar<span class="accent">.</span>11</a>
+    <div class="topbar__left">
+      <div class="theme-switch" role="group" aria-label="Seleccionar tema">
+        <button type="button" class="theme-switch__opt" data-theme-set="light" aria-label="Modo claro" title="Modo claro">☀</button>
+        <button type="button" class="theme-switch__opt" data-theme-set="dark" aria-label="Modo oscuro" title="Modo oscuro">☾</button>
+      </div>
+      <a class="topbar__brand" href="#inicio">maar<span class="accent">.</span>11</a>
+    </div>
     <nav class="topbar__nav" aria-label="Navegación principal">
       <a href="#sobre-mi">sobre mí</a>
       <div class="nav-drop">
@@ -209,7 +225,7 @@
             </p>
           </div>
           <ul class="project__tags mono">
-            <li>Python</li><li>FastAPI</li><li>Uvicorn</li><li>Groq (Llama 3.1 + Whisper)</li><li>Upstash Vector</li><li>Meta Cloud API</li><li>Render</li>
+            <li>Python</li><li>FastAPI</li><li>Uvicorn</li><li>Groq (Llama 3.1 + Whisper + Llama 4 scout)</li><li>Upstash Vector</li><li>Meta Cloud API</li><li>Render</li>
           </ul>
         </div>
       </article>
@@ -254,7 +270,7 @@
             </p>
           </div>
           <ul class="project__tags mono">
-            <li>MongoDB</li><li>Express</li><li>Angular</li><li>Node.js</li><li>Cloudinary</li><li>Multer</li><li>Vercel</li><li>Git</li>
+            <li>MongoDB</li><li>Express</li><li>Angular</li><li>Node.js</li><li>Cloudinary</li><li>Multer</li><li>Vercel</li><li>Render</li><li>Git</li>
           </ul>
         </div>
       </article>
