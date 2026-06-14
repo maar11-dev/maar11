@@ -692,6 +692,28 @@ a { color: inherit; }
 .project__visual--browser .shot--overlay { width: 62%; bottom: -2.2rem; }
 .project__visual--browser .project__caption { margin-top: 3rem; }
 
+/* Dos capturas apiladas y completas, sin solaparse (gameplay nítido) */
+.project__visual--stack .project__frame {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+.project__visual--stack .shot--main {
+  width: 90%;
+  transform: rotate(-1.2deg);
+}
+.project__visual--stack .shot--overlay {
+  position: static;
+  width: 90%;
+  right: auto;
+  bottom: auto;
+  align-self: flex-end;
+  transform: rotate(1.4deg);
+}
+.project:hover .project__visual--stack .shot--main { transform: rotate(-0.3deg); }
+.project:hover .project__visual--stack .shot--overlay { transform: rotate(0.4deg) translateY(-4px); }
+.project__visual--stack .project__caption { margin-top: 1.8rem; }
+
 /* Logo del proyecto como pegatina */
 .project__sticker {
   position: absolute;
@@ -720,6 +742,12 @@ a { color: inherit; }
 
 .project__sticker--renderbox { background: #585d68; }
 .project__sticker--renderbox img { object-fit: contain; }
+
+.project__sticker--preflop { background: #cfe6bb; }
+.project__sticker--preflop img { object-fit: contain; }
+
+.project__sticker--dopamine { background: #0e1726; padding: 7px; }
+.project__sticker--dopamine img { object-fit: contain; }
 
 .project__caption {
   margin-top: 2.6rem;
