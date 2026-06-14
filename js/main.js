@@ -167,6 +167,10 @@
     "contact.note":
       '<span class="status-dot" aria-hidden="true"></span> fast replies · open to work and internships',
 
+    // Enlaces de proyecto
+    "link.play": 'play on itch.io <span aria-hidden="true">↗</span>',
+    "link.repo": 'view repository <span aria-hidden="true">↗</span>',
+
     // Pie
     "footer.by": "designed and built by miguel ángel arroyo — 2026",
   };
