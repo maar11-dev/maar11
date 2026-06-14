@@ -120,6 +120,80 @@ a { color: inherit; }
 
 .topbar__cta { color: var(--ink) !important; font-weight: 500; }
 
+/* Desplegable de proyectos */
+.nav-drop { position: relative; display: inline-flex; }
+
+.nav-drop__caret {
+  font-size: 0.55rem;
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+.nav-drop:hover .nav-drop__caret,
+.nav-drop:focus-within .nav-drop__caret { transform: rotate(180deg); }
+
+.nav-drop__menu {
+  position: absolute;
+  top: calc(100% + 0.9rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  min-width: 12.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.4rem;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--accent-soft);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 120;
+}
+
+/* Puente invisible para no perder el hover al bajar al menú */
+.nav-drop__menu::before {
+  content: "";
+  position: absolute;
+  top: -0.9rem;
+  left: 0;
+  right: 0;
+  height: 0.9rem;
+}
+
+.nav-drop:hover .nav-drop__menu,
+.nav-drop:focus-within .nav-drop__menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-drop__menu a {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.nav-drop__menu a::after { display: none; }
+.nav-drop__menu a:hover { background: var(--paper-deep); color: var(--ink); }
+
+.nav-drop__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  flex-shrink: 0;
+}
+.nav-drop__dot--ai   { background: var(--accent); }
+.nav-drop__dot--web  { background: #e8a33d; }
+.nav-drop__dot--game { background: #4f7e5b; }
+
 /* ==========================================================================
    Hero
    ========================================================================== */
@@ -422,6 +496,42 @@ a { color: inherit; }
 /* ==========================================================================
    02 — Proyectos
    ========================================================================== */
+.projects__cat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  padding-bottom: 0.7rem;
+  margin-top: clamp(2.5rem, 6vh, 4.5rem);
+  border-bottom: 1px dashed var(--line);
+  scroll-margin-top: 5rem;
+}
+
+.projects__cat:first-of-type { margin-top: 0; }
+
+.projects__cat-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  font-weight: 520;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.projects__cat-title em { font-weight: 360; color: var(--accent); }
+
+.projects__cat-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  flex-shrink: 0;
+}
+.projects__cat-dot--ai   { background: var(--accent); }
+.projects__cat-dot--web  { background: #e8a33d; }
+.projects__cat-dot--game { background: #4f7e5b; }
+
 .project {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
@@ -481,6 +591,10 @@ a { color: inherit; }
 /* Collage de imágenes tipo espécimen de archivo */
 .project__visual { position: relative; }
 
+/* Marco que contiene solo las imágenes: el pie de foto queda fuera
+   para que la imagen solapada no lo tape */
+.project__frame { position: relative; }
+
 .shot {
   border: 1px solid var(--ink);
   padding: 8px;
@@ -528,6 +642,7 @@ a { color: inherit; }
 /* Capturas de navegador apaisadas */
 .project__visual--browser .shot--main { width: 88%; }
 .project__visual--browser .shot--overlay { width: 62%; bottom: -2.2rem; }
+.project__visual--browser .project__caption { margin-top: 3rem; }
 
 /* Logo del proyecto como pegatina */
 .project__sticker {
@@ -563,7 +678,7 @@ a { color: inherit; }
   color: var(--ink-soft);
 }
 
-.project__visual--phones .project__caption { margin-top: 1.2rem; }
+.project__visual--phones .project__caption { margin-top: 3rem; }
 
 .project__tags {
   list-style: none;

@@ -23,7 +23,14 @@
     <a class="topbar__brand" href="#inicio">maar<span class="accent">.</span>11</a>
     <nav class="topbar__nav" aria-label="Navegación principal">
       <a href="#sobre-mi">sobre mí</a>
-      <a href="#proyectos">proyectos</a>
+      <div class="nav-drop">
+        <a href="#proyectos" class="nav-drop__trigger" aria-haspopup="true">proyectos <span class="nav-drop__caret" aria-hidden="true">▾</span></a>
+        <div class="nav-drop__menu" role="menu">
+          <a href="#proyectos-ia" role="menuitem"><span class="nav-drop__dot nav-drop__dot--ai" aria-hidden="true"></span>ia aplicada</a>
+          <a href="#proyectos-web" role="menuitem"><span class="nav-drop__dot nav-drop__dot--web" aria-hidden="true"></span>desarrollo web</a>
+          <a href="#proyectos-juegos" role="menuitem"><span class="nav-drop__dot nav-drop__dot--game" aria-hidden="true"></span>videojuegos</a>
+        </div>
+      </div>
       <a href="#habilidades">habilidades</a>
       <a href="#contacto" class="topbar__cta">contacto</a>
     </nav>
@@ -122,15 +129,22 @@
         <h2 class="section__title">Proyectos <em>destacados</em></h2>
       </header>
 
+      <!-- ── Categoría: IA ── -->
+      <header class="projects__cat reveal" id="proyectos-ia">
+        <h3 class="projects__cat-title"><span class="projects__cat-dot projects__cat-dot--ai" aria-hidden="true"></span>Inteligencia <em>artificial</em></h3>
+      </header>
+
       <!-- TFG -->
       <article class="project reveal">
         <div class="project__visual project__visual--squares">
+          <div class="project__frame">
           <figure class="shot shot--main">
             <img src="images/tfg1.jpg" alt="Imagen generada por el modelo del TFG: personaje en estilo anime frente al mar" loading="lazy" width="1024" height="1024" />
           </figure>
           <figure class="shot shot--overlay">
             <img src="images/tfg2.jpg" alt="Imagen generada por el modelo del TFG: retrato en estilo anime con iluminación dramática" loading="lazy" width="1024" height="1024" />
           </figure>
+          </div>
           <p class="project__caption mono">salidas reales del modelo — estilo entrenado con LoRA</p>
         </div>
         <div class="project__body">
@@ -161,6 +175,7 @@
       <!-- m.ai -->
       <article class="project reveal">
         <div class="project__visual project__visual--phones">
+          <div class="project__frame">
           <figure class="shot shot--main">
             <img src="images/mai1.jpg" alt="Conversación con m.ai en WhatsApp: guardado de notas y resumen semanal" loading="lazy" width="501" height="1024" />
           </figure>
@@ -170,6 +185,7 @@
           <span class="project__sticker" aria-hidden="true">
             <img src="images/mai-logo.png" alt="" loading="lazy" width="639" height="637" />
           </span>
+          </div>
           <p class="project__caption mono">el bot en producción, dentro de WhatsApp</p>
         </div>
         <div class="project__body">
@@ -198,47 +214,15 @@
         </div>
       </article>
 
-      <!-- TRAMFIGHT -->
-      <article class="project reveal">
-        <div class="project__visual project__visual--poster">
-          <figure class="shot shot--main">
-            <img src="images/tramfight-cartel.png" alt="Cartel pixel art de TRAMFIGHT: L2 Smackdown, con un tranvía y personajes peleando" loading="lazy" width="790" height="521" />
-          </figure>
-          <figure class="shot shot--overlay">
-            <img src="images/tramfight-game.png" alt="Captura del gameplay de TRAMFIGHT: combate dentro del tranvía en pixel art" loading="lazy" width="956" height="635" />
-          </figure>
-          <span class="project__sticker project__sticker--svg" aria-hidden="true">
-            <img src="images/tramfight-icon.svg" alt="" loading="lazy" />
-          </span>
-          <p class="project__caption mono">cartel y gameplay del juego, pixel art propio</p>
-        </div>
-        <div class="project__body">
-          <div class="project__meta mono">
-            <span class="project__date">julio 2025</span>
-            <span class="project__badge project__badge--award">finalista</span>
-          </div>
-          <h3 class="project__title">TRAMFIGHT: L2 Smackdown</h3>
-          <p class="project__sub mono">finalista — level up game jam 2025</p>
-          <div class="project__desc">
-            <p>
-              Un videojuego completo y jugable desarrollado en Godot en solo 8 días,
-              con control de versiones en equipo bajo la presión real de una jam.
-              Finalista de la Level Up Game Jam 2025.
-            </p>
-            <p>
-              Una jam es la mejor prueba de alcance, prioridades y entrega:
-              o terminas, o no hay juego.
-            </p>
-          </div>
-          <ul class="project__tags mono">
-            <li>Godot</li><li>Git</li><li>8 días</li>
-          </ul>
-        </div>
-      </article>
+      <!-- ── Categoría: Web ── -->
+      <header class="projects__cat reveal" id="proyectos-web">
+        <h3 class="projects__cat-title"><span class="projects__cat-dot projects__cat-dot--web" aria-hidden="true"></span>Desarrollo <em>web</em></h3>
+      </header>
 
       <!-- RenderBox -->
       <article class="project reveal">
         <div class="project__visual project__visual--browser">
+          <div class="project__frame">
           <figure class="shot shot--main">
             <img src="images/renderbox2.png" alt="Página de detalle de un asset en RenderBox, con descripción, etiquetas y descargas" loading="lazy" width="638" height="344" />
           </figure>
@@ -248,6 +232,7 @@
           <span class="project__sticker project__sticker--renderbox" aria-hidden="true">
             <img src="images/renderbox-logo.jpg" alt="" loading="lazy" width="713" height="471" />
           </span>
+          </div>
           <p class="project__caption mono">la plataforma en producción, desplegada en vercel</p>
         </div>
         <div class="project__body">
@@ -270,6 +255,51 @@
           </div>
           <ul class="project__tags mono">
             <li>MongoDB</li><li>Express</li><li>Angular</li><li>Node.js</li><li>Cloudinary</li><li>Multer</li><li>Vercel</li><li>Git</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- ── Categoría: Videojuegos ── -->
+      <header class="projects__cat reveal" id="proyectos-juegos">
+        <h3 class="projects__cat-title"><span class="projects__cat-dot projects__cat-dot--game" aria-hidden="true"></span>Video<em>juegos</em></h3>
+      </header>
+
+      <!-- TRAMFIGHT -->
+      <article class="project reveal">
+        <div class="project__visual project__visual--poster">
+          <div class="project__frame">
+          <figure class="shot shot--main">
+            <img src="images/tramfight-cartel.png" alt="Cartel pixel art de TRAMFIGHT: L2 Smackdown, con un tranvía y personajes peleando" loading="lazy" width="790" height="521" />
+          </figure>
+          <figure class="shot shot--overlay">
+            <img src="images/tramfight-game.png" alt="Captura del gameplay de TRAMFIGHT: combate dentro del tranvía en pixel art" loading="lazy" width="956" height="635" />
+          </figure>
+          <span class="project__sticker project__sticker--svg" aria-hidden="true">
+            <img src="images/tramfight-icon.svg" alt="" loading="lazy" />
+          </span>
+          </div>
+          <p class="project__caption mono">cartel y gameplay del juego, pixel art propio</p>
+        </div>
+        <div class="project__body">
+          <div class="project__meta mono">
+            <span class="project__date">julio 2025</span>
+            <span class="project__badge project__badge--award">finalista</span>
+          </div>
+          <h3 class="project__title">TRAMFIGHT: L2 Smackdown</h3>
+          <p class="project__sub mono">finalista — level up game jam 2025</p>
+          <div class="project__desc">
+            <p>
+              Un videojuego completo y jugable desarrollado en Godot en solo 8 días,
+              con control de versiones en equipo bajo la presión real de una jam.
+              Finalista de la Level Up Game Jam 2025.
+            </p>
+            <p>
+              Una jam es la mejor prueba de alcance, prioridades y entrega:
+              o terminas, o no hay juego.
+            </p>
+          </div>
+          <ul class="project__tags mono">
+            <li>Godot</li><li>Git</li><li>8 días</li>
           </ul>
         </div>
       </article>
