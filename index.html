@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -10,6 +10,8 @@
       try {
         var saved = localStorage.getItem("theme");
         document.documentElement.setAttribute("data-theme", saved || "dark");
+        var lang = localStorage.getItem("lang");
+        if (lang) document.documentElement.setAttribute("lang", lang);
       } catch (e) {}
     })();
   </script>
@@ -35,20 +37,24 @@
         <button type="button" class="theme-switch__opt" data-theme-set="light" aria-label="Modo claro" title="Modo claro">☀</button>
         <button type="button" class="theme-switch__opt" data-theme-set="dark" aria-label="Modo oscuro" title="Modo oscuro">☾</button>
       </div>
+      <div class="lang-switch" role="group" aria-label="Idioma / Language">
+        <button type="button" class="lang-switch__opt" data-lang-set="es" aria-label="Español" title="Español">ES</button>
+        <button type="button" class="lang-switch__opt" data-lang-set="en" aria-label="English" title="English">EN</button>
+      </div>
       <a class="topbar__brand" href="#inicio">maar<span class="accent">.</span>11</a>
     </div>
     <nav class="topbar__nav" aria-label="Navegación principal">
-      <a href="#sobre-mi">sobre mí</a>
+      <a href="#sobre-mi" data-i18n="nav.about">sobre mí</a>
       <div class="nav-drop">
-        <a href="#proyectos" class="nav-drop__trigger" aria-haspopup="true">proyectos <span class="nav-drop__caret" aria-hidden="true">▾</span></a>
+        <a href="#proyectos" class="nav-drop__trigger" aria-haspopup="true" data-i18n="nav.projects">proyectos <span class="nav-drop__caret" aria-hidden="true">▾</span></a>
         <div class="nav-drop__menu" role="menu">
-          <a href="#proyectos-ia" role="menuitem"><span class="nav-drop__dot nav-drop__dot--ai" aria-hidden="true"></span>ia aplicada</a>
-          <a href="#proyectos-web" role="menuitem"><span class="nav-drop__dot nav-drop__dot--web" aria-hidden="true"></span>desarrollo web</a>
-          <a href="#proyectos-juegos" role="menuitem"><span class="nav-drop__dot nav-drop__dot--game" aria-hidden="true"></span>videojuegos</a>
+          <a href="#proyectos-ia" role="menuitem" data-i18n="nav.ai"><span class="nav-drop__dot nav-drop__dot--ai" aria-hidden="true"></span>ia aplicada</a>
+          <a href="#proyectos-web" role="menuitem" data-i18n="nav.web"><span class="nav-drop__dot nav-drop__dot--web" aria-hidden="true"></span>desarrollo web</a>
+          <a href="#proyectos-juegos" role="menuitem" data-i18n="nav.games"><span class="nav-drop__dot nav-drop__dot--game" aria-hidden="true"></span>videojuegos</a>
         </div>
       </div>
-      <a href="#habilidades">habilidades</a>
-      <a href="#contacto" class="topbar__cta">contacto</a>
+      <a href="#habilidades" data-i18n="nav.skills">habilidades</a>
+      <a href="#contacto" class="topbar__cta" data-i18n="nav.contact">contacto</a>
     </nav>
   </header>
 
@@ -68,7 +74,7 @@
 
       <div class="hero__grid">
         <div class="hero__intro">
-          <p class="hero__role">
+          <p class="hero__role" data-i18n="hero.role">
             <strong class="hero__role-lead">Ingeniero Multimedia.</strong>
             Construyo sistemas de
             <em class="accent-ink">IA aplicada</em>, experiencias
@@ -78,11 +84,11 @@
           </p>
           <div class="hero__status">
             <span class="status-dot" aria-hidden="true"></span>
-            <span class="mono">disponible para trabajo y prácticas</span>
+            <span class="mono" data-i18n="hero.status">disponible para trabajo y prácticas</span>
           </div>
           <div class="hero__actions">
-            <a class="btn btn--solid" href="#proyectos">Ver proyectos <span aria-hidden="true">↓</span></a>
-            <a class="btn btn--ghost" href="mailto:m.angelarroyo2004@gmail.com">Escríbeme <span aria-hidden="true">↗</span></a>
+            <a class="btn btn--solid" href="#proyectos" data-i18n="hero.cta1">Ver proyectos <span aria-hidden="true">↓</span></a>
+            <a class="btn btn--ghost" href="mailto:m.angelarroyo2004@gmail.com" data-i18n="hero.cta2">Escríbeme <span aria-hidden="true">↗</span></a>
           </div>
         </div>
 
@@ -90,7 +96,7 @@
           <div class="hero__portrait-frame">
             <img src="images/retrato.jpg" alt="Retrato de Miguel Ángel Arroyo Romero de Ávila" width="711" height="1080" />
           </div>
-          <span class="hero__stamp mono" aria-hidden="true">ing.<br/>multimedia</span>
+          <span class="hero__stamp mono" aria-hidden="true" data-i18n="hero.stamp">ing.<br/>multimedia</span>
         </figure>
       </div>
     </section>
@@ -98,31 +104,31 @@
     <!-- ============ MARQUESINA ============ -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track">
-        <span>ia aplicada ✺ rag &amp; agentes ✺ fine-tuning ✺ desarrollo web ✺ videojuegos ✺ arte digital ✺ prompt engineering ✺ mean / mern ✺ godot &amp; unreal ✺&nbsp;</span><span>ia aplicada ✺ rag &amp; agentes ✺ fine-tuning ✺ desarrollo web ✺ videojuegos ✺ arte digital ✺ prompt engineering ✺ mean / mern ✺ godot &amp; unreal ✺&nbsp;</span>
+        <span data-i18n="marquee">ia aplicada ✺ rag &amp; agentes ✺ fine-tuning ✺ desarrollo web ✺ videojuegos ✺ arte digital ✺ prompt engineering ✺ mean / mern ✺ godot &amp; unreal ✺&nbsp;</span><span data-i18n="marquee">ia aplicada ✺ rag &amp; agentes ✺ fine-tuning ✺ desarrollo web ✺ videojuegos ✺ arte digital ✺ prompt engineering ✺ mean / mern ✺ godot &amp; unreal ✺&nbsp;</span>
       </div>
     </div>
 
     <!-- ============ 01 SOBRE MÍ ============ -->
     <section class="section about" id="sobre-mi">
       <header class="section__head reveal">
-        <h2 class="section__title">Sobre <em>mí</em></h2>
+        <h2 class="section__title" data-i18n="about.title">Sobre <em>mí</em></h2>
       </header>
 
       <div class="about__grid">
         <div class="about__text reveal">
-          <p class="about__lead">
+          <p class="about__lead" data-i18n="about.lead">
             Estoy terminando <strong>Ingeniería Multimedia</strong>. Me muevo en la
             línea exacta entre el código y el arte: el sitio donde se consiguen
             los mejores resultados y los productos escalables con impacto real.
           </p>
-          <p>
+          <p data-i18n="about.p2">
             Vengo del mundo del desarrollo web y los videojuegos, y en los últimos
             meses me he especializado en <strong>IA aplicada</strong>: arquitecturas RAG,
             agentes, elaboración y etiquetado de datasets, y fine-tuning de modelos
             de difusión con LoRA y Dreambooth. No me interesa la IA como demo:
             me interesa como herramienta de producción que resuelve problemas reales.
           </p>
-          <p>
+          <p data-i18n="about.p3">
             Aprendo de forma autónoma, rápido y con criterio estético. Busco un
             equipo donde aportar esa doble visión técnica y visual —
             <a class="link-accent" href="#contacto">en prácticas o en mi primer puesto</a>.
@@ -130,11 +136,11 @@
         </div>
 
         <aside class="about__facts mono reveal" aria-label="Datos rápidos">
-          <div class="fact"><span class="fact__k">rol</span><span class="fact__v">ingeniero multimedia</span></div>
-          <div class="fact"><span class="fact__k">foco</span><span class="fact__v">ia aplicada · web · juegos</span></div>
-          <div class="fact"><span class="fact__k">estado</span><span class="fact__v accent">tfg en curso</span></div>
-          <div class="fact"><span class="fact__k">busca</span><span class="fact__v">prácticas / empleo</span></div>
-          <div class="fact"><span class="fact__k">base</span><span class="fact__v">españa</span></div>
+          <div class="fact"><span class="fact__k" data-i18n="fact.role.k">rol</span><span class="fact__v" data-i18n="fact.role.v">ingeniero multimedia</span></div>
+          <div class="fact"><span class="fact__k" data-i18n="fact.focus.k">foco</span><span class="fact__v" data-i18n="fact.focus.v">ia aplicada · web · juegos</span></div>
+          <div class="fact"><span class="fact__k" data-i18n="fact.status.k">estado</span><span class="fact__v accent" data-i18n="fact.status.v">tfg en curso</span></div>
+          <div class="fact"><span class="fact__k" data-i18n="fact.seek.k">busca</span><span class="fact__v" data-i18n="fact.seek.v">prácticas / empleo</span></div>
+          <div class="fact"><span class="fact__k" data-i18n="fact.base.k">base</span><span class="fact__v" data-i18n="fact.base.v">españa</span></div>
         </aside>
       </div>
     </section>
@@ -142,12 +148,12 @@
     <!-- ============ 02 PROYECTOS ============ -->
     <section class="section projects" id="proyectos">
       <header class="section__head reveal">
-        <h2 class="section__title">Proyectos <em>destacados</em></h2>
+        <h2 class="section__title" data-i18n="projects.title">Proyectos <em>destacados</em></h2>
       </header>
 
       <!-- ── Categoría: IA ── -->
       <header class="projects__cat reveal" id="proyectos-ia">
-        <h3 class="projects__cat-title"><span class="projects__cat-dot projects__cat-dot--ai" aria-hidden="true"></span>Inteligencia <em>artificial</em></h3>
+        <h3 class="projects__cat-title" data-i18n="cat.ai"><span class="projects__cat-dot projects__cat-dot--ai" aria-hidden="true"></span>Inteligencia <em>artificial</em></h3>
       </header>
 
       <!-- TFG -->
@@ -161,23 +167,23 @@
             <img src="images/tfg2.jpg" alt="Imagen generada por el modelo del TFG: retrato en estilo anime con iluminación dramática" loading="lazy" width="1024" height="1024" />
           </figure>
           </div>
-          <p class="project__caption mono">salidas reales del modelo — estilo entrenado con LoRA</p>
+          <p class="project__caption mono" data-i18n="tfg.cap">salidas reales del modelo — estilo entrenado con LoRA</p>
         </div>
         <div class="project__body">
           <div class="project__meta mono">
-            <span class="project__date">2026 · en curso</span>
-            <span class="project__badge project__badge--live">entrenando</span>
+            <span class="project__date" data-i18n="tfg.date">2026 · en curso</span>
+            <span class="project__badge project__badge--live" data-i18n="tfg.badge">entrenando</span>
           </div>
-          <h3 class="project__title">Pipeline de entrenamiento de modelos generativos</h3>
-          <p class="project__sub mono">trabajo de fin de grado</p>
+          <h3 class="project__title" data-i18n="tfg.title">Pipeline de entrenamiento de modelos generativos</h3>
+          <p class="project__sub mono" data-i18n="tfg.sub">trabajo de fin de grado</p>
           <div class="project__desc">
-            <p>
+            <p data-i18n="tfg.d1">
               Un flujo de trabajo completo para entrenar modelos de generación de imagen
               bajo estilos artísticos predeterminados: del dataset crudo al modelo afinado.
               Preparación y etiquetado de datos, fine-tuning con LoRA y Dreambooth sobre
               modelos de difusión, y evaluación de coherencia estilística en cada iteración.
             </p>
-            <p>
+            <p data-i18n="tfg.d2">
               El objetivo: que un estilo concreto sea reproducible y controlable,
               en lugar de depender del azar del prompt.
             </p>
@@ -202,24 +208,24 @@
             <img src="images/mai-logo.png" alt="" loading="lazy" width="639" height="637" />
           </span>
           </div>
-          <p class="project__caption mono">el bot en producción, dentro de WhatsApp</p>
+          <p class="project__caption mono" data-i18n="mai.cap">el bot en producción, dentro de WhatsApp</p>
         </div>
         <div class="project__body">
           <div class="project__meta mono">
-            <span class="project__date">junio 2026</span>
-            <span class="project__badge">desplegado</span>
+            <span class="project__date" data-i18n="mai.date">junio 2026</span>
+            <span class="project__badge" data-i18n="mai.badge">desplegado</span>
           </div>
-          <h3 class="project__title">m.ai — asistente de notas por WhatsApp</h3>
-          <p class="project__sub mono">bot con arquitectura rag completa</p>
+          <h3 class="project__title" data-i18n="mai.title">m.ai — asistente de notas por WhatsApp</h3>
+          <p class="project__sub mono" data-i18n="mai.sub">bot con arquitectura rag completa</p>
           <div class="project__desc">
-            <p>
+            <p data-i18n="mai.d1">
               Un asistente personal que guarda notas por texto, voz o imagen, responde a
               búsquedas semánticas en lenguaje natural y genera resúmenes inteligentes,
               todo dentro de WhatsApp. Transcribe audio con Whisper, etiqueta automáticamente
               con un LLM y usa una base de datos vectorial con re-ranking por recencia
               y relevancia semántica.
             </p>
-            <p>
+            <p data-i18n="mai.d2">
               Las notas que no puedes volver a encontrar no sirven de nada:
               quería memoria consultable, no otra app de notas.
             </p>
@@ -232,7 +238,7 @@
 
       <!-- ── Categoría: Web ── -->
       <header class="projects__cat reveal" id="proyectos-web">
-        <h3 class="projects__cat-title"><span class="projects__cat-dot projects__cat-dot--web" aria-hidden="true"></span>Desarrollo <em>web</em></h3>
+        <h3 class="projects__cat-title" data-i18n="cat.web"><span class="projects__cat-dot projects__cat-dot--web" aria-hidden="true"></span>Desarrollo <em>web</em></h3>
       </header>
 
       <!-- RenderBox -->
@@ -249,22 +255,22 @@
             <img src="images/renderbox-logo.jpg" alt="" loading="lazy" width="713" height="471" />
           </span>
           </div>
-          <p class="project__caption mono">la plataforma en producción, desplegada en vercel</p>
+          <p class="project__caption mono" data-i18n="rb.cap">la plataforma en producción, desplegada en vercel</p>
         </div>
         <div class="project__body">
           <div class="project__meta mono">
-            <span class="project__date">feb — may 2025</span>
-            <span class="project__badge">completado</span>
+            <span class="project__date" data-i18n="rb.date">feb — may 2025</span>
+            <span class="project__badge" data-i18n="rb.badge">completado</span>
           </div>
           <h3 class="project__title">RenderBox</h3>
-          <p class="project__sub mono">plataforma web de assets digitales</p>
+          <p class="project__sub mono" data-i18n="rb.sub">plataforma web de assets digitales</p>
           <div class="project__desc">
-            <p>
+            <p data-i18n="rb.d1">
               Una web para centralizar la publicación, gestión y descubrimiento de recursos
               creativos — 2D, 3D, vídeo y audio. Stack MEAN completo con gestión de archivos
               multimedia mediante Cloudinary y Multer, desplegado en Vercel.
             </p>
-            <p>
+            <p data-i18n="rb.d2">
               Los assets creativos viven dispersos en mil sitios;
               quise construir el lugar donde encontrarlos.
             </p>
@@ -277,7 +283,7 @@
 
       <!-- ── Categoría: Videojuegos ── -->
       <header class="projects__cat reveal" id="proyectos-juegos">
-        <h3 class="projects__cat-title"><span class="projects__cat-dot projects__cat-dot--game" aria-hidden="true"></span>Video<em>juegos</em></h3>
+        <h3 class="projects__cat-title" data-i18n="cat.games"><span class="projects__cat-dot projects__cat-dot--game" aria-hidden="true"></span>Video<em>juegos</em></h3>
       </header>
 
       <!-- Dopamine Chasers -->
@@ -294,23 +300,23 @@
             <img src="images/dopaminechaserslogo.png" alt="" loading="lazy" width="1380" height="600" />
           </span>
           </div>
-          <p class="project__caption mono">gameplay del shooter — motor propio sobre opengl</p>
+          <p class="project__caption mono" data-i18n="dc.cap">gameplay del shooter — motor propio sobre opengl</p>
         </div>
         <div class="project__body">
           <div class="project__meta mono">
-            <span class="project__date">sep 2025 — may 2026</span>
-            <span class="project__badge">ABP Ingeniería Multimedia</span>
+            <span class="project__date" data-i18n="dc.date">sep 2025 — may 2026</span>
+            <span class="project__badge" data-i18n="dc.badge">ABP Ingeniería Multimedia</span>
           </div>
           <h3 class="project__title">Dopamine Chasers</h3>
-          <p class="project__sub mono">fps por oleadas con motor propio en c++</p>
+          <p class="project__sub mono" data-i18n="dc.sub">fps por oleadas con motor propio en c++</p>
           <div class="project__desc">
-            <p>
+            <p data-i18n="dc.d1">
               Un shooter FPS por oleadas con progresión estilo escape room,
               inspirado en Call of Duty Zombies. Proyecto de grupo del cuarto curso
               de Ingeniería Multimedia, desarrollado bajo la metodología de
               Aprendizaje Basado en Proyectos.
             </p>
-            <p>
+            <p data-i18n="dc.d2">
               Hecho de cero en C++ con una arquitectura ECS para la lógica de
               juego. Empezó usando Raylib para el renderizado y después se migró,
               a través de una fachada, a un motor propio basado en OpenGL.
@@ -336,31 +342,31 @@
             <img src="images/logopreflop.png" alt="" loading="lazy" width="817" height="737" />
           </span>
           </div>
-          <p class="project__caption mono">pantalla de título y gameplay — pixel art para game boy</p>
+          <p class="project__caption mono" data-i18n="pf.cap">pantalla de título y gameplay — pixel art para game boy</p>
         </div>
         <div class="project__body">
           <div class="project__meta mono">
-            <span class="project__date">oct — nov 2025</span>
-            <span class="project__badge project__badge--award">premio del público</span>
+            <span class="project__date" data-i18n="pf.date">oct — nov 2025</span>
+            <span class="project__badge project__badge--award" data-i18n="pf.badge">premio del público</span>
           </div>
           <h3 class="project__title">Preflop</h3>
-          <p class="project__sub mono">puzles en ensamblador para game boy</p>
+          <p class="project__sub mono" data-i18n="pf.sub">puzles en ensamblador para game boy</p>
           <div class="project__desc">
-            <p>
+            <p data-i18n="pf.d1">
               Un videojuego de puzles por niveles para Game Boy, programado en
               lenguaje ensamblador: diseño de mecánicas, sistema de colisiones,
               renderizado eficiente de tilemaps, máquinas de estado, gestión de
               escenas e IA de enemigos. Todo a bajo nivel y ajustado a las
               limitaciones reales de la consola.
             </p>
-            <p>
+            <p data-i18n="pf.d2">
               Premio del público en la GBRetroDev 2025 — Heroes of Assembly 2.
               Trabajar con los recursos justos de la consola obliga a entender
               la máquina de verdad: cada byte y cada ciclo cuentan.
             </p>
           </div>
           <ul class="project__tags mono">
-            <li>Ensamblador</li><li>Game Boy</li><li>Bajo nivel</li><li>GBRetroDev 2025</li>
+            <li data-i18n="pf.tag.asm">Ensamblador</li><li>Game Boy</li><li data-i18n="pf.tag.low">Bajo nivel</li><li>GBRetroDev 2025</li>
           </ul>
         </div>
       </article>
@@ -379,28 +385,28 @@
             <img src="images/tramfight-icon.svg" alt="" loading="lazy" />
           </span>
           </div>
-          <p class="project__caption mono">cartel y gameplay del juego, pixel art propio</p>
+          <p class="project__caption mono" data-i18n="tf.cap">cartel y gameplay del juego, pixel art propio</p>
         </div>
         <div class="project__body">
           <div class="project__meta mono">
-            <span class="project__date">julio 2025</span>
-            <span class="project__badge project__badge--award">finalista</span>
+            <span class="project__date" data-i18n="tf.date">julio 2025</span>
+            <span class="project__badge project__badge--award" data-i18n="tf.badge">finalista</span>
           </div>
           <h3 class="project__title">TRAMFIGHT: L2 Smackdown</h3>
-          <p class="project__sub mono">finalista — level up game jam 2025</p>
+          <p class="project__sub mono" data-i18n="tf.sub">finalista — level up game jam 2025</p>
           <div class="project__desc">
-            <p>
+            <p data-i18n="tf.d1">
               Un videojuego completo y jugable desarrollado en Godot en solo 8 días,
               con control de versiones en equipo bajo la presión real de una jam.
               Finalista de la Level Up Game Jam 2025.
             </p>
-            <p>
+            <p data-i18n="tf.d2">
               Una jam es la mejor prueba de alcance, prioridades y entrega:
               o terminas, o no hay juego.
             </p>
           </div>
           <ul class="project__tags mono">
-            <li>Godot</li><li>Git</li><li>8 días</li>
+            <li>Godot</li><li>Git</li><li data-i18n="tf.tag.days">8 días</li>
           </ul>
         </div>
       </article>
@@ -409,38 +415,38 @@
     <!-- ============ 03 HABILIDADES ============ -->
     <section class="section skills" id="habilidades">
       <header class="section__head reveal">
-        <h2 class="section__title">Dataset de <em>habilidades</em></h2>
+        <h2 class="section__title" data-i18n="skills.title">Dataset de <em>habilidades</em></h2>
       </header>
 
       <div class="skills__grid">
         <div class="skillset reveal">
-          <h3 class="skillset__name mono"><span class="skillset__dot skillset__dot--ai" aria-hidden="true"></span>ia_aplicada</h3>
+          <h3 class="skillset__name mono" data-i18n="skill.ai"><span class="skillset__dot skillset__dot--ai" aria-hidden="true"></span>ia_aplicada</h3>
           <ul class="skillset__tags">
-            <li>RAG</li><li>Agentes</li><li>Prompt engineering técnico</li><li>Elaboración de datasets</li><li>Etiquetado de datos</li><li>ai-toolkit · fine-tuning</li>
+            <li>RAG</li><li data-i18n="sk.ai.agents">Agentes</li><li data-i18n="sk.ai.prompt">Prompt engineering técnico</li><li data-i18n="sk.ai.dataset">Elaboración de datasets</li><li data-i18n="sk.ai.labeling">Etiquetado de datos</li><li>ai-toolkit · fine-tuning</li>
           </ul>
         </div>
         <div class="skillset reveal">
-          <h3 class="skillset__name mono"><span class="skillset__dot skillset__dot--web" aria-hidden="true"></span>desarrollo_web</h3>
+          <h3 class="skillset__name mono" data-i18n="skill.web"><span class="skillset__dot skillset__dot--web" aria-hidden="true"></span>desarrollo_web</h3>
           <ul class="skillset__tags">
-            <li>HTML / CSS</li><li>JavaScript</li><li>MEAN / MERN</li><li>Python</li><li>FastAPI</li><li>cloud API de Meta</li><li>Git</li>
+            <li>HTML / CSS</li><li>JavaScript</li><li>MongoDB</li><li>Express</li><li>React</li><li>Angular</li><li>Node.js</li><li>Python</li><li>FastAPI</li><li data-i18n="sk.web.meta">cloud API de Meta</li><li>Git</li>
           </ul>
         </div>
         <div class="skillset reveal">
-          <h3 class="skillset__name mono"><span class="skillset__dot skillset__dot--game" aria-hidden="true"></span>videojuegos</h3>
+          <h3 class="skillset__name mono" data-i18n="skill.game"><span class="skillset__dot skillset__dot--game" aria-hidden="true"></span>videojuegos</h3>
           <ul class="skillset__tags">
-            <li>C++</li><li>Godot</li><li>Unreal Engine</li><li>Ensamblador</li>
+            <li>C++</li><li>Godot</li><li>Unreal Engine</li><li data-i18n="sk.game.asm">Ensamblador</li>
           </ul>
         </div>
         <div class="skillset reveal">
-          <h3 class="skillset__name mono"><span class="skillset__dot skillset__dot--art" aria-hidden="true"></span>diseño_y_arte</h3>
+          <h3 class="skillset__name mono" data-i18n="skill.art"><span class="skillset__dot skillset__dot--art" aria-hidden="true"></span>diseño_y_arte</h3>
           <ul class="skillset__tags">
             <li>Photoshop</li><li>Figma</li><li>Canva</li><li>Blender</li>
           </ul>
         </div>
         <div class="skillset skillset--wide reveal">
-          <h3 class="skillset__name mono"><span class="skillset__dot skillset__dot--soft" aria-hidden="true"></span>soft_skills</h3>
+          <h3 class="skillset__name mono" data-i18n="skill.soft"><span class="skillset__dot skillset__dot--soft" aria-hidden="true"></span>soft_skills</h3>
           <ul class="skillset__tags">
-            <li>Metodologías ágiles</li><li>Aprendizaje autónomo</li><li>Visión estética</li><li>Resolución de problemas técnicos</li>
+            <li data-i18n="sk.soft.agile">Metodologías ágiles</li><li data-i18n="sk.soft.auto">Aprendizaje autónomo</li><li data-i18n="sk.soft.aesthetic">Visión estética</li><li data-i18n="sk.soft.problem">Resolución de problemas técnicos</li>
           </ul>
         </div>
       </div>
@@ -449,11 +455,11 @@
     <!-- ============ 04 CONTACTO ============ -->
     <section class="section contact" id="contacto">
       <header class="section__head reveal">
-        <h2 class="section__title">Contacto</h2>
+        <h2 class="section__title" data-i18n="contact.title">Contacto</h2>
       </header>
 
       <div class="contact__inner reveal">
-        <p class="contact__big">
+        <p class="contact__big" data-i18n="contact.big">
           ¿Buscas a alguien que entienda <em>el modelo</em> y <em>el lienzo</em>?
           <span class="contact__cta">Hablemos.</span>
         </p>
@@ -465,7 +471,7 @@
           <li><a href="https://www.linkedin.com/in/miguel-%C3%A1ngel-arroyo-/" target="_blank" rel="noopener noreferrer">linkedin ↗</a></li>
           <li><a href="mailto:m.angelarroyo2004@gmail.com">email ↗</a></li>
         </ul>
-        <p class="contact__note mono">
+        <p class="contact__note mono" data-i18n="contact.note">
           <span class="status-dot" aria-hidden="true"></span>
           respuesta rápida · abierto a trabajo y prácticas
         </p>
@@ -475,7 +481,7 @@
 
   <!-- ============ PIE ============ -->
   <footer class="footer mono">
-    <span>diseñado y construido por miguel ángel arroyo — 2026</span>
+    <span data-i18n="footer.by">diseñado y construido por miguel ángel arroyo — 2026</span>
     <span class="footer__epoch">epoch ∞ / loss → 0</span>
   </footer>
 
