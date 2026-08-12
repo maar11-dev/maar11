@@ -60,6 +60,30 @@ body {
 
 a { color: inherit; }
 
+/* Foco visible por teclado, en todo el sitio */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Salto directo al contenido para quien navega con teclado o lector */
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -120%);
+  z-index: 200;
+  padding: 0.7rem 1.2rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+.skip-link:focus { transform: translate(-50%, 0); }
+
 /* Grano de papel ------------------------------------------------------- */
 .grain {
   position: fixed;
@@ -167,6 +191,48 @@ a { color: inherit; }
   display: flex;
   gap: clamp(0.9rem, 3vw, 2.2rem);
 }
+
+/* Botón de menú: solo aparece en móvil */
+.nav-toggle {
+  display: none;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--ink);
+  background: var(--paper-deep);
+  color: var(--ink);
+  width: 2.35rem;
+  height: 2.05rem;
+  border-radius: 999px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.nav-toggle__bars,
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  display: block;
+  width: 15px;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+.nav-toggle__bars { position: relative; }
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+.nav-toggle__bars::before { top: -5px; }
+.nav-toggle__bars::after  { top: 5px; }
+
+.nav-toggle[aria-expanded="true"] { background: var(--accent); color: var(--paper); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars { background: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::before { transform: translateY(5px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::after  { transform: translateY(-5px) rotate(-45deg); }
 
 .topbar__nav a {
   font-family: var(--font-mono);
@@ -1125,6 +1191,14 @@ a { color: inherit; }
   box-shadow: 0 10px 24px -10px rgba(216, 64, 31, 0.55);
 }
 
+.contact__actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+
 .contact__links {
   list-style: none;
   display: flex;
@@ -1165,8 +1239,6 @@ a { color: inherit; }
   border-top: 1px solid var(--ink);
   color: var(--ink-soft);
 }
-
-.footer__epoch { color: var(--accent); }
 
 /* ==========================================================================
    Animaciones
@@ -1238,14 +1310,65 @@ a { color: inherit; }
 }
 
 @media (max-width: 640px) {
+  /* Cabecera en una sola fila: marca + interruptores + botón de menú */
   .topbar {
-    flex-wrap: wrap;
-    row-gap: 0.15rem;
     padding-top: 0.6rem;
     padding-bottom: 0.6rem;
   }
-  .topbar__nav { gap: 0.8rem; flex-wrap: wrap; }
-  .topbar__nav a { font-size: 0.7rem; }
+
+  .nav-toggle { display: inline-flex; }
+
+  /* La navegación pasa a ser un panel desplegable bajo la cabecera */
+  .topbar__nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.4rem var(--gutter) 0.9rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--ink);
+    box-shadow: 0 14px 24px -18px rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+  }
+
+  .topbar__nav[data-open="true"] {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .topbar__nav a {
+    font-size: 0.82rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .topbar__nav a::after { display: none; }
+
+  /* El desplegable de proyectos se muestra abierto y sangrado */
+  .nav-drop { display: block; }
+  .nav-drop__caret { display: none; }
+  .nav-drop__menu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    min-width: 0;
+    padding: 0 0 0 1rem;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    gap: 0;
+  }
+  .nav-drop__menu::before { display: none; }
+  .nav-drop__menu a { padding: 0.55rem 0; }
+
+  .topbar__cta { font-weight: 600; }
   .skills__grid { grid-template-columns: 1fr; }
   .hero { padding-top: 7rem; }
   .hero__stamp { right: 0.4rem; }

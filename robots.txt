@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://maar11-dev.github.io/maar11/sitemap.xml

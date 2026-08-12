@@ -24,12 +24,47 @@
   sync();
 })();
 
+// Menú desplegable en móvil
+(function () {
+  const btn = document.querySelector(".nav-toggle");
+  const nav = document.querySelector("#nav-main");
+  if (!btn || !nav) return;
+
+  function setOpen(open) {
+    btn.setAttribute("aria-expanded", String(open));
+    if (open) nav.setAttribute("data-open", "true");
+    else nav.removeAttribute("data-open");
+  }
+
+  btn.addEventListener("click", () => {
+    setOpen(btn.getAttribute("aria-expanded") !== "true");
+  });
+
+  // Al elegir un destino, se cierra
+  nav.addEventListener("click", (e) => {
+    if (e.target.closest("a")) setOpen(false);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && btn.getAttribute("aria-expanded") === "true") {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+
+  // Si se vuelve a escritorio, el panel deja de tener sentido
+  window.matchMedia("(min-width: 641px)").addEventListener("change", (e) => {
+    if (e.matches) setOpen(false);
+  });
+})();
+
 // Selector de idioma ES / EN (el español vive en el HTML; aquí solo el inglés)
 (function () {
   const root = document.documentElement;
 
   const EN = {
     // Navegación
+    "skip": "Skip to content",
     "nav.about": "about",
     "nav.xp": "experience",
     "nav.projects": 'projects <span class="nav-drop__caret" aria-hidden="true">▾</span>',
@@ -42,9 +77,10 @@
     // Hero
     "hero.role":
       '<strong class="hero__role-lead">Multimedia Engineer.</strong> I build <em class="accent-ink">applied AI</em> systems, <em class="accent-ink">web</em> experiences and <em class="accent-ink">games</em> where the tech serves the aesthetics.',
-    "hero.status": "available for work and internships",
+    "hero.status": "interning at InferIA · open to new opportunities",
     "hero.cta1": 'View projects <span aria-hidden="true">↓</span>',
     "hero.cta2": 'Get in touch <span aria-hidden="true">↗</span>',
+    "hero.cta3": 'Download CV <span aria-hidden="true">↓</span>',
     "hero.stamp": "multimedia<br/>eng.",
 
     // Marquesina
@@ -66,7 +102,7 @@
     "fact.focus.k": "focus",
     "fact.focus.v": "applied ai · web · games",
     "fact.status.k": "status",
-    "fact.status.v": "thesis in progress",
+    "fact.status.v": "interning · thesis in progress",
     "fact.seek.k": "seeking",
     "fact.seek.v": "internship / job",
     "fact.base.k": "base",
@@ -185,8 +221,9 @@
     "contact.title": "Contact",
     "contact.big":
       'Looking for someone who understands <em>the model</em> and <em>the canvas</em>? <span class="contact__cta">Let\'s talk.</span>',
+    "contact.cv": 'Download CV <span aria-hidden="true">↓</span>',
     "contact.note":
-      '<span class="status-dot" aria-hidden="true"></span> fast replies · open to work and internships',
+      '<span class="status-dot" aria-hidden="true"></span> fast replies · open to new opportunities',
 
     // Enlaces de proyecto
     "link.play": 'play on itch.io <span aria-hidden="true">↗</span>',
@@ -205,6 +242,11 @@
   const es = new Map();
   nodes.forEach((el) => es.set(el, el.innerHTML));
 
+  // Enlaces con versión propia en inglés (el CV): se guarda el destino español
+  const links = document.querySelectorAll("[data-href-en]");
+  const esHref = new Map();
+  links.forEach((el) => esHref.set(el, el.getAttribute("href")));
+
   const opts = document.querySelectorAll("[data-lang-set]");
 
   function apply(lang) {
@@ -212,6 +254,12 @@
       const key = el.getAttribute("data-i18n");
       if (lang === "en" && EN[key] != null) el.innerHTML = EN[key];
       else el.innerHTML = es.get(el);
+    });
+    links.forEach((el) => {
+      el.setAttribute(
+        "href",
+        lang === "en" ? el.dataset.hrefEn : esHref.get(el)
+      );
     });
     root.setAttribute("lang", lang);
     document.title = TITLE[lang] || TITLE.es;
