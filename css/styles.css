@@ -571,7 +571,177 @@ a { color: inherit; }
 .fact__v { text-align: right; }
 
 /* ==========================================================================
-   02 — Proyectos
+   02 — Experiencia
+   ========================================================================== */
+.xp__timeline {
+  --xp-rail: clamp(1.1rem, 3vw, 2.4rem);
+  list-style: none;
+  position: relative;
+  padding-left: var(--xp-rail);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.8rem, 4vh, 2.8rem);
+}
+
+/* Raíl vertical de la línea temporal */
+.xp__timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.9rem;
+  bottom: 1.2rem;
+  width: 1px;
+  background: var(--line);
+}
+
+.xp { position: relative; }
+
+.xp__node {
+  position: absolute;
+  left: calc(var(--xp-rail) * -1);
+  top: 1.55rem;
+  transform: translateX(-50%);
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 1px solid var(--ink);
+}
+
+.xp__card {
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  padding: clamp(1.3rem, 3vw, 2.1rem);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.xp__card:hover {
+  box-shadow: 7px 7px 0 0 var(--accent-soft), 7px 7px 0 1px var(--ink);
+  transform: translate(-2px, -2px);
+}
+
+.xp__head {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 1.9rem);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+/* El logotipo, montado como una placa de archivo */
+.xp__logo {
+  flex: 0 0 auto;
+  width: clamp(104px, 13vw, 152px);
+  border: 1px solid var(--ink);
+  background: #fff;
+  padding: 0.65rem 0.75rem;
+  box-shadow: 5px 6px 0 0 var(--accent-soft), 5px 6px 0 1px var(--ink);
+  transform: rotate(-1.8deg);
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.xp__card:hover .xp__logo { transform: rotate(0deg) scale(1.02); }
+
+.xp__logo img { display: block; width: 100%; height: auto; }
+
+.xp__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.6rem;
+}
+
+.xp__role {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.8vw, 2rem);
+  font-weight: 520;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  transition: color 0.25s ease;
+}
+
+.xp__card:hover .xp__role { color: var(--accent); }
+
+.xp__company {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  margin-top: 0.45rem;
+}
+
+.xp__body {
+  display: grid;
+  grid-template-columns: minmax(0, 0.68fr) minmax(0, 1.32fr);
+  gap: clamp(1.5rem, 4vw, 3.2rem);
+  align-items: start;
+}
+
+/* Etiqueta de bloque con filete, al estilo de ficha técnica */
+.xp__label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin-bottom: 1rem;
+}
+
+.xp__label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.xp__desc {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  font-weight: 420;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.9rem;
+}
+
+/* Reutiliza las etiquetas de proyecto; solo anula el margen superior */
+.xp__col .xp__tags { margin-top: 0; }
+
+.xp__duties {
+  list-style: none;
+  counter-reset: duty;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.xp__duties li {
+  counter-increment: duty;
+  position: relative;
+  padding-left: 2.3rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px dashed var(--line);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.xp__duties li:last-child { border-bottom: none; padding-bottom: 0; }
+
+.xp__duties li::before {
+  content: counter(duty, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   03 — Proyectos
    ========================================================================== */
 .projects__cat {
   display: flex;
@@ -838,7 +1008,7 @@ a { color: inherit; }
 .project__link:hover span { transform: translate(2px, -2px); }
 
 /* ==========================================================================
-   03 — Habilidades
+   04 — Habilidades
    ========================================================================== */
 .skills__grid {
   display: grid;
@@ -907,7 +1077,7 @@ a { color: inherit; }
 }
 
 /* ==========================================================================
-   04 — Contacto
+   05 — Contacto
    ========================================================================== */
 .contact { padding-bottom: var(--section-gap); }
 
@@ -1059,6 +1229,7 @@ a { color: inherit; }
   .hero__portrait { justify-self: start; margin-top: 1.5rem; }
   .about__grid { grid-template-columns: 1fr; }
   .about__facts { position: static; }
+  .xp__body { grid-template-columns: 1fr; gap: 1.9rem; }
   .project { grid-template-columns: 1fr; gap: 2.2rem; }
   .project:nth-of-type(even) .project__visual { order: 0; }
   .project:nth-of-type(even) .project__body { order: 0; }
@@ -1078,6 +1249,8 @@ a { color: inherit; }
   .skills__grid { grid-template-columns: 1fr; }
   .hero { padding-top: 7rem; }
   .hero__stamp { right: 0.4rem; }
+  .xp__head { flex-direction: column; align-items: flex-start; gap: 1.1rem; }
+  .xp__duties li { padding-left: 1.9rem; }
   .project__visual { max-width: 100%; }
   .shot--main { width: 82%; }
   .project__visual--phones .shot--main,

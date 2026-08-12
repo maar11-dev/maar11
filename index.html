@@ -45,6 +45,7 @@
     </div>
     <nav class="topbar__nav" aria-label="Navegación principal">
       <a href="#sobre-mi" data-i18n="nav.about">sobre mí</a>
+      <a href="#experiencia" data-i18n="nav.xp">experiencia</a>
       <div class="nav-drop">
         <a href="#proyectos" class="nav-drop__trigger" aria-haspopup="true" data-i18n="nav.projects">proyectos <span class="nav-drop__caret" aria-hidden="true">▾</span></a>
         <div class="nav-drop__menu" role="menu">
@@ -145,7 +146,77 @@
       </div>
     </section>
 
-    <!-- ============ 02 PROYECTOS ============ -->
+    <!-- ============ 02 EXPERIENCIA ============ -->
+    <section class="section experience" id="experiencia">
+      <header class="section__head reveal">
+        <h2 class="section__title" data-i18n="xp.title">Experiencia <em>profesional</em></h2>
+      </header>
+
+      <ol class="xp__timeline">
+        <li class="xp reveal">
+          <span class="xp__node" aria-hidden="true"></span>
+          <article class="xp__card">
+            <header class="xp__head">
+              <figure class="xp__logo">
+                <img src="images/inferia-logo-final.jpg" alt="Logotipo de InferIA" loading="lazy" width="667" height="267" />
+              </figure>
+              <div class="xp__ident">
+                <div class="xp__meta mono">
+                  <span class="xp__date" data-i18n="xp.inferia.date">julio 2026 — actualidad</span>
+                  <span class="project__badge project__badge--live" data-i18n="xp.inferia.badge">en curso</span>
+                </div>
+                <h3 class="xp__role" data-i18n="xp.inferia.role">Prácticas — Ingeniería de Datos e IA</h3>
+                <p class="xp__company">InferIA</p>
+              </div>
+            </header>
+
+            <div class="xp__body">
+              <div class="xp__col">
+                <p class="xp__desc" data-i18n="xp.inferia.desc">
+                  Desarrollo de pipelines de datos e inteligencia artificial para la
+                  recopilación, procesamiento y estructuración de información procedente
+                  de fuentes de datos públicas.
+                </p>
+                <h4 class="xp__label mono" data-i18n="xp.tech">tecnologías</h4>
+                <ul class="project__tags xp__tags mono">
+                  <li>Python</li><li>Ollama/Llama 3.1</li><li>PostgreSQL</li><li>PostGIS</li><li>Alembic</li><li>pandas</li><li>SQLite</li><li>Git</li>
+                </ul>
+              </div>
+
+              <div class="xp__col">
+                <h4 class="xp__label mono" data-i18n="xp.duties">responsabilidades</h4>
+                <ol class="xp__duties">
+                  <li data-i18n="xp.inferia.d1">
+                    Diseño e implementación de procesos de ingesta que integran diversas
+                    fuentes de datos públicas en formatos heterogéneos (XML, JSON, CSV).
+                  </li>
+                  <li data-i18n="xp.inferia.d2">
+                    Aplicación de modelos de lenguaje (LLM) locales con Ollama/Llama 3.1
+                    para filtrar, clasificar y extraer información estructurada,
+                    normalizándola contra un catálogo controlado.
+                  </li>
+                  <li data-i18n="xp.inferia.d3">
+                    Desarrollo de procesos de ingeniería de datos robustos: procesamiento
+                    por lotes de grandes volúmenes, cachés reanudables y cargas idempotentes.
+                  </li>
+                  <li data-i18n="xp.inferia.d4">
+                    Modelado y carga de datos en PostgreSQL/PostGIS mediante migraciones
+                    versionadas con Alembic.
+                  </li>
+                  <li data-i18n="xp.inferia.d5">
+                    Elaboración de estudios de viabilidad de fuentes de datos y documentación
+                    técnica de los procesos desarrollados, como apoyo a la toma de decisiones
+                    del equipo.
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </article>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ 03 PROYECTOS ============ -->
     <section class="section projects" id="proyectos">
       <header class="section__head reveal">
         <h2 class="section__title" data-i18n="projects.title">Proyectos <em>destacados</em></h2>
@@ -427,7 +498,7 @@
       </article>
     </section>
 
-    <!-- ============ 03 HABILIDADES ============ -->
+    <!-- ============ 04 HABILIDADES ============ -->
     <section class="section skills" id="habilidades">
       <header class="section__head reveal">
         <h2 class="section__title" data-i18n="skills.title">Dataset de <em>habilidades</em></h2>
@@ -467,7 +538,7 @@
       </div>
     </section>
 
-    <!-- ============ 04 CONTACTO ============ -->
+    <!-- ============ 05 CONTACTO ============ -->
     <section class="section contact" id="contacto">
       <header class="section__head reveal">
         <h2 class="section__title" data-i18n="contact.title">Contacto</h2>

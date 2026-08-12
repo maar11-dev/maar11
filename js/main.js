@@ -31,6 +31,7 @@
   const EN = {
     // Navegación
     "nav.about": "about",
+    "nav.xp": "experience",
     "nav.projects": 'projects <span class="nav-drop__caret" aria-hidden="true">▾</span>',
     "nav.ai": '<span class="nav-drop__dot nav-drop__dot--ai" aria-hidden="true"></span>applied ai',
     "nav.web": '<span class="nav-drop__dot nav-drop__dot--web" aria-hidden="true"></span>web development',
@@ -70,6 +71,26 @@
     "fact.seek.v": "internship / job",
     "fact.base.k": "base",
     "fact.base.v": "spain",
+
+    // Experiencia
+    "xp.title": "Professional <em>experience</em>",
+    "xp.duties": "responsibilities",
+    "xp.tech": "technologies",
+    "xp.inferia.date": "july 2026 — present",
+    "xp.inferia.badge": "ongoing",
+    "xp.inferia.role": "Internship — Data & AI Engineering",
+    "xp.inferia.desc":
+      "Development of data and artificial intelligence pipelines for the collection, processing and structuring of information coming from public data sources.",
+    "xp.inferia.d1":
+      "Design and implementation of ingestion processes that integrate a range of public data sources in heterogeneous formats (XML, JSON, CSV).",
+    "xp.inferia.d2":
+      "Application of local language models (LLMs) with Ollama/Llama 3.1 to filter, classify and extract structured information, normalizing it against a controlled catalogue.",
+    "xp.inferia.d3":
+      "Development of robust data-engineering processes: batch processing of large volumes, resumable caches and idempotent loads.",
+    "xp.inferia.d4":
+      "Data modelling and loading into PostgreSQL/PostGIS through versioned migrations with Alembic.",
+    "xp.inferia.d5":
+      "Feasibility studies of data sources and technical documentation of the processes developed, supporting the team's decision-making.",
 
     // Proyectos
     "projects.title": "Featured <em>projects</em>",
