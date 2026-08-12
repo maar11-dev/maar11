@@ -1,16 +1,17 @@
 /* ==========================================================================
    maar.11 — ficha técnica editorial
-   Papel cálido + tinta + bermellón. Fraunces / Archivo / IBM Plex Mono.
+   Cianotipo: papel hueso + azul de Prusia + cobre.
+   Fraunces / Archivo / IBM Plex Mono.
    ========================================================================== */
 
 :root {
-  --paper: #f1ecdf;
-  --paper-deep: #e7e0cd;
-  --ink: #1d1912;
-  --ink-soft: #57503f;
-  --line: #c9c0a8;
-  --accent: #d8401f;
-  --accent-soft: #f3cdc2;
+  --paper: #F2EDE1;
+  --paper-deep: #E6DFCC;
+  --ink: #12283D;
+  --ink-soft: #45596E;
+  --line: #C7BDA6;
+  --accent: #9C4715;
+  --accent-soft: #F0D3B4;
 
   --font-display: "Fraunces", "Georgia", serif;
   --font-body: "Archivo", "Helvetica Neue", sans-serif;
@@ -20,15 +21,15 @@
   --section-gap: clamp(5rem, 12vh, 9rem);
 }
 
-/* Modo oscuro: misma identidad editorial, paleta invertida sobre tinta cálida */
+/* Modo oscuro: misma identidad, papel y tinta intercambiados sobre azul profundo */
 [data-theme="dark"] {
-  --paper: #17140e;
-  --paper-deep: #211c14;
-  --ink: #ece4d2;
-  --ink-soft: #a59c84;
-  --line: #3a3326;
-  --accent: #e8552f;
-  --accent-soft: #5d2719;
+  --paper: #0D1826;
+  --paper-deep: #152538;
+  --ink: #E9E3D4;
+  --ink-soft: #93A5B5;
+  --line: #24384B;
+  --accent: #E08C42;
+  --accent-soft: #5C3418;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -334,8 +335,8 @@ a { color: inherit; }
   flex-shrink: 0;
 }
 .nav-drop__dot--ai   { background: var(--accent); }
-.nav-drop__dot--web  { background: #e8a33d; }
-.nav-drop__dot--game { background: #4f7e5b; }
+.nav-drop__dot--web  { background: #3E8E8C; }
+.nav-drop__dot--game { background: #6E9455; }
 
 /* ==========================================================================
    Hero
@@ -842,8 +843,8 @@ a { color: inherit; }
   flex-shrink: 0;
 }
 .projects__cat-dot--ai   { background: var(--accent); }
-.projects__cat-dot--web  { background: #e8a33d; }
-.projects__cat-dot--game { background: #4f7e5b; }
+.projects__cat-dot--web  { background: #3E8E8C; }
+.projects__cat-dot--game { background: #6E9455; }
 
 .project {
   display: grid;
@@ -1096,8 +1097,6 @@ a { color: inherit; }
   transform: translate(-2px, -2px);
 }
 
-.skillset--wide { grid-column: 1 / -1; }
-
 .skillset__name {
   font-size: 0.85rem;
   font-weight: 500;
@@ -1115,9 +1114,10 @@ a { color: inherit; }
   flex-shrink: 0;
 }
 .skillset__dot--ai   { background: var(--accent); }
-.skillset__dot--web  { background: #e8a33d; }
-.skillset__dot--game { background: #4f7e5b; }
-.skillset__dot--art  { background: #5b6ea8; }
+.skillset__dot--data { background: #4A7B9D; }
+.skillset__dot--web  { background: #3E8E8C; }
+.skillset__dot--game { background: #6E9455; }
+.skillset__dot--art  { background: #7E6FB0; }
 .skillset__dot--soft { background: var(--paper-deep); }
 
 .skillset__tags {
@@ -1188,7 +1188,7 @@ a { color: inherit; }
   background: var(--accent);
   border-color: var(--accent);
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px -10px rgba(216, 64, 31, 0.55);
+  box-shadow: 0 10px 24px -10px color-mix(in srgb, var(--accent) 55%, transparent);
 }
 
 .contact__actions {
@@ -1196,27 +1196,8 @@ a { color: inherit; }
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.8rem;
-  margin-top: 1.4rem;
+  margin-top: 1.6rem;
 }
-
-.contact__links {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.8rem;
-  margin-top: 2rem;
-}
-
-.contact__links a {
-  text-decoration: none;
-  color: var(--ink-soft);
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 2px;
-  transition: all 0.2s ease;
-}
-
-.contact__links a:hover { color: var(--accent); border-color: var(--accent); }
 
 .contact__note {
   margin-top: 2.4rem;
@@ -1248,14 +1229,15 @@ a { color: inherit; }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Los pulsos siguen al acento de cada tema en lugar de llevar el color fijo */
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(216, 64, 31, 0.45); }
-  50%      { box-shadow: 0 0 0 7px rgba(216, 64, 31, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent); }
+  50%      { box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent) 0%, transparent); }
 }
 
 @keyframes pulse-border {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(216, 64, 31, 0.3); }
-  50%      { box-shadow: 0 0 0 5px rgba(216, 64, 31, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 30%, transparent); }
+  50%      { box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 0%, transparent); }
 }
 
 @keyframes scroll-x {
@@ -1378,5 +1360,6 @@ a { color: inherit; }
   .shot--main { width: 82%; }
   .project__visual--phones .shot--main,
   .project__visual--phones .shot--overlay { width: 50%; }
-  .contact__links { gap: 1.2rem; }
+  .contact__actions { gap: 0.6rem; }
+  .contact__actions .btn { padding: 0.75rem 1.1rem; }
 }
