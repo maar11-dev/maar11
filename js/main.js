@@ -114,7 +114,7 @@
     "xp.tech": "technologies",
     "xp.inferia.date": "july 2026 — present",
     "xp.inferia.badge": "ongoing",
-    "xp.inferia.role": "Internship — Data & AI Engineering",
+    "xp.inferia.role": "Internship — Data & AI Engineer",
     "xp.inferia.desc":
       "Development of data and artificial intelligence pipelines for the collection, processing and structuring of information coming from public data sources.",
     "xp.inferia.d1":
