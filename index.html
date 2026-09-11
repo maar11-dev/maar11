@@ -168,7 +168,7 @@
         <aside class="about__facts mono reveal" aria-label="Datos rápidos">
           <div class="fact"><span class="fact__k" data-i18n="fact.role.k">rol</span><span class="fact__v" data-i18n="fact.role.v">ingeniero multimedia</span></div>
           <div class="fact"><span class="fact__k" data-i18n="fact.focus.k">foco</span><span class="fact__v" data-i18n="fact.focus.v">ia aplicada · web · juegos</span></div>
-          <div class="fact"><span class="fact__k" data-i18n="fact.status.k">estado</span><span class="fact__v accent" data-i18n="fact.status.v">en prácticas · tfg en curso</span></div>
+          <div class="fact"><span class="fact__k" data-i18n="fact.status.k">estado</span><span class="fact__v accent" data-i18n="fact.status.v">en prácticas · tfg completado</span></div>
           <div class="fact"><span class="fact__k" data-i18n="fact.seek.k">busca</span><span class="fact__v" data-i18n="fact.seek.v">prácticas / empleo</span></div>
           <div class="fact"><span class="fact__k" data-i18n="fact.base.k">base</span><span class="fact__v" data-i18n="fact.base.v">españa</span></div>
         </aside>
@@ -208,7 +208,7 @@
                 </p>
                 <h4 class="xp__label mono" data-i18n="xp.tech">tecnologías</h4>
                 <ul class="project__tags xp__tags mono">
-                  <li>Python</li><li>Ollama/Llama 3.1</li><li>PostgreSQL</li><li>PostGIS</li><li>Alembic</li><li>pandas</li><li>SQLite</li><li>Git</li>
+                  <li>Python</li><li>requests/BeautifulSoup</li><li>Ollama/Llama 3.1</li><li>Apache Airflow</li><li>Docker</li><li>PostgreSQL/PostGIS</li><li>Alembic</li><li>pandas</li><li>SQLite</li><li>Git</li>
                 </ul>
               </div>
 
@@ -217,25 +217,38 @@
                 <ol class="xp__duties">
                   <li data-i18n="xp.inferia.d1">
                     Diseño e implementación de procesos de ingesta que integran diversas
-                    fuentes de datos públicas en formatos heterogéneos (XML, JSON, CSV).
+                    fuentes de datos públicas (registros mercantiles, oficinas de patentes
+                    y marcas, repositorios científicos y portales de contratación pública)
+                    en formatos heterogéneos (XML, JSON, CSV).
                   </li>
                   <li data-i18n="xp.inferia.d2">
+                    Orquestación del flujo completo con Apache Airflow desplegado mediante
+                    Docker Compose en un servidor con GPU: DAGs con dependencias entre
+                    tareas, ejecución programada semestral y control de concurrencia sobre
+                    el modelo mediante pools.
+                  </li>
+                  <li data-i18n="xp.inferia.d3">
+                    Desarrollo de scrapers web con requests y BeautifulSoup para extraer
+                    las fichas de más de 400 grupos de investigación de dos universidades
+                    junto con sus proyectos, respetando robots.txt y limitando la frecuencia
+                    de peticiones, con caché en disco y reintentos con backoff exponencial.
+                  </li>
+                  <li data-i18n="xp.inferia.d4">
                     Aplicación de modelos de lenguaje (LLM) locales con Ollama/Llama 3.1
                     para filtrar, clasificar y extraer información estructurada,
                     normalizándola contra un catálogo controlado.
                   </li>
-                  <li data-i18n="xp.inferia.d3">
+                  <li data-i18n="xp.inferia.d5">
                     Desarrollo de procesos de ingeniería de datos robustos: procesamiento
                     por lotes de grandes volúmenes, cachés reanudables y cargas idempotentes.
                   </li>
-                  <li data-i18n="xp.inferia.d4">
+                  <li data-i18n="xp.inferia.d6">
                     Modelado y carga de datos en PostgreSQL/PostGIS mediante migraciones
                     versionadas con Alembic.
                   </li>
-                  <li data-i18n="xp.inferia.d5">
+                  <li data-i18n="xp.inferia.d7">
                     Elaboración de estudios de viabilidad de fuentes de datos y documentación
-                    técnica de los procesos desarrollados, como apoyo a la toma de decisiones
-                    del equipo.
+                    técnica de los procesos desarrollados.
                   </li>
                 </ol>
               </div>
@@ -271,8 +284,8 @@
         </div>
         <div class="project__body">
           <div class="project__meta mono">
-            <span class="project__date" data-i18n="tfg.date">2026 · en curso</span>
-            <span class="project__badge project__badge--live" data-i18n="tfg.badge">entrenando</span>
+            <span class="project__date" data-i18n="tfg.date">ene — jul 2026</span>
+            <span class="project__badge" data-i18n="tfg.badge">completado</span>
           </div>
           <h3 class="project__title" data-i18n="tfg.title">Pipeline de entrenamiento de modelos generativos</h3>
           <p class="project__sub mono" data-i18n="tfg.sub">trabajo de fin de grado</p>
@@ -291,6 +304,9 @@
           <ul class="project__tags mono">
             <li>Python</li><li>PyTorch</li><li>ai-toolkit</li><li>Diffusers</li><li>LoRA / Dreambooth</li>
           </ul>
+          <div class="project__links mono">
+            <a class="project__link" href="https://github.com/maar11-dev/tfg-lora-flux-anime" target="_blank" rel="noopener noreferrer" data-i18n="link.repo">ver repositorio <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </article>
 

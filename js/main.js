@@ -102,7 +102,7 @@
     "fact.focus.k": "focus",
     "fact.focus.v": "applied ai · web · games",
     "fact.status.k": "status",
-    "fact.status.v": "interning · thesis in progress",
+    "fact.status.v": "interning · thesis completed",
     "fact.seek.k": "seeking",
     "fact.seek.v": "internship / job",
     "fact.base.k": "base",
@@ -118,15 +118,19 @@
     "xp.inferia.desc":
       "Development of data and artificial intelligence pipelines for the collection, processing and structuring of information coming from public data sources.",
     "xp.inferia.d1":
-      "Design and implementation of ingestion processes that integrate a range of public data sources in heterogeneous formats (XML, JSON, CSV).",
+      "Design and implementation of ingestion processes that integrate a range of public data sources (company registries, patent and trademark offices, scientific repositories and public procurement portals) in heterogeneous formats (XML, JSON, CSV).",
     "xp.inferia.d2":
-      "Application of local language models (LLMs) with Ollama/Llama 3.1 to filter, classify and extract structured information, normalizing it against a controlled catalogue.",
+      "Orchestration of the full workflow with Apache Airflow deployed via Docker Compose on a GPU server: DAGs with task dependencies, scheduled semi-annual runs and concurrency control over the model through pools.",
     "xp.inferia.d3":
-      "Development of robust data-engineering processes: batch processing of large volumes, resumable caches and idempotent loads.",
+      "Development of web scrapers with requests and BeautifulSoup to extract the profiles of more than 400 research groups from two universities along with their projects, respecting robots.txt and rate-limiting requests, with on-disk caching and retries with exponential backoff.",
     "xp.inferia.d4":
-      "Data modelling and loading into PostgreSQL/PostGIS through versioned migrations with Alembic.",
+      "Application of local language models (LLMs) with Ollama/Llama 3.1 to filter, classify and extract structured information, normalizing it against a controlled catalogue.",
     "xp.inferia.d5":
-      "Feasibility studies of data sources and technical documentation of the processes developed, supporting the team's decision-making.",
+      "Development of robust data-engineering processes: batch processing of large volumes, resumable caches and idempotent loads.",
+    "xp.inferia.d6":
+      "Data modelling and loading into PostgreSQL/PostGIS through versioned migrations with Alembic.",
+    "xp.inferia.d7":
+      "Feasibility studies of data sources and technical documentation of the processes developed.",
 
     // Proyectos
     "projects.title": "Featured <em>projects</em>",
@@ -136,8 +140,8 @@
 
     // TFG
     "tfg.cap": "real model outputs — style trained with LoRA",
-    "tfg.date": "2026 · ongoing",
-    "tfg.badge": "training",
+    "tfg.date": "jan — jul 2026",
+    "tfg.badge": "completed",
     "tfg.title": "Generative image-model training pipeline",
     "tfg.sub": "bachelor's degree thesis",
     "tfg.d1":
