@@ -12,7 +12,7 @@ especializado en IA aplicada, desarrollo web y videojuegos.
 | Sección | Contenido |
 | --- | --- |
 | Sobre mí | Contexto profesional y enfoque de trabajo |
-| Experiencia | Prácticas de Ingeniería de Datos e IA en InferIA |
+| Experiencia | Ingeniero de Software en InferIA (y prácticas previas de Ingeniería de Datos e IA) |
 | Proyectos | IA aplicada (TFG, m.ai), web (RenderBox) y videojuegos (Dopamine Chasers, Preflop, TRAMFIGHT) |
 | Habilidades | Stack técnico por áreas |
 | Contacto | Email, LinkedIn, GitHub y CV |
@@ -22,7 +22,9 @@ especializado en IA aplicada, desarrollo web y videojuegos.
 HTML, CSS y JavaScript sin dependencias ni paso de compilación. Se sirve tal cual
 desde GitHub Pages.
 
-- **Tipografías:** Fraunces (títulos), Archivo (texto), IBM Plex Mono (datos)
+- **Estilo:** Art Deco en negro y oro (rayos de sol, arcos, peldaños y abanicos)
+- **Tipografías:** Bodoni Moda (títulos), Federo (rótulos), Jost (texto)
+- **Iconos:** [Simple Icons](https://simpleicons.org) (CC0) y glifos deco propios en `images/icons/`, teñidos de oro con `mask-image`
 - **Temas:** claro y oscuro, con la preferencia guardada en `localStorage` y aplicada
   antes del primer pintado para evitar parpadeo
 - **Idiomas:** español e inglés; el español vive en el HTML y las traducciones en
@@ -36,7 +38,7 @@ desde GitHub Pages.
 index.html          Todo el contenido y las traducciones al español
 css/styles.css      Estilos, tokens de color y responsive
 js/main.js          Tema, idioma, menú móvil y animaciones de entrada
-images/             Capturas de proyectos, logos y portada para compartir
+images/             Capturas de proyectos, logos, iconos y portada para compartir
 ```
 
 ## Desarrollo

@@ -4,20 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Tema inicial: evita el parpadeo aplicando el modo antes de pintar -->
+  <!-- Tema, idioma e intro: se aplican antes de pintar para evitar parpadeos -->
   <script>
     (function () {
+      var root = document.documentElement;
       try {
         var saved = localStorage.getItem("theme");
-        document.documentElement.setAttribute("data-theme", saved || "dark");
+        root.setAttribute("data-theme", saved || "dark");
         var lang = localStorage.getItem("lang");
-        if (lang) document.documentElement.setAttribute("lang", lang);
-      } catch (e) {}
+        if (lang) root.setAttribute("lang", lang);
+      } catch (e) {
+        root.setAttribute("data-theme", "dark");
+      }
+      // La puerta de entrada solo se abre una vez por sesión
+      var quiet = location.search.indexOf("capture") > -1 ||
+        (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+      var seen = false;
+      try { seen = sessionStorage.getItem("gate") === "1"; } catch (e) {}
+      if (!quiet && !seen) root.classList.add("intro");
     })();
   </script>
   <title>Miguel Ángel Arroyo — Ingeniero Multimedia · IA, Web y Videojuegos</title>
-  <meta name="description" content="Portfolio de Miguel Ángel Arroyo Romero de Ávila. Ingeniero Multimedia especializado en IA aplicada, desarrollo web y videojuegos. En prácticas de ingeniería de datos e IA en InferIA." />
+  <meta name="description" content="Portfolio de Miguel Ángel Arroyo Romero de Ávila. Ingeniero Multimedia especializado en IA aplicada, desarrollo web y videojuegos. Ingeniero de Software en InferIA." />
   <meta name="author" content="Miguel Ángel Arroyo Romero de Ávila" />
+  <meta name="theme-color" content="#0a0907" />
   <link rel="canonical" href="https://maar11-dev.github.io/maar11/" />
 
   <!-- Iconos -->
@@ -30,20 +40,20 @@
   <meta property="og:locale" content="es_ES" />
   <meta property="og:url" content="https://maar11-dev.github.io/maar11/" />
   <meta property="og:title" content="Miguel Ángel Arroyo — Ingeniero Multimedia · IA, Web y Videojuegos" />
-  <meta property="og:description" content="Construyo sistemas de IA aplicada, experiencias web y videojuegos. En prácticas de ingeniería de datos e IA en InferIA y abierto a nuevas oportunidades." />
+  <meta property="og:description" content="Construyo sistemas de IA aplicada, experiencias web y videojuegos. Ingeniero de Software en InferIA." />
   <meta property="og:image" content="https://maar11-dev.github.io/maar11/images/og-cover.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Miguel Ángel Arroyo, Ingeniero Multimedia — IA aplicada, desarrollo web y videojuegos" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Miguel Ángel Arroyo — Ingeniero Multimedia · IA, Web y Videojuegos" />
-  <meta name="twitter:description" content="Construyo sistemas de IA aplicada, experiencias web y videojuegos. En prácticas de ingeniería de datos e IA en InferIA y abierto a nuevas oportunidades." />
+  <meta name="twitter:description" content="Construyo sistemas de IA aplicada, experiencias web y videojuegos. Ingeniero de Software en InferIA." />
   <meta name="twitter:image" content="https://maar11-dev.github.io/maar11/images/og-cover.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Federo&family=Jost:ital,wght@0,300..600;1,300..600&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="css/styles.css" />
@@ -51,12 +61,24 @@
 <body>
   <a class="skip-link" href="#inicio" data-i18n="skip">Saltar al contenido</a>
 
-  <!-- Grano de papel sobre toda la página -->
+  <!-- Puerta de entrada: dos hojas lacadas que se abren al cargar -->
+  <div class="gate" aria-hidden="true">
+    <div class="gate__leaf gate__leaf--l"></div>
+    <div class="gate__leaf gate__leaf--r"></div>
+    <div class="gate__crest">
+      <span class="gate__mono">M<i>·</i>A</span>
+    </div>
+  </div>
+
+  <!-- Atmósfera: patrón de abanicos y grano -->
+  <div class="backdrop" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><span class="progress__bar"></span></div>
 
   <!-- ============ CABECERA ============ -->
   <header class="topbar">
     <div class="topbar__left">
+      <a class="topbar__brand" href="#inicio">maar<span class="accent">.</span>11</a>
       <div class="theme-switch" role="group" aria-label="Seleccionar tema">
         <button type="button" class="theme-switch__opt" data-theme-set="light" aria-label="Modo claro" title="Modo claro">☀</button>
         <button type="button" class="theme-switch__opt" data-theme-set="dark" aria-label="Modo oscuro" title="Modo oscuro">☾</button>
@@ -65,7 +87,6 @@
         <button type="button" class="lang-switch__opt" data-lang-set="es" aria-label="Español" title="Español">ES</button>
         <button type="button" class="lang-switch__opt" data-lang-set="en" aria-label="English" title="English">EN</button>
       </div>
-      <a class="topbar__brand" href="#inicio">maar<span class="accent">.</span>11</a>
     </div>
     <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-main" aria-label="Abrir menú">
       <span class="nav-toggle__bars" aria-hidden="true"></span>
@@ -89,19 +110,25 @@
   <main id="inicio">
     <!-- ============ HERO ============ -->
     <section class="hero" aria-label="Presentación">
-      <div class="hero__marks" aria-hidden="true"></div>
-
-      <div class="hero__meta mono">
-        <span class="hero__meta-year">©2026</span>
+      <!-- Marco de esquinas escalonadas -->
+      <div class="hero__corners" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
       </div>
-
-      <h1 class="hero__name">
-        <span class="hero__line hero__line--1">Miguel <em>Ángel</em></span>
-        <span class="hero__line hero__line--2">Arroyo</span>
-      </h1>
 
       <div class="hero__grid">
         <div class="hero__intro">
+          <p class="hero__overline">
+            <span class="hero__overline-rule" aria-hidden="true"></span>
+            <span>maar.11</span>
+            <span class="hero__overline-gem" aria-hidden="true">◆</span>
+            <span>MMXXVI</span>
+          </p>
+
+          <h1 class="hero__name">
+            <span class="hero__line hero__line--1"><span class="hero__line-in">Miguel <em>Ángel</em></span></span>
+            <span class="hero__line hero__line--2"><span class="hero__line-in">Arroyo</span></span>
+          </h1>
+
           <p class="hero__role" data-i18n="hero.role">
             <strong class="hero__role-lead">Ingeniero Multimedia.</strong>
             Construyo sistemas de
@@ -112,7 +139,7 @@
           </p>
           <div class="hero__status">
             <span class="status-dot" aria-hidden="true"></span>
-            <span class="mono" data-i18n="hero.status">en prácticas en InferIA · abierto a nuevas oportunidades</span>
+            <span class="mono" data-i18n="hero.status">ingeniero de software en InferIA</span>
           </div>
           <div class="hero__actions">
             <a class="btn btn--solid" href="#proyectos" data-i18n="hero.cta1">Ver proyectos <span aria-hidden="true">↓</span></a>
@@ -123,12 +150,22 @@
         </div>
 
         <figure class="hero__portrait">
-          <div class="hero__portrait-frame">
+          <!-- Rayos de sol que giran tras el retrato -->
+          <div class="sunburst" aria-hidden="true"></div>
+          <span class="hero__keystone" aria-hidden="true"></span>
+          <div class="hero__arch">
             <img src="images/retrato.jpg" alt="Retrato de Miguel Ángel Arroyo Romero de Ávila" width="900" height="1355" fetchpriority="high" />
           </div>
-          <span class="hero__stamp mono" aria-hidden="true" data-i18n="hero.stamp">ing.<br/>multimedia</span>
+          <span class="hero__stamp" aria-hidden="true">
+            <span class="hero__stamp-ring"></span>
+            <span class="hero__stamp-text" data-i18n="hero.stamp">ing.<br/>multimedia</span>
+          </span>
         </figure>
       </div>
+
+      <a class="hero__scroll" href="#sobre-mi" aria-label="Bajar a Sobre mí">
+        <span class="hero__scroll-line" aria-hidden="true"></span>
+      </a>
     </section>
 
     <!-- ============ MARQUESINA ============ -->
@@ -138,10 +175,12 @@
       </div>
     </div>
 
-    <!-- ============ 01 SOBRE MÍ ============ -->
+    <!-- ============ I · SOBRE MÍ ============ -->
     <section class="section about" id="sobre-mi">
       <header class="section__head reveal">
+        <span class="section__num" aria-hidden="true"><span>I</span></span>
         <h2 class="section__title" data-i18n="about.title">Sobre <em>mí</em></h2>
+        <span class="section__rule" aria-hidden="true"></span>
       </header>
 
       <div class="about__grid">
@@ -165,34 +204,97 @@
           </p>
         </div>
 
-        <aside class="about__facts mono reveal" aria-label="Datos rápidos">
+        <aside class="about__facts reveal" aria-label="Datos rápidos">
+          <span class="about__facts-crown" aria-hidden="true"></span>
           <div class="fact"><span class="fact__k" data-i18n="fact.role.k">rol</span><span class="fact__v" data-i18n="fact.role.v">ingeniero multimedia</span></div>
           <div class="fact"><span class="fact__k" data-i18n="fact.focus.k">foco</span><span class="fact__v" data-i18n="fact.focus.v">ia aplicada · web · juegos</span></div>
-          <div class="fact"><span class="fact__k" data-i18n="fact.status.k">estado</span><span class="fact__v accent" data-i18n="fact.status.v">en prácticas · tfg completado</span></div>
+          <div class="fact"><span class="fact__k" data-i18n="fact.status.k">estado</span><span class="fact__v accent" data-i18n="fact.status.v">ingeniero de software · tfg completado</span></div>
           <div class="fact"><span class="fact__k" data-i18n="fact.seek.k">busca</span><span class="fact__v" data-i18n="fact.seek.v">prácticas / empleo</span></div>
           <div class="fact"><span class="fact__k" data-i18n="fact.base.k">base</span><span class="fact__v" data-i18n="fact.base.v">españa</span></div>
         </aside>
       </div>
     </section>
 
-    <!-- ============ 02 EXPERIENCIA ============ -->
+    <!-- ============ II · EXPERIENCIA ============ -->
     <section class="section experience" id="experiencia">
       <header class="section__head reveal">
+        <span class="section__num" aria-hidden="true"><span>II</span></span>
         <h2 class="section__title" data-i18n="xp.title">Experiencia <em>profesional</em></h2>
+        <span class="section__rule" aria-hidden="true"></span>
       </header>
 
       <ol class="xp__timeline">
         <li class="xp reveal">
           <span class="xp__node" aria-hidden="true"></span>
-          <article class="xp__card">
+          <article class="xp__card deco-card">
             <header class="xp__head">
               <figure class="xp__logo">
                 <img src="images/inferia-logo-final.jpg" alt="Logotipo de InferIA" loading="lazy" width="667" height="267" />
               </figure>
               <div class="xp__ident">
                 <div class="xp__meta mono">
-                  <span class="xp__date" data-i18n="xp.inferia.date">julio 2026 — actualidad</span>
-                  <span class="project__badge project__badge--live" data-i18n="xp.inferia.badge">en curso</span>
+                  <span class="xp__date" data-i18n="xp.swe.date">octubre 2026 — actualidad</span>
+                  <span class="project__badge project__badge--live" data-i18n="xp.swe.badge">en curso</span>
+                </div>
+                <h3 class="xp__role" data-i18n="xp.swe.role">Ingeniero de Software</h3>
+                <p class="xp__company">InferIA</p>
+              </div>
+            </header>
+
+            <div class="xp__body">
+              <div class="xp__col">
+                <p class="xp__desc" data-i18n="xp.swe.desc">
+                  Diseño la capa de datos de un asistente conversacional con IA sobre
+                  WhatsApp y una web abierta (arquitectura RAG híbrida), orientado a dar
+                  acceso a los recursos de salud y bienestar de un municipio.
+                </p>
+                <h4 class="xp__label mono" data-i18n="xp.tech">tecnologías</h4>
+                <ul class="project__tags xp__tags mono">
+                  <li>PostgreSQL</li><li>PostGIS</li><li>pgvector</li><li>RAG híbrido</li><li>Docker</li><li>Git</li>
+                </ul>
+              </div>
+
+              <div class="xp__col">
+                <h4 class="xp__label mono" data-i18n="xp.duties">responsabilidades</h4>
+                <ol class="xp__duties">
+                  <li data-i18n="xp.swe.d1">
+                    Diseño del modelo de datos sobre PostgreSQL, PostGIS y pgvector para
+                    información heterogénea: lugares geolocalizados, horarios y eventos que
+                    cambian en el tiempo, y contenido para búsqueda semántica.
+                  </li>
+                  <li data-i18n="xp.swe.d2">
+                    Modelado de horarios recurrentes, temporadas y excepciones, para que el
+                    asistente responda con exactitud según la fecha y la hora.
+                  </li>
+                  <li data-i18n="xp.swe.d3">
+                    Planificación de la recolección de múltiples fuentes de datos públicas,
+                    priorizadas según su frecuencia de actualización y su complejidad técnica.
+                  </li>
+                  <li data-i18n="xp.swe.d4">
+                    Diseño del proceso de ingesta: trazabilidad de cada dato hasta su origen,
+                    detección de duplicados y actualización incremental.
+                  </li>
+                  <li data-i18n="xp.swe.d5">
+                    Puesta en marcha del entorno de base de datos con Docker y definición de
+                    las convenciones de trabajo del repositorio.
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </article>
+        </li>
+
+        <li class="xp xp--past reveal">
+          <span class="xp__node" aria-hidden="true"></span>
+          <article class="xp__card deco-card">
+            <header class="xp__head">
+              <figure class="xp__logo">
+                <img src="images/inferia-logo-final.jpg" alt="Logotipo de InferIA" loading="lazy" width="667" height="267" />
+              </figure>
+              <div class="xp__ident">
+                <div class="xp__meta mono">
+                  <span class="xp__date" data-i18n="xp.inferia.date">junio — septiembre 2026</span>
+                  <span class="project__badge" data-i18n="xp.inferia.badge">completadas</span>
                 </div>
                 <h3 class="xp__role" data-i18n="xp.inferia.role">Prácticas — Ingeniero de Datos e IA</h3>
                 <p class="xp__company">InferIA</p>
@@ -258,10 +360,12 @@
       </ol>
     </section>
 
-    <!-- ============ 03 PROYECTOS ============ -->
+    <!-- ============ III · PROYECTOS ============ -->
     <section class="section projects" id="proyectos">
       <header class="section__head reveal">
+        <span class="section__num" aria-hidden="true"><span>III</span></span>
         <h2 class="section__title" data-i18n="projects.title">Proyectos <em>destacados</em></h2>
+        <span class="section__rule" aria-hidden="true"></span>
       </header>
 
       <!-- ── Categoría: IA ── -->
@@ -543,59 +647,101 @@
       </article>
     </section>
 
-    <!-- ============ 04 HABILIDADES ============ -->
+    <!-- ============ IV · HABILIDADES ============ -->
     <section class="section skills" id="habilidades">
       <header class="section__head reveal">
+        <span class="section__num" aria-hidden="true"><span>IV</span></span>
         <h2 class="section__title" data-i18n="skills.title">Dataset de <em>habilidades</em></h2>
+        <span class="section__rule" aria-hidden="true"></span>
       </header>
 
+      <!-- Cada tecnología lleva su icono; los conceptos sin marca usan glifos deco propios -->
       <div class="skills__grid">
         <div class="skillset reveal">
-          <h3 class="skillset__name mono" data-i18n="skill.ai"><span class="skillset__dot skillset__dot--ai" aria-hidden="true"></span>ia_aplicada</h3>
-          <ul class="skillset__tags">
-            <li>RAG</li><li data-i18n="sk.ai.agents">Agentes</li><li data-i18n="sk.ai.local">LLM locales · Ollama</li><li data-i18n="sk.ai.vector">Bases de datos vectoriales</li><li data-i18n="sk.ai.prompt">Prompt engineering técnico</li><li data-i18n="sk.ai.dataset">Elaboración de datasets</li><li data-i18n="sk.ai.labeling">Etiquetado de datos</li><li>ai-toolkit · fine-tuning</li>
+          <h3 class="skillset__name" data-i18n="skill.ai"><span class="skillset__dot skillset__dot--ai" aria-hidden="true"></span>IA aplicada</h3>
+          <ul class="tech-list">
+            <li class="tech"><i class="tech__ico" data-ico="deco-chevron" aria-hidden="true"></i><span class="tech__name">RAG</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="deco-sun" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.ai.agents">Agentes</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="ollama" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.ai.local">LLM locales · Ollama</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="deco-diamond" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.ai.vector">Bases de datos vectoriales</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="deco-fan" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.ai.prompt">Prompt engineering técnico</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="deco-grid" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.ai.dataset">Elaboración de datasets</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="deco-steps" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.ai.labeling">Etiquetado de datos</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="pytorch" aria-hidden="true"></i><span class="tech__name">ai-toolkit · fine-tuning</span></li>
           </ul>
         </div>
         <div class="skillset reveal">
-          <h3 class="skillset__name mono" data-i18n="skill.data"><span class="skillset__dot skillset__dot--data" aria-hidden="true"></span>ingeniería_de_datos</h3>
-          <ul class="skillset__tags">
-            <li>PostgreSQL</li><li>PostGIS</li><li>Alembic</li><li>pandas</li><li>SQLite</li><li>Apache Airflow</li><li>Docker</li><li data-i18n="sk.data.pipelines">Pipelines de ingesta</li><li data-i18n="sk.data.batch">Procesamiento por lotes</li><li>XML / JSON / CSV</li>
+          <h3 class="skillset__name" data-i18n="skill.data"><span class="skillset__dot skillset__dot--data" aria-hidden="true"></span>Ingeniería de datos</h3>
+          <ul class="tech-list">
+            <li class="tech"><i class="tech__ico" data-ico="postgresql" aria-hidden="true"></i><span class="tech__name">PostgreSQL</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="deco-grid" aria-hidden="true"></i><span class="tech__name">PostGIS</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="deco-diamond" aria-hidden="true"></i><span class="tech__name">pgvector</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="deco-steps" aria-hidden="true"></i><span class="tech__name">Alembic</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="pandas" aria-hidden="true"></i><span class="tech__name">pandas</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="sqlite" aria-hidden="true"></i><span class="tech__name">SQLite</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="apacheairflow" aria-hidden="true"></i><span class="tech__name">Apache Airflow</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="docker" aria-hidden="true"></i><span class="tech__name">Docker</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="deco-chevron" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.data.pipelines">Pipelines de ingesta</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="deco-sun" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.data.batch">Procesamiento por lotes</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="deco-fan" aria-hidden="true"></i><span class="tech__name">XML / JSON / CSV</span></li>
           </ul>
         </div>
         <div class="skillset reveal">
-          <h3 class="skillset__name mono" data-i18n="skill.web"><span class="skillset__dot skillset__dot--web" aria-hidden="true"></span>desarrollo_web</h3>
-          <ul class="skillset__tags">
-            <li>HTML / CSS</li><li>JavaScript</li><li>MongoDB</li><li>Express</li><li>React</li><li>Angular</li><li>Node.js</li><li>Python</li><li>FastAPI</li><li data-i18n="sk.web.meta">cloud API de Meta</li><li>Git</li>
+          <h3 class="skillset__name" data-i18n="skill.web"><span class="skillset__dot skillset__dot--web" aria-hidden="true"></span>Desarrollo web</h3>
+          <ul class="tech-list">
+            <li class="tech"><i class="tech__ico" data-ico="html5" aria-hidden="true"></i><span class="tech__name">HTML / CSS</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="javascript" aria-hidden="true"></i><span class="tech__name">JavaScript</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="mongodb" aria-hidden="true"></i><span class="tech__name">MongoDB</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="express" aria-hidden="true"></i><span class="tech__name">Express</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="react" aria-hidden="true"></i><span class="tech__name">React</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="angular" aria-hidden="true"></i><span class="tech__name">Angular</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="nodedotjs" aria-hidden="true"></i><span class="tech__name">Node.js</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="python" aria-hidden="true"></i><span class="tech__name">Python</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="fastapi" aria-hidden="true"></i><span class="tech__name">FastAPI</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="meta" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.web.meta">cloud API de Meta</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="git" aria-hidden="true"></i><span class="tech__name">Git</span></li>
           </ul>
         </div>
         <div class="skillset reveal">
-          <h3 class="skillset__name mono" data-i18n="skill.game"><span class="skillset__dot skillset__dot--game" aria-hidden="true"></span>videojuegos</h3>
-          <ul class="skillset__tags">
-            <li>C++</li><li>Godot</li><li>Unreal Engine</li><li data-i18n="sk.game.asm">Ensamblador</li>
+          <h3 class="skillset__name" data-i18n="skill.game"><span class="skillset__dot skillset__dot--game" aria-hidden="true"></span>Videojuegos</h3>
+          <ul class="tech-list">
+            <li class="tech"><i class="tech__ico" data-ico="cplusplus" aria-hidden="true"></i><span class="tech__name">C++</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="godotengine" aria-hidden="true"></i><span class="tech__name">Godot</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="unrealengine" aria-hidden="true"></i><span class="tech__name">Unreal Engine</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="deco-steps" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.game.asm">Ensamblador</span></li>
           </ul>
         </div>
         <div class="skillset reveal">
-          <h3 class="skillset__name mono" data-i18n="skill.art"><span class="skillset__dot skillset__dot--art" aria-hidden="true"></span>diseño_y_arte</h3>
-          <ul class="skillset__tags">
-            <li>Photoshop</li><li>Figma</li><li>Canva</li><li>Blender</li>
+          <h3 class="skillset__name" data-i18n="skill.art"><span class="skillset__dot skillset__dot--art" aria-hidden="true"></span>Diseño y arte</h3>
+          <ul class="tech-list">
+            <li class="tech"><i class="tech__ico" data-ico="adobephotoshop" aria-hidden="true"></i><span class="tech__name">Photoshop</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="figma" aria-hidden="true"></i><span class="tech__name">Figma</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="canva" aria-hidden="true"></i><span class="tech__name">Canva</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="blender" aria-hidden="true"></i><span class="tech__name">Blender</span></li>
           </ul>
         </div>
         <div class="skillset reveal">
-          <h3 class="skillset__name mono" data-i18n="skill.soft"><span class="skillset__dot skillset__dot--soft" aria-hidden="true"></span>soft_skills</h3>
-          <ul class="skillset__tags">
-            <li data-i18n="sk.soft.agile">Metodologías ágiles</li><li data-i18n="sk.soft.auto">Aprendizaje autónomo</li><li data-i18n="sk.soft.aesthetic">Visión estética</li><li data-i18n="sk.soft.problem">Resolución de problemas técnicos</li>
+          <h3 class="skillset__name" data-i18n="skill.soft"><span class="skillset__dot skillset__dot--soft" aria-hidden="true"></span>Soft skills</h3>
+          <ul class="tech-list">
+            <li class="tech"><i class="tech__ico" data-ico="deco-chevron" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.soft.agile">Metodologías ágiles</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="deco-sun" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.soft.auto">Aprendizaje autónomo</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="deco-fan" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.soft.aesthetic">Visión estética</span></li>
+            <li class="tech"><i class="tech__ico" data-ico="deco-diamond" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.soft.problem">Resolución de problemas técnicos</span></li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- ============ 05 CONTACTO ============ -->
+    <!-- ============ V · CONTACTO ============ -->
     <section class="section contact" id="contacto">
       <header class="section__head reveal">
+        <span class="section__num" aria-hidden="true"><span>V</span></span>
         <h2 class="section__title" data-i18n="contact.title">Contacto</h2>
+        <span class="section__rule" aria-hidden="true"></span>
       </header>
 
       <div class="contact__inner reveal">
+        <div class="contact__sun" aria-hidden="true"></div>
         <p class="contact__big" data-i18n="contact.big">
           ¿Buscas a alguien que entienda <em>el modelo</em> y <em>el lienzo</em>?
           <span class="contact__cta">Hablemos.</span>
@@ -618,8 +764,9 @@
   </main>
 
   <!-- ============ PIE ============ -->
-  <footer class="footer mono">
-    <span data-i18n="footer.by">diseñado y construido por miguel ángel arroyo — 2026</span>
+  <footer class="footer">
+    <span class="footer__ornament" aria-hidden="true"></span>
+    <span class="mono" data-i18n="footer.by">diseñado y construido por miguel ángel arroyo — 2026</span>
   </footer>
 
   <script src="js/main.js"></script>

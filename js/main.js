@@ -77,7 +77,7 @@
     // Hero
     "hero.role":
       '<strong class="hero__role-lead">Multimedia Engineer.</strong> I build <em class="accent-ink">applied AI</em> systems, <em class="accent-ink">web</em> experiences and <em class="accent-ink">games</em> where the tech serves the aesthetics.',
-    "hero.status": "interning at InferIA · open to new opportunities",
+    "hero.status": "software engineer at InferIA",
     "hero.cta1": 'View projects <span aria-hidden="true">↓</span>',
     "hero.cta2": 'Get in touch <span aria-hidden="true">↗</span>',
     "hero.cta3": 'Download CV <span aria-hidden="true">↓</span>',
@@ -102,7 +102,7 @@
     "fact.focus.k": "focus",
     "fact.focus.v": "applied ai · web · games",
     "fact.status.k": "status",
-    "fact.status.v": "interning · thesis completed",
+    "fact.status.v": "software engineer · thesis completed",
     "fact.seek.k": "seeking",
     "fact.seek.v": "internship / job",
     "fact.base.k": "base",
@@ -112,8 +112,23 @@
     "xp.title": "Professional <em>experience</em>",
     "xp.duties": "responsibilities",
     "xp.tech": "technologies",
-    "xp.inferia.date": "july 2026 — present",
-    "xp.inferia.badge": "ongoing",
+    "xp.swe.date": "october 2026 — present",
+    "xp.swe.badge": "ongoing",
+    "xp.swe.role": "Software Engineer",
+    "xp.swe.desc":
+      "I design the data layer of an AI conversational assistant on WhatsApp and an open website (hybrid RAG architecture), aimed at giving access to a municipality's health and wellbeing resources.",
+    "xp.swe.d1":
+      "Data model design on PostgreSQL, PostGIS and pgvector for heterogeneous information: geolocated places, schedules and events that change over time, and content for semantic search.",
+    "xp.swe.d2":
+      "Modelling of recurring schedules, seasons and exceptions, so the assistant answers accurately depending on the date and time.",
+    "xp.swe.d3":
+      "Planning the collection of multiple public data sources, prioritized by update frequency and technical complexity.",
+    "xp.swe.d4":
+      "Ingestion process design: traceability of every record back to its source, duplicate detection and incremental updates.",
+    "xp.swe.d5":
+      "Setting up the database environment with Docker and defining the repository's working conventions.",
+    "xp.inferia.date": "june — september 2026",
+    "xp.inferia.badge": "completed",
     "xp.inferia.role": "Internship — Data & AI Engineer",
     "xp.inferia.desc":
       "Development of data and artificial intelligence pipelines for the collection, processing and structuring of information coming from public data sources.",
@@ -205,12 +220,12 @@
 
     // Habilidades
     "skills.title": "<em>Skills</em> dataset",
-    "skill.ai": '<span class="skillset__dot skillset__dot--ai" aria-hidden="true"></span>applied_ai',
-    "skill.data": '<span class="skillset__dot skillset__dot--data" aria-hidden="true"></span>data_engineering',
-    "skill.web": '<span class="skillset__dot skillset__dot--web" aria-hidden="true"></span>web_development',
-    "skill.game": '<span class="skillset__dot skillset__dot--game" aria-hidden="true"></span>games',
-    "skill.art": '<span class="skillset__dot skillset__dot--art" aria-hidden="true"></span>design_and_art',
-    "skill.soft": '<span class="skillset__dot skillset__dot--soft" aria-hidden="true"></span>soft_skills',
+    "skill.ai": '<span class="skillset__dot skillset__dot--ai" aria-hidden="true"></span>Applied AI',
+    "skill.data": '<span class="skillset__dot skillset__dot--data" aria-hidden="true"></span>Data engineering',
+    "skill.web": '<span class="skillset__dot skillset__dot--web" aria-hidden="true"></span>Web development',
+    "skill.game": '<span class="skillset__dot skillset__dot--game" aria-hidden="true"></span>Games',
+    "skill.art": '<span class="skillset__dot skillset__dot--art" aria-hidden="true"></span>Design &amp; art',
+    "skill.soft": '<span class="skillset__dot skillset__dot--soft" aria-hidden="true"></span>Soft skills',
     "sk.ai.agents": "Agents",
     "sk.ai.local": "Local LLMs · Ollama",
     "sk.ai.vector": "Vector databases",
@@ -331,3 +346,101 @@
 
   reveals.forEach((el) => observer.observe(el));
 })();
+
+// Puerta de entrada: al terminar de abrirse se libera el scroll
+(function () {
+  const root = document.documentElement;
+  if (!root.classList.contains("intro")) return;
+  try {
+    sessionStorage.setItem("gate", "1");
+  } catch (e) {}
+  setTimeout(() => root.classList.add("gate-open"), 1450);
+})();
+
+// Cabecera compacta, barra de progreso y sección activa en el menú
+(function () {
+  const root = document.documentElement;
+  const topbar = document.querySelector(".topbar");
+  const links = Array.from(document.querySelectorAll('.topbar__nav > a[href^="#"], .nav-drop__trigger'));
+  const targets = links
+    .map((a) => [a, document.querySelector(a.getAttribute("href"))])
+    .filter(([, el]) => el);
+
+  let ticking = false;
+  function update() {
+    ticking = false;
+    const y = window.scrollY;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    topbar.classList.toggle("is-scrolled", y > 40);
+    root.style.setProperty("--progress", max > 0 ? (y / max).toFixed(4) : 0);
+
+    const probe = y + window.innerHeight * 0.35;
+    let current = null;
+    targets.forEach(([a, el]) => {
+      if (el.offsetTop <= probe) current = a;
+    });
+    links.forEach((a) => a.classList.toggle("is-current", a === current));
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }, { passive: true });
+  update();
+})();
+
+// Movimiento: el retrato sigue al ratón, los rayos se desplazan con el scroll
+// y los paneles deco se iluminan donde está el puntero
+(function () {
+  const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = window.matchMedia("(pointer: fine)").matches;
+  if (still) return;
+
+  const hero = document.querySelector(".hero");
+  const portrait = document.querySelector(".hero__portrait");
+  const burst = document.querySelector(".sunburst");
+
+  if (hero && portrait && fine) {
+    hero.addEventListener("pointermove", (e) => {
+      const r = hero.getBoundingClientRect();
+      const px = ((e.clientX - r.left) / r.width - 0.5) * 2;
+      const py = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      portrait.style.setProperty("--px", px.toFixed(3));
+      portrait.style.setProperty("--py", py.toFixed(3));
+    });
+    hero.addEventListener("pointerleave", () => {
+      portrait.style.setProperty("--px", 0);
+      portrait.style.setProperty("--py", 0);
+    });
+  }
+
+  if (burst) {
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const y = Math.min(window.scrollY, window.innerHeight);
+        burst.style.setProperty("--sy", `${(y * 0.25).toFixed(1)}px`);
+      });
+    }, { passive: true });
+  }
+
+  if (fine) {
+    document.querySelectorAll(".deco-card, .skillset, .about__facts").forEach((card) => {
+      card.addEventListener("pointermove", (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+        card.style.setProperty("--my", `${e.clientY - r.top}px`);
+      });
+    });
+  }
+})();
+
+// Orden de aparición de las fichas de tecnologías
+document.querySelectorAll(".skillset").forEach((set) => {
+  set.querySelectorAll(".tech").forEach((tile, i) => tile.style.setProperty("--i", i));
+});
