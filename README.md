@@ -1,7 +1,7 @@
 # maar.11 — Portfolio
 
-Portfolio personal de **Miguel Ángel Arroyo Romero de Ávila**, Ingeniero Multimedia
-especializado en IA aplicada, desarrollo web y videojuegos.
+Portfolio personal de **Miguel Ángel Arroyo Romero de Ávila**, Ingeniero de Software
+en InferIA. Proyectos de datos e IA, desarrollo web y videojuegos.
 
 **→ [maar11-dev.github.io/maar11](https://maar11-dev.github.io/maar11/)**
 
@@ -12,9 +12,9 @@ especializado en IA aplicada, desarrollo web y videojuegos.
 | Sección | Contenido |
 | --- | --- |
 | Sobre mí | Contexto profesional y enfoque de trabajo |
-| Experiencia | Prácticas de Ingeniería de Datos e IA en InferIA |
+| Experiencia | Ingeniero de Software en InferIA (y prácticas previas de Ingeniería de Datos e IA) |
 | Proyectos | IA aplicada (TFG, m.ai), web (RenderBox) y videojuegos (Dopamine Chasers, Preflop, TRAMFIGHT) |
-| Habilidades | Stack técnico por áreas |
+| Herramientas | Tecnologías agrupadas por área |
 | Contacto | Email, LinkedIn, GitHub y CV |
 
 ## Stack
@@ -22,7 +22,9 @@ especializado en IA aplicada, desarrollo web y videojuegos.
 HTML, CSS y JavaScript sin dependencias ni paso de compilación. Se sirve tal cual
 desde GitHub Pages.
 
-- **Tipografías:** Fraunces (títulos), Archivo (texto), IBM Plex Mono (datos)
+- **Estilo:** Art Deco en negro y oro; el ornamento vive en la portada y el resto es sobrio
+- **Tipografías:** Bodoni Moda (títulos), Federo (rótulos), Jost (texto), autoalojadas en `fonts/`
+  como subconjunto latino en woff2; se regeneran con `python scripts/build-fonts.py`
 - **Temas:** claro y oscuro, con la preferencia guardada en `localStorage` y aplicada
   antes del primer pintado para evitar parpadeo
 - **Idiomas:** español e inglés; el español vive en el HTML y las traducciones en
@@ -48,6 +50,22 @@ python -m http.server 8000
 ```
 
 Y abrir <http://localhost:8000>.
+
+## Imágenes
+
+Las imágenes se sirven con `<picture>`: AVIF y WebP en varios anchos (`images/opt/`) y el
+original como respaldo. Para añadir una imagen nueva:
+
+1. Copia el original en `images/`.
+2. Añade su entrada en `scripts/images.json` con los anchos que necesite
+   (`"widths": [400, 800]`). Si es pixel art, analízala primero:
+   `npm run optimize-images -- --detect images/nueva.png` y pega la entrada que propone.
+3. Ejecuta `npm install` (solo la primera vez) y `npm run optimize-images`. El script
+   imprime el `srcset` de cada imagen para el `<picture>`.
+
+El pixel art se escala solo por múltiplos enteros con vecino más próximo, sin pérdida, y en
+la página lleva la clase `pixel` (`image-rendering: pixelated`). Su AVIF se descarta cuando
+pesa más que el WebP.
 
 Añadiendo `?capture` a la URL se desactivan las animaciones de entrada, útil para
 hacer capturas de pantalla.
