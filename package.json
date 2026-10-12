@@ -1,0 +1,12 @@
+{
+  "name": "maar11",
+  "private": true,
+  "description": "Portfolio de Miguel Ángel Arroyo. Sitio estático; Node solo se usa para optimizar imágenes.",
+  "type": "module",
+  "scripts": {
+    "optimize-images": "node scripts/optimize-images.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
+  }
+}

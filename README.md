@@ -23,7 +23,8 @@ HTML, CSS y JavaScript sin dependencias ni paso de compilación. Se sirve tal cu
 desde GitHub Pages.
 
 - **Estilo:** Art Deco en negro y oro; el ornamento vive en la portada y el resto es sobrio
-- **Tipografías:** Bodoni Moda (títulos), Federo (rótulos), Jost (texto)
+- **Tipografías:** Bodoni Moda (títulos), Federo (rótulos), Jost (texto), autoalojadas en `fonts/`
+  como subconjunto latino en woff2; se regeneran con `python scripts/build-fonts.py`
 - **Temas:** claro y oscuro, con la preferencia guardada en `localStorage` y aplicada
   antes del primer pintado para evitar parpadeo
 - **Idiomas:** español e inglés; el español vive en el HTML y las traducciones en
@@ -49,6 +50,22 @@ python -m http.server 8000
 ```
 
 Y abrir <http://localhost:8000>.
+
+## Imágenes
+
+Las imágenes se sirven con `<picture>`: AVIF y WebP en varios anchos (`images/opt/`) y el
+original como respaldo. Para añadir una imagen nueva:
+
+1. Copia el original en `images/`.
+2. Añade su entrada en `scripts/images.json` con los anchos que necesite
+   (`"widths": [400, 800]`). Si es pixel art, analízala primero:
+   `npm run optimize-images -- --detect images/nueva.png` y pega la entrada que propone.
+3. Ejecuta `npm install` (solo la primera vez) y `npm run optimize-images`. El script
+   imprime el `srcset` de cada imagen para el `<picture>`.
+
+El pixel art se escala solo por múltiplos enteros con vecino más próximo, sin pérdida, y en
+la página lleva la clase `pixel` (`image-rendering: pixelated`). Su AVIF se descarta cuando
+pesa más que el WebP.
 
 Añadiendo `?capture` a la URL se desactivan las animaciones de entrada, útil para
 hacer capturas de pantalla.

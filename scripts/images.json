@@ -1,0 +1,29 @@
+{
+  "images": [
+    { "src": "retrato.jpg", "widths": [360, 680, 900] },
+    { "src": "inferia-logo-final.jpg", "widths": [120, 240, 360] },
+
+    { "src": "tfg1.jpg", "widths": [400, 800] },
+    { "src": "tfg2.jpg", "widths": [300, 600] },
+
+    { "src": "mai1.jpg", "widths": [320, 640] },
+    { "src": "mai2.jpg", "widths": [320, 640] },
+    { "src": "mai-logo.png", "widths": [40, 80, 120] },
+
+    { "src": "renderbox2.png", "widths": [460, 900] },
+    { "src": "renderbox1.png", "widths": [320, 640, 800] },
+    { "src": "renderbox-logo.jpg", "widths": [110, 220] },
+
+    { "src": "dopaminechasers1.png", "widths": [347] },
+    { "src": "dopaminechasers2.png", "widths": [347] },
+    { "src": "dopaminechaserslogo.png", "widths": [100, 200] },
+
+    { "src": "preflop1.PNG", "pixel": { "scale": 4, "offset": [3, 2] }, "factors": [2, 3, 5] },
+    { "src": "preflop2.PNG", "pixel": { "scale": 4, "offset": [2, 1] }, "factors": [2, 3, 4] },
+    { "src": "logopreflop.png", "pixel": { "scale": 1 }, "factors": [1] },
+
+    { "src": "tramfight-cartel.png", "pixel": { "scale": 1 }, "factors": [1] },
+    { "src": "tramfight-game.png", "pixel": { "scale": 1 }, "factors": [1] },
+    { "src": "tramfight-icon.png", "pixel": { "scale": 2 }, "factors": [1, 2] }
+  ]
+}

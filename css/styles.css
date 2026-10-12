@@ -5,6 +5,67 @@
    Bodoni Moda (titulares) / Federo (rótulos) / Jost (texto, geometría Futura).
    ========================================================================== */
 
+/* ==========================================================================
+   Fuentes autoalojadas (fonts/, generadas con scripts/build-fonts.py)
+   Subconjunto latino en woff2 con solo los pesos y estilos que se usan.
+   ========================================================================== */
+@font-face {
+  font-family: "Bodoni Moda";
+  src: url("../fonts/bodoni-moda.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bodoni Moda";
+  src: url("../fonts/bodoni-moda-italic-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Jost";
+  src: url("../fonts/jost.woff2") format("woff2");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Federo";
+  src: url("../fonts/federo.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Respaldo con métricas ajustadas a cada fuente para que el cambio al cargar
+   apenas mueva el texto (valores calculados por scripts/build-fonts.py) */
+@font-face {
+  font-family: "Bodoni Moda Fallback";
+  src: local("Times New Roman"), local("TimesNewRomanPSMT"), local("Times");
+  size-adjust: 113.94%;
+  ascent-override: 98.74%;
+  descent-override: 35.11%;
+  line-gap-override: 0%;
+}
+/* Jost: el script da 95,87 %; 95,4 % se afinó midiendo cortes de línea en ES y EN */
+@font-face {
+  font-family: "Jost Fallback";
+  src: local("Arial"), local("ArialMT"), local("Helvetica");
+  size-adjust: 95.4%;
+  ascent-override: 112.16%;
+  descent-override: 39.31%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Federo Fallback";
+  src: local("Arial"), local("ArialMT"), local("Helvetica");
+  size-adjust: 91.29%;
+  ascent-override: 100.71%;
+  descent-override: 28.35%;
+  line-gap-override: 0%;
+}
+
 :root {
   --bg: #0a0907;
   --bg-2: #110f0b;
@@ -23,9 +84,9 @@
     var(--gold-lo) 0%, var(--gold-hi) 22%, var(--gold) 40%,
     var(--gold-lo) 55%, var(--gold-hi) 78%, var(--gold-lo) 100%);
 
-  --font-display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
-  --font-deco: "Federo", "Josefin Sans", sans-serif;
-  --font-body: "Jost", "Futura", "Century Gothic", sans-serif;
+  --font-display: "Bodoni Moda", "Bodoni Moda Fallback", Georgia, serif;
+  --font-deco: "Federo", "Federo Fallback", sans-serif;
+  --font-body: "Jost", "Jost Fallback", sans-serif;
 
   --gutter: clamp(1.25rem, 5vw, 5rem);
   --section-gap: clamp(6rem, 14vh, 10rem);
@@ -83,7 +144,9 @@ body {
 .accent { color: var(--gold); }
 
 /* Texto dorado reutilizable */
+/* El degradado solo pinta dentro de la caja: margen para la curva de la O final */
 .hero__line--2 .hero__line-in {
+  padding-right: 0.08em;
   background: var(--gold-grad);
   background-size: 250% 100%;
   -webkit-background-clip: text;
@@ -540,10 +603,11 @@ body::before {
   flex-direction: column;
 }
 
-/* Cada línea sube desde detrás de una ranura invisible */
+/* Cada línea sube desde detrás de una ranura invisible: solo se recorta el
+   borde inferior, para no cortar letras que sobresalgan de la columna */
 .hero__line {
   display: block;
-  overflow: hidden;
+  clip-path: inset(-1em -50vw 0 -1em);
   padding: 0.16em 0.12em 0.1em 0;
   margin: -0.16em 0 -0.1em;
 }
@@ -744,9 +808,20 @@ body::before {
 
 /* Cabecera de sección: título a la izquierda sobre un filete fino */
 .section__head {
+  position: relative;
   margin-bottom: clamp(2.2rem, 5vh, 3.4rem);
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--line);
+}
+
+/* Versión pequeña del ornamento que corona el retrato, apoyada en el filete */
+.section__orn {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30px;
+  height: 10px;
+  fill: var(--gold);
 }
 
 .section__title {
@@ -761,31 +836,72 @@ body::before {
 /* ==========================================================================
    Sobre mí
    ========================================================================== */
-.about__text p { max-width: 30em; }
+.about .section__head,
+.about__text p { max-width: 28em; }
 .about__text p + p { margin-top: 1.2rem; }
 
 /* ==========================================================================
    Experiencia
    ========================================================================== */
-.xp-list { list-style: none; }
+.xp-company {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  column-gap: clamp(1.5rem, 4vw, 3.5rem);
+  row-gap: 1.6rem;
+}
+
+/* El logotipo ocupa la primera fila de la columna izquierda */
+.xp-company__side { grid-column: 1; }
+
+/* Cada puesto reparte su fecha a la izquierda y su contenido a la derecha */
+.xp-timeline {
+  list-style: none;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+}
 
 .xp {
+  grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
-  gap: clamp(1.5rem, 4vw, 3.5rem);
-  padding: clamp(2rem, 5vh, 2.8rem) 0;
-  border-top: 1px solid var(--line);
+  grid-template-columns: subgrid;
 }
-.xp:first-child { border-top: none; padding-top: 0; }
 
-.xp__date { color: var(--ink-soft); font-size: 0.95rem; }
+.xp__date {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  padding-top: 0.55rem;
+}
+
+/* Filete dorado continuo con un marcador por puesto */
+.xp__main {
+  position: relative;
+  padding: 0 0 clamp(2.4rem, 6vh, 3.4rem) 2rem;
+  border-left: 1px solid var(--gold-lo);
+}
+.xp:last-child .xp__main { padding-bottom: 0.4rem; }
+
+.xp__main::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 0.75rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+.xp + .xp .xp__main::before {
+  background: var(--bg);
+  border: 1px solid var(--gold);
+}
 
 /* Logotipo monocromo: el fondo blanco desaparece al fundirse con la página */
 .xp__logo {
   display: block;
-  width: 108px;
+  width: 120px;
   height: auto;
-  margin-top: 0.9rem;
   filter: grayscale(1) invert(1) contrast(1.6) brightness(1.15);
   mix-blend-mode: screen;
 }
@@ -920,6 +1036,9 @@ body::before {
 
 .shot img { display: block; width: 100%; height: auto; }
 
+/* Pixel art: nunca se suaviza al escalar (Preflop, TRAMFIGHT) */
+img.pixel { image-rendering: pixelated; }
+
 .shot--main { width: 78%; }
 
 .shot--overlay {
@@ -973,6 +1092,14 @@ body::before {
 .project.is-visible .project__sticker { transform: scale(1) rotate(0deg); }
 
 .project__sticker img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.project__sticker--small {
+  top: -0.9rem;
+  left: -0.9rem;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--gold-lo);
+}
 .project__sticker--svg { background: #2a2640; padding: 8px; }
 .project__sticker--svg img { object-fit: contain; }
 .project__sticker--renderbox { background: #585d68; }
@@ -1015,7 +1142,34 @@ body::before {
 /* ==========================================================================
    Contacto
    ========================================================================== */
-.contact { padding-bottom: var(--section-gap); }
+.contact { padding-bottom: var(--section-gap); overflow-x: clip; }
+
+/* Eco del sol de la portada: más pequeño y muy tenue, detrás del email */
+.contact__mailwrap {
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  max-width: 100%;
+}
+.contact__mailwrap::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(440px, 110vw);
+  aspect-ratio: 1;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  translate: -50% -50%;
+  opacity: 0.55;
+  background: repeating-conic-gradient(from 0deg,
+    color-mix(in srgb, var(--gold) 22%, transparent) 0deg 1.2deg,
+    transparent 1.2deg 9deg);
+  -webkit-mask-image: radial-gradient(circle, #000 12%, transparent 66%);
+  mask-image: radial-gradient(circle, #000 12%, transparent 66%);
+  animation: spin 200s linear infinite;
+}
 
 .contact__big { max-width: 30em; }
 
@@ -1156,9 +1310,15 @@ body::before {
 @media (max-width: 900px) {
   .hero__grid { grid-template-columns: 1fr; }
   .hero__portrait { width: min(78%, 320px); margin-top: 3.4rem; }
-  .xp { grid-template-columns: 1fr; gap: 0.9rem; }
-  .xp__side { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-  .xp__logo { margin-top: 0; width: 92px; }
+  .xp-company { grid-template-columns: minmax(0, 1fr); }
+  .xp-timeline, .xp { display: block; }
+  .xp__logo { width: 100px; }
+  .xp__date {
+    position: relative;
+    padding: 0 0 0.35rem 2rem;
+    border-left: 1px solid var(--gold-lo);
+  }
+  .xp__main::before { top: -1.55rem; }
   .project { grid-template-columns: 1fr; gap: 2.6rem; }
   .project:nth-of-type(even) .project__visual { order: 0; }
   .project:nth-of-type(even) .project__body { order: 0; }
