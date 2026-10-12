@@ -76,12 +76,10 @@
 
     // Hero
     "hero.role":
-      '<strong class="hero__role-lead">Multimedia Engineer.</strong> I build <em class="accent-ink">applied AI</em> systems, <em class="accent-ink">web</em> experiences and <em class="accent-ink">games</em> where the tech serves the aesthetics.',
-    "hero.status": "software engineer at InferIA",
+      "Software Engineer at InferIA since October 2026. I design the data layer of AI assistants, and I've built web development and game projects.",
     "hero.cta1": 'View projects <span aria-hidden="true">↓</span>',
     "hero.cta2": 'Get in touch <span aria-hidden="true">↗</span>',
     "hero.cta3": 'Download CV <span aria-hidden="true">↓</span>',
-    "hero.stamp": "multimedia<br/>eng.",
 
     // Marquesina
     "marquee":
@@ -89,24 +87,12 @@
 
     // Sobre mí
     "about.title": "<em>About</em> me",
-    "about.lead":
-      "I'm finishing my <strong>Multimedia Engineering</strong> degree. I move along the exact line between code and art: the place where you get the best results and scalable products with real impact.",
+    "about.p1":
+      "I have a degree in Multimedia Engineering. Since October 2026 I've worked as a Software Engineer at InferIA, where I design the data layer of an AI conversational assistant. Before that I did a data and AI engineering internship there, from June to September 2026.",
     "about.p2":
-      "I come from web development and games, and over the last few months I've specialized in <strong>applied AI</strong>: RAG architectures, agents, dataset creation and labeling, and fine-tuning diffusion models with LoRA and Dreambooth. I'm not interested in AI as a demo: I'm interested in it as a production tool that solves real problems.",
+      "My bachelor's thesis was a pipeline to train image-generation models with LoRA and Dreambooth. I've also built a web platform on the MEAN stack, a C++ shooter with a custom OpenGL engine and a puzzle game in assembly for the Game Boy.",
     "about.p3":
-      'I learn autonomously, fast and with aesthetic judgment. I\'m looking for a team where I can bring that dual technical and visual vision — <a class="link-accent" href="#contacto">as an intern or in my first role</a>.',
-
-    // Datos rápidos
-    "fact.role.k": "role",
-    "fact.role.v": "multimedia engineer",
-    "fact.focus.k": "focus",
-    "fact.focus.v": "applied ai · web · games",
-    "fact.status.k": "status",
-    "fact.status.v": "software engineer · thesis completed",
-    "fact.seek.k": "seeking",
-    "fact.seek.v": "internship / job",
-    "fact.base.k": "base",
-    "fact.base.v": "spain",
+      "Right now I focus on data and applied AI: PostgreSQL modelling, ingestion of public data sources and RAG systems.",
 
     // Experiencia
     "xp.title": "Professional <em>experience</em>",
@@ -161,8 +147,6 @@
     "tfg.sub": "bachelor's degree thesis",
     "tfg.d1":
       "A complete workflow to train image-generation models under predetermined artistic styles: from the raw dataset to the fine-tuned model. Data preparation and labeling, fine-tuning with LoRA and Dreambooth on diffusion models, and stylistic-coherence evaluation at every iteration.",
-    "tfg.d2":
-      "The goal: making a specific style reproducible and controllable, instead of relying on the randomness of the prompt.",
 
     // m.ai
     "mai.cap": "the bot in production, inside WhatsApp",
@@ -172,8 +156,6 @@
     "mai.sub": "bot with a full rag architecture",
     "mai.d1":
       "A personal assistant that saves notes by text, voice or image, answers natural-language semantic searches and generates smart summaries, all inside WhatsApp. It transcribes audio with Whisper, auto-tags with an LLM and uses a vector database with re-ranking by recency and semantic relevance.",
-    "mai.d2":
-      "Notes you can't find again are useless: I wanted queryable memory, not another notes app.",
 
     // RenderBox
     "rb.cap": "the platform in production, deployed on Vercel",
@@ -182,8 +164,6 @@
     "rb.sub": "web platform for digital assets",
     "rb.d1":
       "A site to centralize the publishing, management and discovery of creative resources — 2D, 3D, video and audio. Full MEAN stack with media file handling via Cloudinary and Multer, deployed on Vercel.",
-    "rb.d2":
-      "Creative assets live scattered across a thousand places; I wanted to build the one spot to find them.",
 
     // Dopamine Chasers
     "dc.cap": "shooter gameplay — custom engine over OpenGL",
@@ -202,8 +182,7 @@
     "pf.sub": "assembly puzzles for Game Boy",
     "pf.d1":
       "A level-based puzzle game for the Game Boy, programmed in assembly language: mechanics design, collision system, efficient tilemap rendering, state machines, scene management and enemy AI. All low-level and tuned to the real limitations of the console.",
-    "pf.d2":
-      "Audience award at GBRetroDev 2025 — Heroes of Assembly 2. Working with the Game Boy's bare resources forces you to truly understand the machine: every byte and every cycle counts.",
+    "pf.d2": "Audience award at GBRetroDev 2025 (Heroes of Assembly 2).",
     "pf.tag.asm": "Assembly",
     "pf.tag.low": "Low-level",
 
@@ -214,8 +193,6 @@
     "tf.sub": "finalist — level up game jam 2025",
     "tf.d1":
       "A complete, playable game built in Godot in just 8 days, with team version control under the real pressure of a jam. Finalist of the Level Up Game Jam 2025.",
-    "tf.d2":
-      "A jam is the best test of scope, priorities and delivery: either you ship it, or there's no game.",
     "tf.tag.days": "8 days",
 
     // Habilidades
@@ -243,11 +220,8 @@
 
     // Contacto
     "contact.title": "Contact",
-    "contact.big":
-      'Looking for someone who understands <em>the model</em> and <em>the canvas</em>? <span class="contact__cta">Let\'s talk.</span>',
+    "contact.big": "If you want to talk about a project, write to me.",
     "contact.cv": 'Download CV <span aria-hidden="true">↓</span>',
-    "contact.note":
-      '<span class="status-dot" aria-hidden="true"></span> fast replies · open to new opportunities',
 
     // Enlaces de proyecto
     "link.play": 'play on itch.io <span aria-hidden="true">↗</span>',
@@ -258,8 +232,8 @@
   };
 
   const TITLE = {
-    es: "Miguel Ángel Arroyo — Ingeniero Multimedia · IA, Web y Videojuegos",
-    en: "Miguel Ángel Arroyo — Multimedia Engineer · AI, Web & Games",
+    es: "Miguel Ángel Arroyo — Ingeniero de Software",
+    en: "Miguel Ángel Arroyo — Software Engineer",
   };
 
   const nodes = document.querySelectorAll("[data-i18n]");

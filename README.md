@@ -1,7 +1,7 @@
 # maar.11 — Portfolio
 
-Portfolio personal de **Miguel Ángel Arroyo Romero de Ávila**, Ingeniero Multimedia
-especializado en IA aplicada, desarrollo web y videojuegos.
+Portfolio personal de **Miguel Ángel Arroyo Romero de Ávila**, Ingeniero de Software
+en InferIA. Proyectos de datos e IA, desarrollo web y videojuegos.
 
 **→ [maar11-dev.github.io/maar11](https://maar11-dev.github.io/maar11/)**
 
