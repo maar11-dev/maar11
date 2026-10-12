@@ -188,76 +188,114 @@
       </header>
 
       <div class="xp-company reveal">
-        <div class="xp-company__side">
-          <picture>
-            <source type="image/avif" srcset="images/opt/inferia-logo-final-120.avif 120w, images/opt/inferia-logo-final-240.avif 240w, images/opt/inferia-logo-final-360.avif 360w" sizes="(max-width: 900px) 100px, 120px" />
-            <source type="image/webp" srcset="images/opt/inferia-logo-final-120.webp 120w, images/opt/inferia-logo-final-240.webp 240w, images/opt/inferia-logo-final-360.webp 360w" sizes="(max-width: 900px) 100px, 120px" />
-            <img class="xp__logo" src="images/inferia-logo-final.jpg" alt="Logotipo de InferIA" data-i18n-alt="alt.inferia" width="360" height="144" loading="lazy" decoding="async" />
-          </picture>
+        <div class="xp-company__head">
+          <p class="xp-company__name">
+            <span class="xp-logo" aria-hidden="true"></span>
+            <span class="sr-only">InferIA</span>
+          </p>
+          <span class="xp-company__rule" aria-hidden="true"></span>
+          <p class="xp-company__span" data-i18n="xp.span">jun 2026–actualidad · 2 puestos</p>
         </div>
+
         <ol class="xp-timeline">
-          <li class="xp">
+          <li class="xp xp--current">
             <p class="xp__date" data-i18n="xp.swe.date">oct 2026–actualidad</p>
             <div class="xp__main">
-              <h3 class="xp__role" data-i18n="xp.swe.role">Ingeniero de Software</h3>
-              <p class="xp__desc" data-i18n="xp.swe.desc">
-                Capa de datos de un asistente conversacional con IA sobre WhatsApp y una
-                web abierta (arquitectura RAG híbrida) para dar acceso a los recursos de
-                salud y bienestar de un municipio.
-              </p>
-              <ul class="xp__duties">
-                <li data-i18n="xp.swe.d1">
-                  Modelo de datos en PostgreSQL, PostGIS y pgvector para lugares
-                  geolocalizados, horarios y eventos que cambian en el tiempo, y contenido
-                  para búsqueda semántica.
-                </li>
-                <li data-i18n="xp.swe.d2">
-                  Horarios recurrentes, temporadas y excepciones modelados para que el
-                  asistente responda con exactitud según la fecha y la hora.
-                </li>
-                <li data-i18n="xp.swe.d3">
-                  Proceso de ingesta con trazabilidad de cada dato hasta su origen, detección
-                  de duplicados y actualización incremental, sobre fuentes públicas priorizadas
-                  por frecuencia de actualización y complejidad técnica.
-                </li>
-                <li data-i18n="xp.swe.d4">
-                  Entorno de base de datos con Docker y convenciones de trabajo del repositorio.
-                </li>
-              </ul>
-              <p class="xp__stack">PostgreSQL, PostGIS, pgvector, Docker, Git</p>
+              <article class="xp__card">
+                <header class="xp__top">
+                  <h3 class="xp__role" data-i18n="xp.swe.role">Ingeniero de Software</h3>
+                  <span class="xp__badge" data-i18n="xp.now">Puesto actual</span>
+                </header>
+                <p class="xp__desc" data-i18n="xp.swe.desc">
+                  Capa de datos de un asistente conversacional con IA sobre WhatsApp y una
+                  web abierta (arquitectura RAG híbrida) para dar acceso a los recursos de
+                  salud y bienestar de un municipio.
+                </p>
+                <ul class="xp__duties">
+                  <li data-i18n="xp.swe.d1">
+                    Modelo de datos en PostgreSQL, PostGIS y pgvector para lugares
+                    geolocalizados, horarios y eventos que cambian en el tiempo, y contenido
+                    para búsqueda semántica.
+                  </li>
+                  <li data-i18n="xp.swe.d2">
+                    Horarios recurrentes, temporadas y excepciones modelados para que el
+                    asistente responda con exactitud según la fecha y la hora.
+                  </li>
+                  <li data-i18n="xp.swe.d3">
+                    Proceso de ingesta con trazabilidad de cada dato hasta su origen, detección
+                    de duplicados y actualización incremental, sobre fuentes públicas priorizadas
+                    por frecuencia de actualización y complejidad técnica.
+                  </li>
+                  <li data-i18n="xp.swe.d4">
+                    Entorno de base de datos con Docker y convenciones de trabajo del repositorio.
+                  </li>
+                </ul>
+                <ul class="xp__stack">
+                  <li>PostgreSQL</li>
+                  <li>PostGIS</li>
+                  <li>pgvector</li>
+                  <li>Docker</li>
+                  <li>Git</li>
+                </ul>
+              </article>
             </div>
           </li>
 
           <li class="xp">
             <p class="xp__date" data-i18n="xp.inferia.date">jun–sep 2026</p>
             <div class="xp__main">
-              <h3 class="xp__role" data-i18n="xp.inferia.role">Prácticas de Ingeniería de Datos e IA</h3>
-              <p class="xp__desc" data-i18n="xp.inferia.desc">
-                Pipelines de datos e IA para recopilar, procesar y estructurar información de
-                fuentes de datos públicas.
-              </p>
-              <ul class="xp__duties">
-                <li data-i18n="xp.inferia.d1">
-                  Scrapers con requests y BeautifulSoup que extraen las fichas de más de 400
-                  grupos de investigación de dos universidades y sus proyectos, respetando
-                  robots.txt, con caché en disco y reintentos con backoff exponencial.
-                </li>
-                <li data-i18n="xp.inferia.d2">
-                  Ingesta de registros mercantiles, oficinas de patentes y marcas, repositorios
-                  científicos y portales de contratación pública (XML, JSON y CSV), con carga
-                  en PostgreSQL/PostGIS mediante migraciones versionadas con Alembic.
-                </li>
-                <li data-i18n="xp.inferia.d3">
-                  Orquestación con Apache Airflow en Docker Compose sobre un servidor con GPU:
-                  DAGs con dependencias, ejecución semestral programada y pools para limitar
-                  la concurrencia sobre el modelo.
-                </li>
-                <li data-i18n="xp.inferia.d4">
-                  Filtrado, clasificación y extracción de información estructurada con LLM
-                  locales (Ollama/Llama 3.1), normalizada contra un catálogo controlado.
-                </li>
-              </ul>
-              <p class="xp__stack">Python, requests, BeautifulSoup, Ollama, Llama 3.1, Apache Airflow, Docker, PostgreSQL, PostGIS, Alembic, pandas, SQLite, Git</p>
+              <article class="xp__card">
+                <header class="xp__top">
+                  <h3 class="xp__role" data-i18n="xp.inferia.role">Prácticas de Ingeniería de Datos e IA</h3>
+                </header>
+                <p class="xp__desc" data-i18n="xp.inferia.desc">
+                  Pipelines de datos e IA para recopilar, procesar y estructurar información de
+                  fuentes de datos públicas.
+                </p>
+                <ul class="xp__stack">
+                  <li>Python</li>
+                  <li>requests</li>
+                  <li>BeautifulSoup</li>
+                  <li>Ollama</li>
+                  <li>Llama 3.1</li>
+                  <li>Apache Airflow</li>
+                  <li>Docker</li>
+                  <li>PostgreSQL</li>
+                  <li>PostGIS</li>
+                  <li>Alembic</li>
+                  <li>pandas</li>
+                  <li>SQLite</li>
+                  <li>Git</li>
+                </ul>
+                <details class="xp__more">
+                  <summary>
+                    <span class="xp__more-open" data-i18n="xp.more">Ver qué hice</span>
+                    <span class="xp__more-close" data-i18n="xp.less">Ocultar detalles</span>
+                    <svg class="xp__chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 4.5 6 8.5 10 4.5" /></svg>
+                  </summary>
+                  <ul class="xp__duties">
+                    <li data-i18n="xp.inferia.d1">
+                      Scrapers con requests y BeautifulSoup que extraen las fichas de más de 400
+                      grupos de investigación de dos universidades y sus proyectos, respetando
+                      robots.txt, con caché en disco y reintentos con backoff exponencial.
+                    </li>
+                    <li data-i18n="xp.inferia.d2">
+                      Ingesta de registros mercantiles, oficinas de patentes y marcas, repositorios
+                      científicos y portales de contratación pública (XML, JSON y CSV), con carga
+                      en PostgreSQL/PostGIS mediante migraciones versionadas con Alembic.
+                    </li>
+                    <li data-i18n="xp.inferia.d3">
+                      Orquestación con Apache Airflow en Docker Compose sobre un servidor con GPU:
+                      DAGs con dependencias, ejecución semestral programada y pools para limitar
+                      la concurrencia sobre el modelo.
+                    </li>
+                    <li data-i18n="xp.inferia.d4">
+                      Filtrado, clasificación y extracción de información estructurada con LLM
+                      locales (Ollama/Llama 3.1), normalizada contra un catálogo controlado.
+                    </li>
+                  </ul>
+                </details>
+              </article>
             </div>
           </li>
         </ol>

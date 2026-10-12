@@ -840,20 +840,85 @@ body::before {
 .about__text p { max-width: 28em; }
 .about__text p + p { margin-top: 1.2rem; }
 
+/* En escritorio el texto se reparte en dos columnas para no dejar media sección vacía */
+@media (min-width: 900px) {
+  .about .section__head { max-width: none; }
+  .about__text {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 28em));
+    column-gap: clamp(2.5rem, 6vw, 5.5rem);
+    row-gap: 1.2rem;
+    align-items: start;
+  }
+  .about__text p:first-child { grid-row: span 2; }
+  .about__text p + p { margin-top: 0; }
+}
+
 /* ==========================================================================
    Experiencia
    ========================================================================== */
 .xp-company {
   display: grid;
-  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr);
   column-gap: clamp(1.5rem, 4vw, 3.5rem);
-  row-gap: 1.6rem;
 }
 
-/* El logotipo ocupa la primera fila de la columna izquierda */
-.xp-company__side { grid-column: 1; }
+/* Cabecera de empresa: logotipo, filete y periodo total */
+.xp-company__head {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 1.8rem);
+  margin-bottom: clamp(2rem, 5vh, 2.8rem);
+}
+.xp-company__rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--line-strong), var(--line) 70%, transparent);
+}
+.xp-company__span {
+  font-family: var(--font-deco);
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
 
-/* Cada puesto reparte su fecha a la izquierda y su contenido a la derecha */
+/* Logotipo en dos tintas de la paleta, recortadas con máscaras (scripts/build-logo.py) */
+.xp-logo {
+  position: relative;
+  display: block;
+  width: clamp(130px, 14vw, 170px);
+  aspect-ratio: 650 / 148;
+}
+.xp-logo::before,
+.xp-logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  -webkit-mask: var(--mask) center / contain no-repeat;
+          mask: var(--mask) center / contain no-repeat;
+}
+.xp-logo::before {
+  --mask: url("../images/inferia-logo-ink.png");
+  background: var(--ink);
+}
+.xp-logo::after {
+  --mask: url("../images/inferia-logo-accent.png");
+  background: linear-gradient(120deg, var(--gold-hi), var(--gold) 45%, var(--gold-lo));
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Cada puesto reparte su fecha a la izquierda y su ficha a la derecha */
 .xp-timeline {
   list-style: none;
   grid-column: 1 / -1;
@@ -868,46 +933,79 @@ body::before {
 }
 
 .xp__date {
+  font-family: var(--font-deco);
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--ink-soft);
-  font-size: 0.95rem;
-  padding-top: 0.55rem;
+  text-align: right;
+  padding-top: 2rem;
 }
+.xp--current .xp__date { color: var(--gold); }
 
-/* Filete dorado continuo con un marcador por puesto */
+/* Filete dorado continuo con un rombo por puesto */
 .xp__main {
   position: relative;
-  padding: 0 0 clamp(2.4rem, 6vh, 3.4rem) 2rem;
+  padding: 0 0 clamp(1.8rem, 4.5vh, 2.6rem) clamp(1.6rem, 3vw, 2.4rem);
   border-left: 1px solid var(--gold-lo);
 }
-.xp:last-child .xp__main { padding-bottom: 0.4rem; }
+.xp:last-child .xp__main { padding-bottom: 0; }
 
 .xp__main::before {
   content: "";
   position: absolute;
-  left: -5px;
-  top: 0.75rem;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 0 4px var(--bg);
-}
-.xp + .xp .xp__main::before {
+  left: -6px;
+  top: 2.2rem;
+  width: 11px;
+  height: 11px;
+  rotate: 45deg;
   background: var(--bg);
   border: 1px solid var(--gold);
+  box-shadow: 0 0 0 5px var(--bg);
+}
+.xp--current .xp__main::before {
+  background: var(--gold);
+  animation: xp-pulse 2.8s ease-out infinite;
+}
+@keyframes xp-pulse {
+  0%   { box-shadow: 0 0 0 5px var(--bg), 0 0 0 5px var(--line-strong); }
+  70%, 100% { box-shadow: 0 0 0 5px var(--bg), 0 0 0 14px transparent; }
 }
 
-/* Logotipo monocromo: el fondo blanco desaparece al fundirse con la página */
-.xp__logo {
-  display: block;
-  width: 120px;
-  height: auto;
-  filter: grayscale(1) invert(1) contrast(1.6) brightness(1.15);
-  mix-blend-mode: screen;
+/* Ficha del puesto */
+.xp__card {
+  position: relative;
+  max-width: 44rem;
+  padding: clamp(1.4rem, 3vw, 2rem) clamp(1.3rem, 3vw, 2.2rem);
+  border: 1px solid var(--line);
+  background: var(--bg-2);
 }
-[data-theme="light"] .xp__logo {
-  filter: grayscale(1) contrast(1.6);
-  mix-blend-mode: multiply;
+
+/* El puesto actual se enmarca con esquinas escalonadas en dorado */
+.xp--current .xp__card {
+  border-color: var(--line-strong);
+  background:
+    radial-gradient(120% 90% at 0% 0%, var(--line), transparent 50%),
+    var(--bg-2);
+}
+.xp--current .xp__card::before,
+.xp--current .xp__card::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: var(--gold);
+  clip-path: polygon(0 0, 100% 0, 100% 2px, 8px 2px, 8px 8px, 2px 8px, 2px 100%, 0 100%);
+}
+.xp--current .xp__card::before { top: -5px; left: -5px; }
+.xp--current .xp__card::after { bottom: -5px; right: -5px; rotate: 180deg; }
+
+.xp__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem 1.2rem;
 }
 
 .xp__role {
@@ -917,20 +1015,103 @@ body::before {
   line-height: 1.15;
 }
 
-.xp__desc { margin-top: 0.7rem; max-width: 30em; }
+.xp__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--line-strong);
+  font-family: var(--font-deco);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.xp__badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  rotate: 45deg;
+  background: var(--gold);
+}
+
+.xp__desc { margin-top: 0.8rem; max-width: 34em; }
 
 .xp__duties {
   margin-top: 1.1rem;
   padding-left: 1.15rem;
-  max-width: 30em;
+  max-width: 34em;
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
 }
 .xp__duties li { padding-left: 0.3rem; }
-.xp__duties li::marker { color: var(--gold); }
+.xp__duties { list-style: square; }
+.xp__duties li::marker { color: var(--gold); font-size: 0.8em; }
 
-.xp__stack { margin-top: 1.1rem; max-width: 30em; color: var(--ink-soft); }
+/* Tecnologías como etiquetas */
+.xp__stack {
+  list-style: none;
+  margin-top: 1.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+.xp__stack li {
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--line);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.xp__card:hover .xp__stack li { border-color: var(--line-strong); }
+.xp__stack li:hover { color: var(--gold); }
+
+/* Desplegable con las tareas de puestos anteriores */
+.xp__more {
+  margin-top: 1.3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  interpolate-size: allow-keywords;
+}
+.xp__more summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-deco);
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.xp__more summary::-webkit-details-marker { display: none; }
+.xp__more summary:hover .xp__chev { translate: 0 2px; }
+.xp__more summary:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
+.xp__more-close,
+.xp__more[open] .xp__more-open { display: none; }
+.xp__more[open] .xp__more-close { display: inline; }
+.xp__chev {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  transition: rotate 0.35s var(--ease), translate 0.25s ease;
+}
+.xp__more[open] .xp__chev { rotate: 180deg; }
+.xp__more .xp__duties { margin-top: 1rem; }
+
+/* Apertura suave donde el navegador permite animar hasta height: auto */
+.xp__more::details-content {
+  block-size: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: block-size 0.45s var(--ease), opacity 0.35s ease, content-visibility 0.45s allow-discrete;
+}
+.xp__more[open]::details-content { block-size: auto; opacity: 1; }
 
 /* ==========================================================================
    Proyectos
@@ -1312,13 +1493,15 @@ img.pixel { image-rendering: pixelated; }
   .hero__portrait { width: min(78%, 320px); margin-top: 3.4rem; }
   .xp-company { grid-template-columns: minmax(0, 1fr); }
   .xp-timeline, .xp { display: block; }
-  .xp__logo { width: 100px; }
   .xp__date {
-    position: relative;
-    padding: 0 0 0.35rem 2rem;
+    text-align: left;
+    padding: 0 0 0.9rem clamp(1.6rem, 3vw, 2.4rem);
     border-left: 1px solid var(--gold-lo);
   }
-  .xp__main::before { top: -1.55rem; }
+  .xp__main::before { top: -1.85rem; }
+  .xp-company__head { flex-wrap: wrap; row-gap: 0.7rem; }
+  .xp-company__rule { display: none; }
+  .xp-company__span { white-space: normal; flex-basis: 100%; }
   .project { grid-template-columns: 1fr; gap: 2.6rem; }
   .project:nth-of-type(even) .project__visual { order: 0; }
   .project:nth-of-type(even) .project__body { order: 0; }

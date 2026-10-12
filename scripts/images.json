@@ -1,7 +1,6 @@
 {
   "images": [
     { "src": "retrato.jpg", "widths": [360, 680, 900] },
-    { "src": "inferia-logo-final.jpg", "widths": [120, 240, 360] },
 
     { "src": "tfg1.jpg", "widths": [400, 800] },
     { "src": "tfg2.jpg", "widths": [300, 600] },

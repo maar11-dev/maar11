@@ -67,5 +67,9 @@ El pixel art se escala solo por múltiplos enteros con vecino más próximo, sin
 la página lleva la clase `pixel` (`image-rendering: pixelated`). Su AVIF se descarta cuando
 pesa más que el WebP.
 
+El logotipo de InferIA de Experiencia se pinta con dos máscaras PNG
+(`images/inferia-logo-ink.png` e `images/inferia-logo-accent.png`) para tomar los colores
+del tema. Se generan desde `images/inferia-logo-final.jpg` con `python scripts/build-logo.py`.
+
 Añadiendo `?capture` a la URL se desactivan las animaciones de entrada, útil para
 hacer capturas de pantalla.
