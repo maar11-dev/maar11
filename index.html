@@ -70,8 +70,7 @@
     </div>
   </div>
 
-  <!-- Atmósfera: patrón de abanicos y grano -->
-  <div class="backdrop" aria-hidden="true"></div>
+  <!-- Grano sobre toda la página -->
   <div class="grain" aria-hidden="true"></div>
   <div class="progress" aria-hidden="true"><span class="progress__bar"></span></div>
 
@@ -110,6 +109,7 @@
   <main id="inicio">
     <!-- ============ HERO ============ -->
     <section class="hero" aria-label="Presentación">
+      <div class="hero__pattern" aria-hidden="true"></div>
       <div class="hero__grid">
         <div class="hero__intro">
           <h1 class="hero__name">
@@ -179,133 +179,76 @@
         <h2 class="section__title" data-i18n="xp.title">Experiencia</h2>
       </header>
 
-      <ol class="xp__timeline">
+      <ol class="xp-list">
         <li class="xp reveal">
-          <span class="xp__node" aria-hidden="true"></span>
-          <article class="xp__card deco-card">
-            <header class="xp__head">
-              <figure class="xp__logo">
-                <img src="images/inferia-logo-final.jpg" alt="Logotipo de InferIA" loading="lazy" width="667" height="267" />
-              </figure>
-              <div class="xp__ident">
-                <div class="xp__meta mono">
-                  <span class="xp__date" data-i18n="xp.swe.date">octubre 2026 — actualidad</span>
-                </div>
-                <h3 class="xp__role" data-i18n="xp.swe.role">Ingeniero de Software</h3>
-                <p class="xp__company">InferIA</p>
-              </div>
-            </header>
-
-            <div class="xp__body">
-              <div class="xp__col">
-                <p class="xp__desc" data-i18n="xp.swe.desc">
-                  Diseño la capa de datos de un asistente conversacional con IA sobre
-                  WhatsApp y una web abierta (arquitectura RAG híbrida), orientado a dar
-                  acceso a los recursos de salud y bienestar de un municipio.
-                </p>
-                <ul class="project__tags xp__tags mono">
-                  <li>PostgreSQL</li><li>PostGIS</li><li>pgvector</li><li>RAG híbrido</li><li>Docker</li><li>Git</li>
-                </ul>
-              </div>
-
-              <div class="xp__col">
-                <ol class="xp__duties">
-                  <li data-i18n="xp.swe.d1">
-                    Diseño del modelo de datos sobre PostgreSQL, PostGIS y pgvector para
-                    información heterogénea: lugares geolocalizados, horarios y eventos que
-                    cambian en el tiempo, y contenido para búsqueda semántica.
-                  </li>
-                  <li data-i18n="xp.swe.d2">
-                    Modelado de horarios recurrentes, temporadas y excepciones, para que el
-                    asistente responda con exactitud según la fecha y la hora.
-                  </li>
-                  <li data-i18n="xp.swe.d3">
-                    Planificación de la recolección de múltiples fuentes de datos públicas,
-                    priorizadas según su frecuencia de actualización y su complejidad técnica.
-                  </li>
-                  <li data-i18n="xp.swe.d4">
-                    Diseño del proceso de ingesta: trazabilidad de cada dato hasta su origen,
-                    detección de duplicados y actualización incremental.
-                  </li>
-                  <li data-i18n="xp.swe.d5">
-                    Puesta en marcha del entorno de base de datos con Docker y definición de
-                    las convenciones de trabajo del repositorio.
-                  </li>
-                </ol>
-              </div>
-            </div>
-          </article>
+          <div class="xp__side">
+            <p class="xp__date" data-i18n="xp.swe.date">octubre 2026 — actualidad</p>
+            <img class="xp__logo" src="images/inferia-logo-final.jpg" alt="InferIA" loading="lazy" width="667" height="267" />
+          </div>
+          <div class="xp__main">
+            <h3 class="xp__role" data-i18n="xp.swe.role">Ingeniero de Software</h3>
+            <p class="xp__desc" data-i18n="xp.swe.desc">
+              Capa de datos de un asistente conversacional con IA sobre WhatsApp y una
+              web abierta (arquitectura RAG híbrida) para dar acceso a los recursos de
+              salud y bienestar de un municipio.
+            </p>
+            <ul class="xp__duties">
+              <li data-i18n="xp.swe.d1">
+                Modelo de datos en PostgreSQL, PostGIS y pgvector para lugares
+                geolocalizados, horarios y eventos que cambian en el tiempo, y contenido
+                para búsqueda semántica.
+              </li>
+              <li data-i18n="xp.swe.d2">
+                Horarios recurrentes, temporadas y excepciones modelados para que el
+                asistente responda con exactitud según la fecha y la hora.
+              </li>
+              <li data-i18n="xp.swe.d3">
+                Proceso de ingesta con trazabilidad de cada dato hasta su origen, detección
+                de duplicados y actualización incremental, sobre fuentes públicas priorizadas
+                por frecuencia de actualización y complejidad técnica.
+              </li>
+              <li data-i18n="xp.swe.d4">
+                Entorno de base de datos con Docker y convenciones de trabajo del repositorio.
+              </li>
+            </ul>
+            <p class="xp__stack">PostgreSQL, PostGIS, pgvector, Docker, Git</p>
+          </div>
         </li>
 
-        <li class="xp xp--past reveal">
-          <span class="xp__node" aria-hidden="true"></span>
-          <article class="xp__card deco-card">
-            <header class="xp__head">
-              <figure class="xp__logo">
-                <img src="images/inferia-logo-final.jpg" alt="Logotipo de InferIA" loading="lazy" width="667" height="267" />
-              </figure>
-              <div class="xp__ident">
-                <div class="xp__meta mono">
-                  <span class="xp__date" data-i18n="xp.inferia.date">junio — septiembre 2026</span>
-                </div>
-                <h3 class="xp__role" data-i18n="xp.inferia.role">Prácticas — Ingeniero de Datos e IA</h3>
-                <p class="xp__company">InferIA</p>
-              </div>
-            </header>
-
-            <div class="xp__body">
-              <div class="xp__col">
-                <p class="xp__desc" data-i18n="xp.inferia.desc">
-                  Desarrollo de pipelines de datos e inteligencia artificial para la
-                  recopilación, procesamiento y estructuración de información procedente
-                  de fuentes de datos públicas.
-                </p>
-                <ul class="project__tags xp__tags mono">
-                  <li>Python</li><li>requests/BeautifulSoup</li><li>Ollama/Llama 3.1</li><li>Apache Airflow</li><li>Docker</li><li>PostgreSQL/PostGIS</li><li>Alembic</li><li>pandas</li><li>SQLite</li><li>Git</li>
-                </ul>
-              </div>
-
-              <div class="xp__col">
-                <ol class="xp__duties">
-                  <li data-i18n="xp.inferia.d1">
-                    Diseño e implementación de procesos de ingesta que integran diversas
-                    fuentes de datos públicas (registros mercantiles, oficinas de patentes
-                    y marcas, repositorios científicos y portales de contratación pública)
-                    en formatos heterogéneos (XML, JSON, CSV).
-                  </li>
-                  <li data-i18n="xp.inferia.d2">
-                    Orquestación del flujo completo con Apache Airflow desplegado mediante
-                    Docker Compose en un servidor con GPU: DAGs con dependencias entre
-                    tareas, ejecución programada semestral y control de concurrencia sobre
-                    el modelo mediante pools.
-                  </li>
-                  <li data-i18n="xp.inferia.d3">
-                    Desarrollo de scrapers web con requests y BeautifulSoup para extraer
-                    las fichas de más de 400 grupos de investigación de dos universidades
-                    junto con sus proyectos, respetando robots.txt y limitando la frecuencia
-                    de peticiones, con caché en disco y reintentos con backoff exponencial.
-                  </li>
-                  <li data-i18n="xp.inferia.d4">
-                    Aplicación de modelos de lenguaje (LLM) locales con Ollama/Llama 3.1
-                    para filtrar, clasificar y extraer información estructurada,
-                    normalizándola contra un catálogo controlado.
-                  </li>
-                  <li data-i18n="xp.inferia.d5">
-                    Desarrollo de procesos de ingeniería de datos robustos: procesamiento
-                    por lotes de grandes volúmenes, cachés reanudables y cargas idempotentes.
-                  </li>
-                  <li data-i18n="xp.inferia.d6">
-                    Modelado y carga de datos en PostgreSQL/PostGIS mediante migraciones
-                    versionadas con Alembic.
-                  </li>
-                  <li data-i18n="xp.inferia.d7">
-                    Elaboración de estudios de viabilidad de fuentes de datos y documentación
-                    técnica de los procesos desarrollados.
-                  </li>
-                </ol>
-              </div>
-            </div>
-          </article>
+        <li class="xp reveal">
+          <div class="xp__side">
+            <p class="xp__date" data-i18n="xp.inferia.date">junio — septiembre 2026</p>
+            <img class="xp__logo" src="images/inferia-logo-final.jpg" alt="InferIA" loading="lazy" width="667" height="267" />
+          </div>
+          <div class="xp__main">
+            <h3 class="xp__role" data-i18n="xp.inferia.role">Prácticas de Ingeniería de Datos e IA</h3>
+            <p class="xp__desc" data-i18n="xp.inferia.desc">
+              Pipelines de datos e IA para recopilar, procesar y estructurar información de
+              fuentes de datos públicas.
+            </p>
+            <ul class="xp__duties">
+              <li data-i18n="xp.inferia.d1">
+                Scrapers con requests y BeautifulSoup que extraen las fichas de más de 400
+                grupos de investigación de dos universidades y sus proyectos, respetando
+                robots.txt, con caché en disco y reintentos con backoff exponencial.
+              </li>
+              <li data-i18n="xp.inferia.d2">
+                Ingesta de registros mercantiles, oficinas de patentes y marcas, repositorios
+                científicos y portales de contratación pública (XML, JSON y CSV), con carga
+                en PostgreSQL/PostGIS mediante migraciones versionadas con Alembic.
+              </li>
+              <li data-i18n="xp.inferia.d3">
+                Orquestación con Apache Airflow en Docker Compose sobre un servidor con GPU:
+                DAGs con dependencias, ejecución semestral programada y pools para limitar
+                la concurrencia sobre el modelo.
+              </li>
+              <li data-i18n="xp.inferia.d4">
+                Filtrado, clasificación y extracción de información estructurada con LLM
+                locales (Ollama/Llama 3.1), normalizada contra un catálogo controlado.
+              </li>
+            </ul>
+            <p class="xp__stack">Python, requests, BeautifulSoup, Ollama, Llama 3.1, Apache Airflow, Docker, PostgreSQL, PostGIS, Alembic, pandas, SQLite, Git</p>
+          </div>
         </li>
       </ol>
     </section>
@@ -348,10 +291,8 @@
               modelos de difusión, y evaluación de coherencia estilística en cada iteración.
             </p>
           </div>
-          <ul class="project__tags mono">
-            <li>Python</li><li>PyTorch</li><li>ai-toolkit</li><li>Diffusers</li><li>LoRA / Dreambooth</li>
-          </ul>
-          <div class="project__links mono">
+          <p class="project__stack">Python, PyTorch, ai-toolkit, Diffusers, LoRA, Dreambooth</p>
+          <div class="project__links">
             <a class="project__link" href="https://github.com/maar11-dev/tfg-lora-flux-anime" target="_blank" rel="noopener noreferrer" data-i18n="link.repo">ver repositorio</a>
           </div>
         </div>
@@ -388,10 +329,8 @@
               y relevancia semántica.
             </p>
           </div>
-          <ul class="project__tags mono">
-            <li>Python</li><li>FastAPI</li><li>Uvicorn</li><li>Groq (gpt-oss-20b + Whisper + qwen3.6-27b)</li><li>Upstash Vector</li><li>Meta Cloud API</li><li>Render</li>
-          </ul>
-          <div class="project__links mono">
+          <p class="project__stack">Python, FastAPI, Uvicorn, Groq (gpt-oss-20b, Whisper, qwen3.6-27b), Upstash Vector, Meta Cloud API, Render</p>
+          <div class="project__links">
             <a class="project__link" href="https://github.com/maar11-dev/m.ai" target="_blank" rel="noopener noreferrer" data-i18n="link.repo">ver repositorio</a>
           </div>
         </div>
@@ -431,10 +370,8 @@
               multimedia mediante Cloudinary y Multer, desplegado en Vercel.
             </p>
           </div>
-          <ul class="project__tags mono">
-            <li>MongoDB</li><li>Express</li><li>Angular</li><li>Node.js</li><li>Cloudinary</li><li>Multer</li><li>Vercel</li><li>Render</li><li>Git</li>
-          </ul>
-          <div class="project__links mono">
+          <p class="project__stack">MongoDB, Express, Angular, Node.js, Cloudinary, Multer, Vercel, Render, Git</p>
+          <div class="project__links">
             <a class="project__link" href="https://github.com/maar11-dev/UA" target="_blank" rel="noopener noreferrer" data-i18n="link.repo">ver repositorio</a>
           </div>
         </div>
@@ -480,10 +417,8 @@
               a través de una fachada, a un motor propio basado en OpenGL.
             </p>
           </div>
-          <ul class="project__tags mono">
-            <li>C++</li><li>ECS</li><li>OpenGL</li><li>Raylib</li><li>FMOD Studio</li><li>Git</li>
-          </ul>
-          <div class="project__links mono">
+          <p class="project__stack">C++, ECS, OpenGL, Raylib, FMOD Studio, Git</p>
+          <div class="project__links">
             <a class="project__link" href="https://issolabs.itch.io/dopamine-chasers" target="_blank" rel="noopener noreferrer" data-i18n="link.play">jugar en itch.io</a>
           </div>
         </div>
@@ -524,10 +459,8 @@
               Premio del público en la GBRetroDev 2025 (Heroes of Assembly 2).
             </p>
           </div>
-          <ul class="project__tags mono">
-            <li data-i18n="pf.tag.asm">Ensamblador</li><li>Game Boy</li><li data-i18n="pf.tag.low">Bajo nivel</li><li>GBRetroDev 2025</li>
-          </ul>
-          <div class="project__links mono">
+          <p class="project__stack" data-i18n="pf.stack">Ensamblador, Game Boy</p>
+          <div class="project__links">
             <a class="project__link" href="https://issolabs.itch.io/preflop" target="_blank" rel="noopener noreferrer" data-i18n="link.play">jugar en itch.io</a>
           </div>
         </div>
@@ -563,10 +496,8 @@
               Finalista de la Level Up Game Jam 2025.
             </p>
           </div>
-          <ul class="project__tags mono">
-            <li>Godot</li><li>Git</li><li data-i18n="tf.tag.days">8 días</li>
-          </ul>
-          <div class="project__links mono">
+          <p class="project__stack">Godot, Git</p>
+          <div class="project__links">
             <a class="project__link" href="https://maxmartdev.itch.io/tramfight" target="_blank" rel="noopener noreferrer" data-i18n="link.play">jugar en itch.io</a>
           </div>
         </div>
@@ -579,79 +510,33 @@
         <h2 class="section__title" data-i18n="skills.title">Herramientas</h2>
       </header>
 
-      <!-- Cada tecnología lleva su icono; los conceptos sin marca usan glifos deco propios -->
-      <div class="skills__grid">
-        <div class="skillset reveal">
-          <h3 class="skillset__name" data-i18n="skill.ai">IA aplicada</h3>
-          <ul class="tech-list">
-            <li class="tech"><i class="tech__ico" data-ico="deco-chevron" aria-hidden="true"></i><span class="tech__name">RAG</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="deco-sun" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.ai.agents">Agentes</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="ollama" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.ai.local">LLM locales · Ollama</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="deco-diamond" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.ai.vector">Bases de datos vectoriales</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="deco-fan" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.ai.prompt">Prompt engineering técnico</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="deco-grid" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.ai.dataset">Elaboración de datasets</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="deco-steps" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.ai.labeling">Etiquetado de datos</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="pytorch" aria-hidden="true"></i><span class="tech__name">ai-toolkit · fine-tuning</span></li>
-          </ul>
+      <div class="tools">
+        <div class="tools__group reveal">
+          <h3 class="tools__name" data-i18n="tools.data">Datos e IA</h3>
+          <p data-i18n="tools.data.p">
+            Python, PostgreSQL, PostGIS, pgvector, Alembic, pandas, SQLite, Apache Airflow
+            y Docker. RAG, agentes, LLM locales con Ollama, bases de datos vectoriales,
+            elaboración y etiquetado de datasets, y fine-tuning de modelos de difusión con
+            PyTorch, Diffusers y ai-toolkit.
+          </p>
         </div>
-        <div class="skillset reveal">
-          <h3 class="skillset__name" data-i18n="skill.data">Ingeniería de datos</h3>
-          <ul class="tech-list">
-            <li class="tech"><i class="tech__ico" data-ico="postgresql" aria-hidden="true"></i><span class="tech__name">PostgreSQL</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="deco-grid" aria-hidden="true"></i><span class="tech__name">PostGIS</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="deco-diamond" aria-hidden="true"></i><span class="tech__name">pgvector</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="deco-steps" aria-hidden="true"></i><span class="tech__name">Alembic</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="pandas" aria-hidden="true"></i><span class="tech__name">pandas</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="sqlite" aria-hidden="true"></i><span class="tech__name">SQLite</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="apacheairflow" aria-hidden="true"></i><span class="tech__name">Apache Airflow</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="docker" aria-hidden="true"></i><span class="tech__name">Docker</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="deco-chevron" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.data.pipelines">Pipelines de ingesta</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="deco-sun" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.data.batch">Procesamiento por lotes</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="deco-fan" aria-hidden="true"></i><span class="tech__name">XML / JSON / CSV</span></li>
-          </ul>
+        <div class="tools__group reveal">
+          <h3 class="tools__name" data-i18n="tools.web">Web</h3>
+          <p data-i18n="tools.web.p">
+            HTML, CSS, JavaScript, React, Angular, Node.js, Express, MongoDB, FastAPI,
+            la cloud API de Meta y Git.
+          </p>
         </div>
-        <div class="skillset reveal">
-          <h3 class="skillset__name" data-i18n="skill.web">Desarrollo web</h3>
-          <ul class="tech-list">
-            <li class="tech"><i class="tech__ico" data-ico="html5" aria-hidden="true"></i><span class="tech__name">HTML / CSS</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="javascript" aria-hidden="true"></i><span class="tech__name">JavaScript</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="mongodb" aria-hidden="true"></i><span class="tech__name">MongoDB</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="express" aria-hidden="true"></i><span class="tech__name">Express</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="react" aria-hidden="true"></i><span class="tech__name">React</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="angular" aria-hidden="true"></i><span class="tech__name">Angular</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="nodedotjs" aria-hidden="true"></i><span class="tech__name">Node.js</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="python" aria-hidden="true"></i><span class="tech__name">Python</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="fastapi" aria-hidden="true"></i><span class="tech__name">FastAPI</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="meta" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.web.meta">cloud API de Meta</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="git" aria-hidden="true"></i><span class="tech__name">Git</span></li>
-          </ul>
+        <div class="tools__group reveal">
+          <h3 class="tools__name" data-i18n="tools.games">Videojuegos y gráficos</h3>
+          <p data-i18n="tools.games.p">
+            C++, OpenGL, Raylib, FMOD Studio, Godot, Unreal Engine y ensamblador de
+            Game Boy.
+          </p>
         </div>
-        <div class="skillset reveal">
-          <h3 class="skillset__name" data-i18n="skill.game">Videojuegos</h3>
-          <ul class="tech-list">
-            <li class="tech"><i class="tech__ico" data-ico="cplusplus" aria-hidden="true"></i><span class="tech__name">C++</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="godotengine" aria-hidden="true"></i><span class="tech__name">Godot</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="unrealengine" aria-hidden="true"></i><span class="tech__name">Unreal Engine</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="deco-steps" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.game.asm">Ensamblador</span></li>
-          </ul>
-        </div>
-        <div class="skillset reveal">
-          <h3 class="skillset__name" data-i18n="skill.art">Diseño y arte</h3>
-          <ul class="tech-list">
-            <li class="tech"><i class="tech__ico" data-ico="adobephotoshop" aria-hidden="true"></i><span class="tech__name">Photoshop</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="figma" aria-hidden="true"></i><span class="tech__name">Figma</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="canva" aria-hidden="true"></i><span class="tech__name">Canva</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="blender" aria-hidden="true"></i><span class="tech__name">Blender</span></li>
-          </ul>
-        </div>
-        <div class="skillset reveal">
-          <h3 class="skillset__name" data-i18n="skill.soft">Soft skills</h3>
-          <ul class="tech-list">
-            <li class="tech"><i class="tech__ico" data-ico="deco-chevron" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.soft.agile">Metodologías ágiles</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="deco-sun" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.soft.auto">Aprendizaje autónomo</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="deco-fan" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.soft.aesthetic">Visión estética</span></li>
-            <li class="tech"><i class="tech__ico" data-ico="deco-diamond" aria-hidden="true"></i><span class="tech__name" data-i18n="sk.soft.problem">Resolución de problemas técnicos</span></li>
-          </ul>
+        <div class="tools__group reveal">
+          <h3 class="tools__name" data-i18n="tools.design">Diseño</h3>
+          <p data-i18n="tools.design.p">Photoshop, Figma, Canva y Blender.</p>
         </div>
       </div>
     </section>
@@ -663,26 +548,24 @@
       </header>
 
       <div class="contact__inner reveal">
-        <div class="contact__sun" aria-hidden="true"></div>
         <p class="contact__big" data-i18n="contact.big">
           Si quieres hablar de un proyecto, escríbeme.
         </p>
         <a class="contact__mail" href="mailto:m.angelarroyo2004@gmail.com">
           m.angelarroyo2004<wbr/>@gmail.com
         </a>
-        <div class="contact__actions">
-          <a class="btn btn--ghost" href="https://www.linkedin.com/in/miguel-%C3%A1ngel-arroyo-/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a class="btn btn--ghost" href="cv/CV_Miguel_Angel_Arroyo.pdf" download
-             data-href-en="cv/CV_Miguel_Angel_Arroyo_EN.pdf" data-i18n="contact.cv">Descargar CV</a>
-          <a class="btn btn--ghost" href="https://github.com/maar11-dev" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
+        <p class="contact__links">
+          <a href="https://www.linkedin.com/in/miguel-%C3%A1ngel-arroyo-/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/maar11-dev" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="cv/CV_Miguel_Angel_Arroyo.pdf" download
+             data-href-en="cv/CV_Miguel_Angel_Arroyo_EN.pdf" data-i18n="contact.cv">CV</a>
+        </p>
       </div>
     </section>
   </main>
 
   <!-- ============ PIE ============ -->
   <footer class="footer">
-    <span class="footer__ornament" aria-hidden="true"></span>
     <span data-i18n="footer.by">Miguel Ángel Arroyo, 2026</span>
   </footer>
 

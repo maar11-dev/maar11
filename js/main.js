@@ -96,35 +96,28 @@
     "xp.swe.date": "october 2026 — present",
     "xp.swe.role": "Software Engineer",
     "xp.swe.desc":
-      "I design the data layer of an AI conversational assistant on WhatsApp and an open website (hybrid RAG architecture), aimed at giving access to a municipality's health and wellbeing resources.",
+      "Data layer for an AI conversational assistant on WhatsApp and an open website (hybrid RAG architecture) that gives access to a municipality's health and wellbeing resources.",
     "xp.swe.d1":
-      "Data model design on PostgreSQL, PostGIS and pgvector for heterogeneous information: geolocated places, schedules and events that change over time, and content for semantic search.",
+      "Data model in PostgreSQL, PostGIS and pgvector for geolocated places, schedules and events that change over time, and content for semantic search.",
     "xp.swe.d2":
-      "Modelling of recurring schedules, seasons and exceptions, so the assistant answers accurately depending on the date and time.",
+      "Recurring schedules, seasons and exceptions modelled so the assistant answers accurately depending on the date and time.",
     "xp.swe.d3":
-      "Planning the collection of multiple public data sources, prioritized by update frequency and technical complexity.",
+      "Ingestion process with traceability of every record back to its source, duplicate detection and incremental updates, over public sources prioritized by update frequency and technical complexity.",
     "xp.swe.d4":
-      "Ingestion process design: traceability of every record back to its source, duplicate detection and incremental updates.",
-    "xp.swe.d5":
-      "Setting up the database environment with Docker and defining the repository's working conventions.",
+      "Database environment with Docker and the repository's working conventions.",
     "xp.inferia.date": "june — september 2026",
-    "xp.inferia.role": "Internship — Data & AI Engineer",
+    "xp.inferia.role":
+      "Data & AI Engineering Internship",
     "xp.inferia.desc":
-      "Development of data and artificial intelligence pipelines for the collection, processing and structuring of information coming from public data sources.",
+      "Data and AI pipelines to collect, process and structure information from public data sources.",
     "xp.inferia.d1":
-      "Design and implementation of ingestion processes that integrate a range of public data sources (company registries, patent and trademark offices, scientific repositories and public procurement portals) in heterogeneous formats (XML, JSON, CSV).",
+      "Scrapers with requests and BeautifulSoup that extract the profiles of more than 400 research groups from two universities and their projects, respecting robots.txt, with on-disk caching and retries with exponential backoff.",
     "xp.inferia.d2":
-      "Orchestration of the full workflow with Apache Airflow deployed via Docker Compose on a GPU server: DAGs with task dependencies, scheduled semi-annual runs and concurrency control over the model through pools.",
+      "Ingestion of company registries, patent and trademark offices, scientific repositories and public procurement portals (XML, JSON and CSV), loaded into PostgreSQL/PostGIS through versioned Alembic migrations.",
     "xp.inferia.d3":
-      "Development of web scrapers with requests and BeautifulSoup to extract the profiles of more than 400 research groups from two universities along with their projects, respecting robots.txt and rate-limiting requests, with on-disk caching and retries with exponential backoff.",
+      "Orchestration with Apache Airflow on Docker Compose on a GPU server: DAGs with dependencies, scheduled semi-annual runs and pools to limit concurrency over the model.",
     "xp.inferia.d4":
-      "Application of local language models (LLMs) with Ollama/Llama 3.1 to filter, classify and extract structured information, normalizing it against a controlled catalogue.",
-    "xp.inferia.d5":
-      "Development of robust data-engineering processes: batch processing of large volumes, resumable caches and idempotent loads.",
-    "xp.inferia.d6":
-      "Data modelling and loading into PostgreSQL/PostGIS through versioned migrations with Alembic.",
-    "xp.inferia.d7":
-      "Feasibility studies of data sources and technical documentation of the processes developed.",
+      "Filtering, classification and extraction of structured information with local LLMs (Ollama/Llama 3.1), normalized against a controlled catalogue.",
 
     // Proyectos
     "projects.title": "Projects",
@@ -172,8 +165,8 @@
     "pf.d1":
       "A level-based puzzle game for the Game Boy, programmed in assembly language: mechanics design, collision system, efficient tilemap rendering, state machines, scene management and enemy AI. All low-level and tuned to the real limitations of the console.",
     "pf.d2": "Audience award at GBRetroDev 2025 (Heroes of Assembly 2).",
-    "pf.tag.asm": "Assembly",
-    "pf.tag.low": "Low-level",
+    "pf.stack":
+      "Assembly, Game Boy",
 
     // TRAMFIGHT
     "tf.cap": "poster and gameplay, original pixel art",
@@ -182,35 +175,26 @@
     "tf.sub": "jam game built with Godot in 8 days",
     "tf.d1":
       "A complete, playable game built in Godot in just 8 days, with team version control under the real pressure of a jam. Finalist of the Level Up Game Jam 2025.",
-    "tf.tag.days": "8 days",
 
     // Habilidades
     "skills.title": "Tools",
-    "skill.ai": "Applied AI",
-    "skill.data": "Data engineering",
-    "skill.web": "Web development",
-    "skill.game": "Games",
-    "skill.art": "Design &amp; art",
-    "skill.soft": "Soft skills",
-    "sk.ai.agents": "Agents",
-    "sk.ai.local": "Local LLMs · Ollama",
-    "sk.ai.vector": "Vector databases",
-    "sk.data.pipelines": "Ingestion pipelines",
-    "sk.data.batch": "Batch processing",
-    "sk.ai.prompt": "Technical prompt engineering",
-    "sk.ai.dataset": "Dataset creation",
-    "sk.ai.labeling": "Data labeling",
-    "sk.web.meta": "Meta cloud API",
-    "sk.game.asm": "Assembly",
-    "sk.soft.agile": "Agile methodologies",
-    "sk.soft.auto": "Self-directed learning",
-    "sk.soft.aesthetic": "Aesthetic sense",
-    "sk.soft.problem": "Technical problem-solving",
+    "tools.data": "Data & AI",
+    "tools.data.p":
+      "Python, PostgreSQL, PostGIS, pgvector, Alembic, pandas, SQLite, Apache Airflow and Docker. RAG, agents, local LLMs with Ollama, vector databases, dataset creation and labeling, and fine-tuning of diffusion models with PyTorch, Diffusers and ai-toolkit.",
+    "tools.web": "Web",
+    "tools.web.p":
+      "HTML, CSS, JavaScript, React, Angular, Node.js, Express, MongoDB, FastAPI, the Meta cloud API and Git.",
+    "tools.games": "Games & graphics",
+    "tools.games.p":
+      "C++, OpenGL, Raylib, FMOD Studio, Godot, Unreal Engine and Game Boy assembly.",
+    "tools.design": "Design",
+    "tools.design.p": "Photoshop, Figma, Canva and Blender.",
 
     // Contacto
     "contact.title": "Contact",
     "contact.big": "If you want to talk about a project, write to me.",
-    "contact.cv": "Download CV",
+    "contact.cv":
+      "CV",
 
     // Enlaces de proyecto
     "link.play": "play on itch.io",
@@ -354,8 +338,7 @@
   update();
 })();
 
-// Movimiento: el retrato sigue al ratón, los rayos se desplazan con el scroll
-// y los paneles deco se iluminan donde está el puntero
+// Movimiento: el retrato sigue al ratón y los rayos se desplazan con el scroll
 (function () {
   const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const fine = window.matchMedia("(pointer: fine)").matches;
@@ -392,18 +375,4 @@
     }, { passive: true });
   }
 
-  if (fine) {
-    document.querySelectorAll(".deco-card, .skillset, .about__facts").forEach((card) => {
-      card.addEventListener("pointermove", (e) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty("--mx", `${e.clientX - r.left}px`);
-        card.style.setProperty("--my", `${e.clientY - r.top}px`);
-      });
-    });
-  }
 })();
-
-// Orden de aparición de las fichas de tecnologías
-document.querySelectorAll(".skillset").forEach((set) => {
-  set.querySelectorAll(".tech").forEach((tile, i) => tile.style.setProperty("--i", i));
-});
