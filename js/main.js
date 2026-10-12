@@ -68,25 +68,22 @@
     "nav.about": "about",
     "nav.xp": "experience",
     "nav.projects": 'projects <span class="nav-drop__caret" aria-hidden="true">▾</span>',
-    "nav.ai": '<span class="nav-drop__dot nav-drop__dot--ai" aria-hidden="true"></span>applied ai',
-    "nav.web": '<span class="nav-drop__dot nav-drop__dot--web" aria-hidden="true"></span>web development',
-    "nav.games": '<span class="nav-drop__dot nav-drop__dot--game" aria-hidden="true"></span>games',
-    "nav.skills": "skills",
+    "nav.ai": "applied ai",
+    "nav.web": "web development",
+    "nav.games": "games",
+    "nav.skills": "tools",
     "nav.contact": "contact",
 
     // Hero
     "hero.role":
       "Software Engineer at InferIA since October 2026. I design the data layer of AI assistants, and I've built web development and game projects.",
-    "hero.cta1": 'View projects <span aria-hidden="true">↓</span>',
-    "hero.cta2": 'Get in touch <span aria-hidden="true">↗</span>',
-    "hero.cta3": 'Download CV <span aria-hidden="true">↓</span>',
+    "hero.cta1": "View projects",
+    "hero.cta2": "Get in touch",
+    "hero.cta3": "Download CV",
 
-    // Marquesina
-    "marquee":
-      "applied ai ✺ rag &amp; agents ✺ fine-tuning ✺ web development ✺ games ✺ digital art ✺ prompt engineering ✺ mean / mern ✺ godot &amp; unreal ✺&nbsp;",
-
+    
     // Sobre mí
-    "about.title": "<em>About</em> me",
+    "about.title": "About me",
     "about.p1":
       "I have a degree in Multimedia Engineering. Since October 2026 I've worked as a Software Engineer at InferIA, where I design the data layer of an AI conversational assistant. Before that I did a data and AI engineering internship there, from June to September 2026.",
     "about.p2":
@@ -95,11 +92,8 @@
       "Right now I focus on data and applied AI: PostgreSQL modelling, ingestion of public data sources and RAG systems.",
 
     // Experiencia
-    "xp.title": "Professional <em>experience</em>",
-    "xp.duties": "responsibilities",
-    "xp.tech": "technologies",
+    "xp.title": "Experience",
     "xp.swe.date": "october 2026 — present",
-    "xp.swe.badge": "ongoing",
     "xp.swe.role": "Software Engineer",
     "xp.swe.desc":
       "I design the data layer of an AI conversational assistant on WhatsApp and an open website (hybrid RAG architecture), aimed at giving access to a municipality's health and wellbeing resources.",
@@ -114,7 +108,6 @@
     "xp.swe.d5":
       "Setting up the database environment with Docker and defining the repository's working conventions.",
     "xp.inferia.date": "june — september 2026",
-    "xp.inferia.badge": "completed",
     "xp.inferia.role": "Internship — Data & AI Engineer",
     "xp.inferia.desc":
       "Development of data and artificial intelligence pipelines for the collection, processing and structuring of information coming from public data sources.",
@@ -134,15 +127,14 @@
       "Feasibility studies of data sources and technical documentation of the processes developed.",
 
     // Proyectos
-    "projects.title": "Featured <em>projects</em>",
-    "cat.ai": '<span class="projects__cat-dot projects__cat-dot--ai" aria-hidden="true"></span>Artificial <em>intelligence</em>',
-    "cat.web": '<span class="projects__cat-dot projects__cat-dot--web" aria-hidden="true"></span>Web <em>development</em>',
-    "cat.games": '<span class="projects__cat-dot projects__cat-dot--game" aria-hidden="true"></span><em>Games</em>',
+    "projects.title": "Projects",
+    "cat.ai": "Artificial intelligence",
+    "cat.web": "Web development",
+    "cat.games": "Games",
 
     // TFG
     "tfg.cap": "real model outputs — style trained with LoRA",
     "tfg.date": "jan — jul 2026",
-    "tfg.badge": "completed",
     "tfg.title": "Generative image-model training pipeline",
     "tfg.sub": "bachelor's degree thesis",
     "tfg.d1":
@@ -151,7 +143,6 @@
     // m.ai
     "mai.cap": "the bot in production, inside WhatsApp",
     "mai.date": "june 2026",
-    "mai.badge": "deployed",
     "mai.title": "m.ai — note assistant over WhatsApp",
     "mai.sub": "bot with a full rag architecture",
     "mai.d1":
@@ -160,7 +151,6 @@
     // RenderBox
     "rb.cap": "the platform in production, deployed on Vercel",
     "rb.date": "feb — may 2025",
-    "rb.badge": "completed",
     "rb.sub": "web platform for digital assets",
     "rb.d1":
       "A site to centralize the publishing, management and discovery of creative resources — 2D, 3D, video and audio. Full MEAN stack with media file handling via Cloudinary and Multer, deployed on Vercel.",
@@ -168,7 +158,6 @@
     // Dopamine Chasers
     "dc.cap": "shooter gameplay — custom engine over OpenGL",
     "dc.date": "sep 2025 — may 2026",
-    "dc.badge": "PBL Multimedia Engineering",
     "dc.sub": "wave-based fps with a custom c++ engine",
     "dc.d1":
       "A wave-based FPS shooter with escape-room-style progression, inspired by Call of Duty Zombies. Group project for the fourth year of Multimedia Engineering, built under the Project-Based Learning methodology.",
@@ -178,7 +167,7 @@
     // Preflop
     "pf.cap": "title screen and gameplay — pixel art for Game Boy",
     "pf.date": "oct — nov 2025",
-    "pf.badge": "audience award",
+    "pf.badge": "Audience award, GBRetroDev 2025",
     "pf.sub": "assembly puzzles for Game Boy",
     "pf.d1":
       "A level-based puzzle game for the Game Boy, programmed in assembly language: mechanics design, collision system, efficient tilemap rendering, state machines, scene management and enemy AI. All low-level and tuned to the real limitations of the console.",
@@ -189,20 +178,20 @@
     // TRAMFIGHT
     "tf.cap": "poster and gameplay, original pixel art",
     "tf.date": "july 2025",
-    "tf.badge": "finalist",
-    "tf.sub": "finalist — level up game jam 2025",
+    "tf.badge": "Finalist, Level Up Game Jam 2025",
+    "tf.sub": "jam game built with Godot in 8 days",
     "tf.d1":
       "A complete, playable game built in Godot in just 8 days, with team version control under the real pressure of a jam. Finalist of the Level Up Game Jam 2025.",
     "tf.tag.days": "8 days",
 
     // Habilidades
-    "skills.title": "<em>Skills</em> dataset",
-    "skill.ai": '<span class="skillset__dot skillset__dot--ai" aria-hidden="true"></span>Applied AI',
-    "skill.data": '<span class="skillset__dot skillset__dot--data" aria-hidden="true"></span>Data engineering',
-    "skill.web": '<span class="skillset__dot skillset__dot--web" aria-hidden="true"></span>Web development',
-    "skill.game": '<span class="skillset__dot skillset__dot--game" aria-hidden="true"></span>Games',
-    "skill.art": '<span class="skillset__dot skillset__dot--art" aria-hidden="true"></span>Design &amp; art',
-    "skill.soft": '<span class="skillset__dot skillset__dot--soft" aria-hidden="true"></span>Soft skills',
+    "skills.title": "Tools",
+    "skill.ai": "Applied AI",
+    "skill.data": "Data engineering",
+    "skill.web": "Web development",
+    "skill.game": "Games",
+    "skill.art": "Design &amp; art",
+    "skill.soft": "Soft skills",
     "sk.ai.agents": "Agents",
     "sk.ai.local": "Local LLMs · Ollama",
     "sk.ai.vector": "Vector databases",
@@ -221,14 +210,14 @@
     // Contacto
     "contact.title": "Contact",
     "contact.big": "If you want to talk about a project, write to me.",
-    "contact.cv": 'Download CV <span aria-hidden="true">↓</span>',
+    "contact.cv": "Download CV",
 
     // Enlaces de proyecto
-    "link.play": 'play on itch.io <span aria-hidden="true">↗</span>',
-    "link.repo": 'view repository <span aria-hidden="true">↗</span>',
+    "link.play": "play on itch.io",
+    "link.repo": "view repository",
 
     // Pie
-    "footer.by": "designed and built by miguel ángel arroyo — 2026",
+    "footer.by": "Miguel Ángel Arroyo, 2026",
   };
 
   const TITLE = {
