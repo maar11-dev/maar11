@@ -42,9 +42,9 @@
   --bg-3: #e3d5b2;
   --ink: #15120b;
   --ink-soft: #5f5440;
-  --gold: #9e7623;
-  --gold-hi: #c99d3f;
-  --gold-lo: #6b4f16;
+  --gold: #7a5a17;
+  --gold-hi: #b08532;
+  --gold-lo: #5c4310;
   --line: rgba(107, 79, 22, 0.25);
   --line-strong: rgba(107, 79, 22, 0.55);
   --on-gold: #f7f0dc;
@@ -560,6 +560,7 @@ body::before {
 .hero__line--1 .hero__line-in { animation-delay: calc(var(--intro) + 0.2s); }
 
 .hero__line--2 {
+  margin-top: -0.04em;
   font-size: clamp(4rem, 13vw, 11rem);
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -760,7 +761,7 @@ body::before {
 /* ==========================================================================
    Sobre mí
    ========================================================================== */
-.about__text p { max-width: 68ch; }
+.about__text p { max-width: 30em; }
 .about__text p + p { margin-top: 1.2rem; }
 
 /* ==========================================================================
@@ -800,12 +801,12 @@ body::before {
   line-height: 1.15;
 }
 
-.xp__desc { margin-top: 0.7rem; max-width: 68ch; }
+.xp__desc { margin-top: 0.7rem; max-width: 30em; }
 
 .xp__duties {
   margin-top: 1.1rem;
   padding-left: 1.15rem;
-  max-width: 68ch;
+  max-width: 30em;
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
@@ -813,7 +814,7 @@ body::before {
 .xp__duties li { padding-left: 0.3rem; }
 .xp__duties li::marker { color: var(--gold); }
 
-.xp__stack { margin-top: 1.1rem; max-width: 68ch; color: var(--ink-soft); }
+.xp__stack { margin-top: 1.1rem; max-width: 30em; color: var(--ink-soft); }
 
 /* ==========================================================================
    Proyectos
@@ -871,10 +872,10 @@ body::before {
 
 .project__sub { color: var(--ink-soft); margin-top: 0.5rem; }
 
-.project__desc { margin-top: 1.2rem; max-width: 62ch; }
+.project__desc { margin-top: 1.2rem; max-width: 30em; }
 .project__desc p + p { margin-top: 0.9rem; }
 
-.project__stack { margin-top: 1.2rem; max-width: 62ch; color: var(--ink-soft); }
+.project__stack { margin-top: 1.2rem; max-width: 30em; color: var(--ink-soft); }
 
 .project__links {
   display: flex;
@@ -1009,14 +1010,14 @@ body::before {
   border-bottom: 1px solid var(--line);
 }
 
-.tools__group p { max-width: 62ch; }
+.tools__group p { max-width: 30em; }
 
 /* ==========================================================================
    Contacto
    ========================================================================== */
 .contact { padding-bottom: var(--section-gap); }
 
-.contact__big { max-width: 68ch; }
+.contact__big { max-width: 30em; }
 
 .contact__mail {
   display: inline-block;
