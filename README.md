@@ -71,5 +71,11 @@ El logotipo de InferIA de Experiencia se pinta con dos máscaras PNG
 (`images/inferia-logo-ink.png` e `images/inferia-logo-accent.png`) para tomar los colores
 del tema. Se generan desde `images/inferia-logo-final.jpg` con `python scripts/build-logo.py`.
 
+Los logotipos de tecnologías de Experiencia salen de [simple-icons](https://simpleicons.org)
+(CC0) y van en línea en el sprite de `index.html`. Para añadir uno, pon en la página
+`<use href="#i-slug" />` con el slug de simpleicons.org y ejecuta `npm run build-icons`.
+Los que no están en simple-icons se dibujan a mano en `scripts/icons/<slug>.svg`; así están
+hechos los de PostGIS, pgvector, requests y Beautiful Soup.
+
 Añadiendo `?capture` a la URL se desactivan las animaciones de entrada, útil para
 hacer capturas de pantalla.

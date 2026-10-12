@@ -319,6 +319,11 @@
     });
   });
 
+  // Índice de cada hijo para las cascadas internas (párrafos, etiquetas, enlaces)
+  document.querySelectorAll(".about__text, .xp__stack, .contact__links").forEach((list) => {
+    Array.from(list.children).forEach((el, i) => el.style.setProperty("--i", i));
+  });
+
   reveals.forEach((el) => observer.observe(el));
 })();
 

@@ -1,12 +1,14 @@
 {
   "name": "maar11",
   "private": true,
-  "description": "Portfolio de Miguel Ángel Arroyo. Sitio estático; Node solo se usa para optimizar imágenes.",
+  "description": "Portfolio de Miguel Ángel Arroyo. Sitio estático; Node solo se usa para optimizar imágenes y generar los logotipos de tecnologías.",
   "type": "module",
   "scripts": {
-    "optimize-images": "node scripts/optimize-images.mjs"
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "build-icons": "node scripts/build-icons.mjs"
   },
   "devDependencies": {
-    "sharp": "^0.35.5"
+    "sharp": "^0.35.5",
+    "simple-icons": "^16.35.0"
   }
 }

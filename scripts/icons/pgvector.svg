@@ -1,0 +1,6 @@
+<!-- pgvector: chip con patillas, el pictograma que acompaña a pgvector junto al elefante de PostgreSQL. Redibujado para usarse en un solo color. -->
+<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+<rect x="5.5" y="5.5" width="13" height="13" rx="1.6"/>
+<rect x="9.3" y="9.3" width="5.4" height="5.4" rx=".4"/>
+<path d="M9 5.5V2.3M12 5.5V2.3M15 5.5V2.3M9 21.7v-3.2M12 21.7v-3.2M15 21.7v-3.2M5.5 9H2.3M5.5 12H2.3M5.5 15H2.3M21.7 9h-3.2M21.7 12h-3.2M21.7 15h-3.2"/>
+</g>

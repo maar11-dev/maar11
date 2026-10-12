@@ -1068,6 +1068,73 @@ body::before {
 .xp__card:hover .xp__stack li { border-color: var(--line-strong); }
 .xp__stack li:hover { color: var(--gold); }
 
+/* Logotipo en lugar del nombre; el nombre aparece en una cartela al pasar o enfocar */
+.xp__stack .xp__tech {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  padding: 0;
+  cursor: default;
+}
+.xp__tech svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: currentColor;
+  transition: scale 0.4s var(--ease);
+}
+.xp__tech::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: calc(100% + 0.55rem);
+  left: 50%;
+  z-index: 4;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--line-strong);
+  background: var(--bg);
+  color: var(--gold);
+  font-family: var(--font-deco);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  translate: -50% 6px;
+  transition: opacity 0.25s ease, translate 0.35s var(--ease);
+}
+/* Rombo que une la cartela con el logotipo */
+.xp__tech::before {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 0.2rem);
+  left: 50%;
+  z-index: 5;
+  width: 7px;
+  height: 7px;
+  background: var(--bg);
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  pointer-events: none;
+  opacity: 0;
+  translate: -50% 6px;
+  rotate: 45deg;
+  transition: opacity 0.25s ease, translate 0.35s var(--ease);
+}
+.xp__tech:hover,
+.xp__tech:focus-visible { color: var(--gold); border-color: var(--line-strong); outline: none; }
+.xp__tech:hover svg,
+.xp__tech:focus-visible svg { scale: 1.12; }
+.xp__tech:hover::after,
+.xp__tech:focus::after,
+.xp__tech:hover::before,
+.xp__tech:focus::before { opacity: 1; translate: -50% 0; }
+
+/* Separación entre los logotipos y las tecnologías que solo van con nombre */
+.xp__tech + li:not(.xp__tech) { margin-left: 0.5rem; }
+.xp__stack li:not(.xp__tech) { align-self: center; }
+
 /* Desplegable con las tareas de puestos anteriores */
 .xp__more {
   margin-top: 1.3rem;
@@ -1458,6 +1525,171 @@ img.pixel { image-rendering: pixelated; }
   transition-delay: var(--reveal-delay, 0s);
 }
 .reveal.is-visible { opacity: 1; transform: none; }
+
+/* --------------------------------------------------------------------------
+   Coreografía por sección: todo arranca cuando su bloque recibe .is-visible
+   -------------------------------------------------------------------------- */
+
+/* Cabeceras: el título sube cerrando el espaciado, el filete se traza con un
+   destello dorado que lo recorre una vez y el ornamento escalonado se levanta
+   peldaño a peldaño */
+.section__head.reveal { transform: none; }
+.section__head { border-bottom-color: transparent; }
+.section__head::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--line) 0 40%, var(--gold-hi) 50%, var(--line) 60% 100%)
+    100% 0 / 250% 100% no-repeat;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.4s var(--ease) 0.1s;
+}
+.section__head.is-visible::after {
+  transform: scaleX(1);
+  animation: glint 2.4s 0.7s ease-in-out both;
+}
+@keyframes glint { to { background-position: 0% 0; } }
+
+.section__title {
+  opacity: 0;
+  translate: 0 0.45em;
+  letter-spacing: 0.06em;
+  transition: opacity 1s ease, translate 1.2s var(--ease), letter-spacing 1.6s var(--ease);
+}
+.section__head.is-visible .section__title { opacity: 1; translate: none; letter-spacing: -0.015em; }
+
+.section__orn {
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.6s steps(4, end) 0.6s;
+}
+.section__head.is-visible .section__orn { transform: none; }
+
+/* Sobre mí: los párrafos entran uno tras otro */
+.about__text p {
+  opacity: 0;
+  translate: 0 18px;
+  transition: opacity 0.9s ease, translate 1.1s var(--ease);
+  transition-delay: calc(0.15s + var(--i, 0) * 0.15s);
+}
+.about__text.is-visible p { opacity: 1; translate: none; }
+
+/* Experiencia: el logotipo se descubre como un telón, el filete se traza,
+   el raíl baja hasta cada rombo, que gira hasta su sitio, y la ficha se abre
+   de izquierda a derecha con sus etiquetas en cascada */
+.xp-company__head.reveal { transform: none; }
+.xp-logo {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.2s var(--ease) 0.1s;
+}
+.xp-company__rule {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.4s var(--ease) 0.35s;
+}
+.xp-company__span {
+  opacity: 0;
+  transition: opacity 1s ease 0.8s;
+}
+.xp-company__head.is-visible .xp-logo { clip-path: inset(0 -2px 0 0); }
+.xp-company__head.is-visible .xp-company__rule { transform: none; }
+.xp-company__head.is-visible .xp-company__span { opacity: 1; }
+
+.xp.reveal { transform: none; }
+.xp__main { border-left-color: transparent; }
+.xp__main::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--gold-lo);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.3s var(--ease);
+}
+.xp.is-visible .xp__main::after { transform: none; }
+
+.xp__main::before {
+  transform: scale(0) rotate(-180deg);
+  transition: transform 0.9s var(--ease) 0.35s;
+}
+.xp.is-visible .xp__main::before { transform: none; }
+
+.xp__date {
+  opacity: 0;
+  translate: -14px 0;
+  transition: opacity 0.9s ease 0.45s, translate 1.1s var(--ease) 0.45s;
+}
+.xp.is-visible .xp__date { opacity: 1; translate: none; }
+
+.xp__card {
+  clip-path: inset(-12px 100% -12px -12px);
+  transition: clip-path 1.3s var(--ease) 0.5s;
+}
+.xp.is-visible .xp__card { clip-path: inset(-12px -12px -12px -12px); }
+
+.xp__stack li {
+  opacity: 0;
+  translate: 0 8px;
+  transition: opacity 0.6s ease, translate 0.8s var(--ease), color 0.3s ease, border-color 0.3s ease;
+  transition-delay: calc(1s + var(--i, 0) * 0.05s), calc(1s + var(--i, 0) * 0.05s), 0s, 0s;
+}
+.xp.is-visible .xp__stack li { opacity: 1; translate: none; }
+
+/* Proyectos: cada categoría se anuncia con un filete dorado que crece */
+.projects__cat-title {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.projects__cat-title::before {
+  content: "";
+  width: 1.6rem;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1s var(--ease) 0.2s;
+}
+.projects__cat.is-visible .projects__cat-title::before { transform: none; }
+
+/* Herramientas: el filete de cada grupo se traza antes de que aparezca el texto */
+.tools__name {
+  border-bottom-color: transparent;
+  background: linear-gradient(var(--line), var(--line)) left bottom / 0% 1px no-repeat;
+  transition: background-size 1.2s var(--ease) calc(var(--reveal-delay, 0s) + 0.2s);
+}
+.tools__group.is-visible .tools__name { background-size: 100% 1px; }
+.tools__group p {
+  opacity: 0;
+  transition: opacity 1s ease calc(var(--reveal-delay, 0s) + 0.5s);
+}
+.tools__group.is-visible p { opacity: 1; }
+
+/* Contacto: el sol se abre desde el centro, el subrayado del email se enciende
+   y los enlaces llegan en cascada */
+.contact__mailwrap::before { scale: 0.3; opacity: 0; transition: scale 2.2s var(--ease) 0.3s, opacity 1.6s ease 0.3s; }
+.contact__inner.is-visible .contact__mailwrap::before { scale: 1; opacity: 0.55; }
+
+.contact__mail {
+  text-decoration-color: transparent;
+  transition: color 0.3s ease, text-decoration-color 1.2s ease 0.9s;
+}
+.contact__inner.is-visible .contact__mail { text-decoration-color: var(--gold); }
+
+.contact__links a {
+  opacity: 0;
+  translate: 0 10px;
+  transition: opacity 0.8s ease, translate 1s var(--ease), color 0.3s ease;
+  transition-delay: calc(1s + var(--i, 0) * 0.12s), calc(1s + var(--i, 0) * 0.12s), 0s;
+}
+.contact__inner.is-visible .contact__links a { opacity: 1; translate: none; }
 
 /* Modo captura: sin animaciones */
 .capture *, .capture *::before, .capture *::after {
